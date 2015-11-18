@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+ <li>
+ <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+ </li>
+ <% if current_user.admin? %>
+   <li class='user'>Signed in as <strong>Admin</strong>: <%= current_user.email %></li>
+ <% else %>
+   <li class='user'>Signed in as: <%= current_user.email %></li>
+ <% end %>
+<% else %>
+ <li>
+ <%= link_to('Login', new_user_session_path)  %>
+ </li>
+<% end %>
