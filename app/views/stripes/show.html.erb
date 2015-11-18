@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @stripe.student %>
+</p>
+
+<%= link_to 'Edit', edit_stripe_path(@stripe) %> |
+<%= link_to 'Back', stripes_path %>

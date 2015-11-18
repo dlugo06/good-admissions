@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stripes
+  resources :wires
   resources :checks
   resources :loans
   resources :students
