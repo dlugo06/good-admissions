@@ -6,6 +6,11 @@
   <thead>
     <tr>
       <th>Student</th>
+      <th>Amount</th>
+      <th>Received Date</th>
+      <th>Deposited Date</th>
+      <th>Check Number</th>
+      <th>Name on Check</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +18,12 @@
   <tbody>
     <% @checks.each do |check| %>
       <tr>
-        <td><%= check.student %></td>
+        <td><%= check.student.first_name %> <%= check.student.last_name %></td>
+        <td><%= check.amount %></td>
+        <td><%= check.received_date %></td>
+        <td><%= check.deposited_date %></td>
+        <td><%= check.check_number %></td>
+        <td><%= check.name_on_check %></td>
         <td><%= link_to 'Show', check %></td>
         <td><%= link_to 'Edit', edit_check_path(check) %></td>
         <td><%= link_to 'Destroy', check, method: :delete, data: { confirm: 'Are you sure?' } %></td>

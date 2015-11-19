@@ -2,7 +2,24 @@
 
 <p>
   <strong>Student:</strong>
-  <%= @wire.student %>
+  <%= @wire.student.first_name %>
+  <%= @wire.student.last_name %>
+</p>
+<p>
+  <strong>Amount:</strong>
+  <%= @wire.amount %>
+</p>
+<p>
+  <strong>Send Date:</strong>
+  <%= @wire.send_date %>
+</p>
+<p>
+  <strong>Received Date:</strong>
+  <%= @wire.received_date %>
+</p>
+<p>
+  <strong>Sender:</strong>
+  <%= @wire.sender %>
 </p>
 
 <%= link_to 'Edit', edit_wire_path(@wire) %> |

@@ -15,6 +15,22 @@
     <%= f.label :student_id %><br>
     <%= f.text_field :student_id %>
   </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :send_date, "Send Date" %><br>
+    <%= f.date_field :send_date %>
+  </div>
+  <div class="field">
+    <%= f.label :received_date, "Received Date" %><br>
+    <%= f.date_field :received_date %>
+  </div>
+  <div class="field">
+    <%= f.label :sender %><br>
+    <%= f.text_field :sender %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

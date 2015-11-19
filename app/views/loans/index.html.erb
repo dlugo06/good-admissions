@@ -6,6 +6,10 @@
   <thead>
     <tr>
       <th>Student</th>
+      <th>Amount</th>
+      <th>Company</th>
+      <th>Application Status</th>
+      <th>Notes</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +17,11 @@
   <tbody>
     <% @loans.each do |loan| %>
       <tr>
-        <td><%= loan.student %></td>
+        <td><%= loan.student.first_name %> <%= loan.student.last_name %></td>
+        <td><%= loan.amount %></td>
+        <td><%= loan.company %></td>
+        <td><%= loan.application_status %></td>
+        <td><%= loan.notes %></td>
         <td><%= link_to 'Show', loan %></td>
         <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
         <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>

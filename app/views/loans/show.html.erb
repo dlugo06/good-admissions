@@ -2,7 +2,24 @@
 
 <p>
   <strong>Student:</strong>
-  <%= @loan.student %>
+  <%= @loan.student.first_name %>
+  <%= @loan.student.last_name %>
+</p>
+<p>
+  <strong>Amount:</strong>
+  <%= @loan.amount %>
+</p>
+<p>
+  <strong>Company:</strong>
+  <%= @loan.company %>
+</p>
+<p>
+  <strong>Application Status:</strong>
+  <%= @loan.application_status %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%= @loan.notes %>
 </p>
 
 <%= link_to 'Edit', edit_loan_path(@loan) %> |
