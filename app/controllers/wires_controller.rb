@@ -69,6 +69,6 @@ class WiresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wire_params
-      params.require(:wire).permit(:student_id)
+      params.require(:wire).permit(:student_id, :amount, :send_date, :received_date, :sender)
     end
 end
