@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119014214) do
+ActiveRecord::Schema.define(version: 20151119040738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20151119014214) do
     t.string   "application_status"
     t.text     "notes"
     t.integer  "amount"
+    t.string   "company"
   end
 
+  add_index "loans", ["company"], name: "index_loans_on_company", using: :btree
   add_index "loans", ["student_id"], name: "index_loans_on_student_id", using: :btree
 
   create_table "stripes", force: :cascade do |t|
