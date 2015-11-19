@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119012324) do
+ActiveRecord::Schema.define(version: 20151119013611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,8 +86,8 @@ ActiveRecord::Schema.define(version: 20151119012324) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "amount"
-    t.datetime "send_date"
-    t.datetime "received_date"
+    t.date     "send_date"
+    t.date     "received_date"
     t.string   "sender"
   end
 
