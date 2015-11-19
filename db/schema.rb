@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119002709) do
+ActiveRecord::Schema.define(version: 20151119010000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,12 @@ ActiveRecord::Schema.define(version: 20151119002709) do
 
   create_table "wires", force: :cascade do |t|
     t.integer  "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "amount"
+    t.datetime "send_date"
+    t.datetime "received_date"
+    t.string   "sender"
   end
 
   add_index "wires", ["student_id"], name: "index_wires_on_student_id", using: :btree
