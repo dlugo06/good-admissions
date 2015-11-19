@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119014214) do
+ActiveRecord::Schema.define(version: 20151119043634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "checks", force: :cascade do |t|
     t.integer  "student_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.date     "received_date"
     t.date     "deposited_date"
-    t.integer  "amount"
+    t.decimal  "amount",         precision: 10, scale: 2
     t.string   "name_on_check"
     t.integer  "check_number"
   end
@@ -31,13 +31,15 @@ ActiveRecord::Schema.define(version: 20151119014214) do
 
   create_table "loans", force: :cascade do |t|
     t.integer  "student_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "application_status"
     t.text     "notes"
-    t.integer  "amount"
+    t.decimal  "amount",             precision: 10, scale: 2
+    t.string   "company"
   end
 
+  add_index "loans", ["company"], name: "index_loans_on_company", using: :btree
   add_index "loans", ["student_id"], name: "index_loans_on_student_id", using: :btree
 
   create_table "stripes", force: :cascade do |t|
@@ -83,9 +85,9 @@ ActiveRecord::Schema.define(version: 20151119014214) do
 
   create_table "wires", force: :cascade do |t|
     t.integer  "student_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "amount"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.decimal  "amount",        precision: 10, scale: 2
     t.date     "send_date"
     t.date     "received_date"
     t.string   "sender"
