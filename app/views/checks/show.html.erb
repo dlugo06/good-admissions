@@ -2,7 +2,28 @@
 
 <p>
   <strong>Student:</strong>
-  <%= @check.student %>
+  <%= @check.student.first_name %>
+  <%= @check.student.last_name %>
+</p>
+<p>
+  <strong>Amount:</strong>
+  <%= @check.amount %>
+</p>
+<p>
+  <strong>Received Date:</strong>
+  <%= @check.received_date %>
+</p>
+<p>
+  <strong>Deposited Date:</strong>
+  <%= @check.deposited_date %>
+</p>
+<p>
+  <strong>Check Number:</strong>
+  <%= @check.check_number %>
+</p>
+<p>
+  <strong>Name on Check:</strong>
+  <%= @check.name_on_check %>
 </p>
 
 <%= link_to 'Edit', edit_check_path(@check) %> |
