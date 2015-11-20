@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120202027) do
+ActiveRecord::Schema.define(version: 20151120202717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151120202027) do
     t.text     "notes"
     t.decimal  "amount",     precision: 10, scale: 2
     t.string   "company"
+    t.date     "fund_date"
   end
 
   add_index "loans", ["company"], name: "index_loans_on_company", using: :btree
