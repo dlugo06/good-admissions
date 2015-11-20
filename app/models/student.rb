@@ -6,19 +6,7 @@ class Student < ActiveRecord::Base
 
 
   def payments
-    @payments = []
-    loans.each do |loan|
-      @payments << loan
-    end
-    checks.each do |check|
-      @payments << check
-    end
-    stripes.each do |stripe|
-      @payments << stripe
-    end
-    wires.each do |wire|
-      @payments << wire
-    end
+     loans + checks + stripes + wires
   end
 
   def full_name

@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th>Student</th>
+      <th>Amount</th>
+      <th>Pay Date</th>
+      <th>Refunded?</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +16,10 @@
   <tbody>
     <% @stripes.each do |stripe| %>
       <tr>
-        <td><%= stripe.student %></td>
+        <td><%= stripe.student.full_name %></td>
+        <td><%= stripe.amount %></td>
+        <td><%= stripe.pay_date %></td>
+        <td><%= stripe.refunded %></td>
         <td><%= link_to 'Show', stripe %></td>
         <td><%= link_to 'Edit', edit_stripe_path(stripe) %></td>
         <td><%= link_to 'Destroy', stripe, method: :delete, data: { confirm: 'Are you sure?' } %></td>

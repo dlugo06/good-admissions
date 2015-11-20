@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
 
 
   def payments
-    @payments = @student.payments
+    # @payments = @student.payments
   end
   # GET /students
   # GET /students.json
