@@ -20,12 +20,12 @@
     <%= f.number_field :amount %>
   </div>
   <div class="field">
-    <%= f.label :company %><br>
-    <%= f.select :company, [["Select", :none], ["Climb", :climb], ["Pave", :pave], ["Affirm", :affirm]] %>
+    <%= f.label :fund_date, "Date Funded" %><br>
+    <%= f.date :fund_date %>
   </div>
   <div class="field">
-    <%= f.label :application_status, "Application Status" %><br>
-    <%= f.select :application_status, [["Select", :none], ["Applied", :applied], ["Approved", :approved], ["Funded", :funded]] %>
+    <%= f.label :company %><br>
+    <%= f.select :company, [["Select", :none], ["Climb", :climb], ["Pave", :pave], ["Affirm", :affirm]] %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
