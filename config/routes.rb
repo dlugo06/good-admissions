@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'payments/new'
+
   resources :stripes
   resources :wires
   resources :checks
