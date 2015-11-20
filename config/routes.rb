@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'payments/new'
+  get 'students/:id/payments/new' => 'payments#new', as: :new_student_payment
   get 'students/:id/payments' => 'students#payments', as: :student_payments
 
   resources :stripes

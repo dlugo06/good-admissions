@@ -1,0 +1,40 @@
+<h1>This is the Student Payments page.</h1>
+<p>
+  The name of the student and links to all of the students payment shoudl be here.
+</p>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Payments For <%= @student.full_name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Notification type</th>
+      <th>User</th>
+      <th>Appointment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payments.each do |payment| %>
+      <tr>
+        <td><%# raise %></td>
+        <td><%# notification.time %></td>
+        <td><%# notification.notification_type %></td>
+        <td><%# notification.user.email %></td>
+        <td><%# notification.appointment.event %></td>
+        <td><%# link_to 'Show', notification %></td>
+        <td><%# link_to 'Edit', edit_notification_path(notification) %></td>
+        <td><%# link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%# link_to 'Send Text', notification, method: :post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Payment', new_student_payment_path(@student) %>
+<%= link_to 'Back To Students', students_path %>
