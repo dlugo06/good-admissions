@@ -4,4 +4,8 @@ class Student < ActiveRecord::Base
   has_many :wires
   has_many :stripes
 
+
+  def payments
+    raise
+  end
 end
