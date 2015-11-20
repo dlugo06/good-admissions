@@ -8,7 +8,7 @@
       <th>Student</th>
       <th>Amount</th>
       <th>Send Date</th>
-      <th>Received Date</th>
+      <th>Date Received</th>
       <th>Sender</th>
       <th colspan="3"></th>
     </tr>
@@ -20,7 +20,7 @@
         <td><%= wire.student.first_name %> <%= wire.student.last_name %></td>
         <td><%= wire.amount %></td>
         <td><%= wire.send_date %></td>
-        <td><%= wire.received_date %></td>
+        <td><%= wire.pay_date %></td>
         <td><%= wire.sender %></td>
         <td><%= link_to 'Show', wire %></td>
         <td><%= link_to 'Edit', edit_wire_path(wire) %></td>

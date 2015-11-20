@@ -6,10 +6,7 @@ class Student < ActiveRecord::Base
 
 
   def payments
-    @loans = loans
-    @checks = checks
-    @stripes = stripes
-    @wires = wires
+     loans + checks + stripes + wires
   end
 
   def full_name

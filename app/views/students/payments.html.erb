@@ -13,15 +13,16 @@
       <th>Payment Date</th>
       <th>Payment Type</th>
       <th>Amount</th>
-      <th>Appointment</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @payments.each do |payment| %>
+    <% @student.payments.each do |payment| %>
       <tr>
         <td><%# raise %></td>
+        <td><%# raise %></td>
+        <td><%= payment.amount %></td>
         <td><%# notification.time %></td>
         <td><%# notification.notification_type %></td>
         <td><%# notification.user.email %></td>
