@@ -14,23 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$('document').ready(function () {
-  $('.new_payment').hide();
-  $('#payment_type').on('click', function() {
-    console.log($('input:radio[name=payment_type]:checked').val());
-    switch($('input:radio[name=payment_type]:checked').val()) {
-      case 'stripe':
-        $('.new_stripe').toggle();
-        break;
-      case 'check':
-        $('.new_check').toggle();
-        break;
-      case 'loan':
-        $('.new_loan').toggle();
-        break;
-      case 'wire':
-        $('.new_wire').toggle();
-        break;
-    }
-  });
-});
