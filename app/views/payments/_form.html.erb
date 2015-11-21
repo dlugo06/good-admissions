@@ -1,11 +1,11 @@
-<h1>This is rendered from the _form</h1>
-<p>
-  This should instead render 4 forms.
-</p>
+<h1>Create A New Payment</h1>
 
-<ul>
-  <li>The 4 forms should be hidden</li>
-</ul>
+<form action="" id="payment_type">
+  <input type="radio" name="payment_type" value="loan">Loan<br>
+  <input type="radio" name="payment_type" value="check" class="check">Check<br>
+  <input type="radio" name="payment_type" value="stripe">Stripe<br>
+  <input type="radio" name="payment_type" value="wire">Wire
+</form>
 <%= render 'loans/form' %>
 <%= render 'checks/form' %>
 <%= render 'stripes/form' %>
