@@ -1,4 +1,4 @@
-<%= form_for(@check) do |f| %>
+<%= form_for @check, html: {class: "new_check new_payment"} do |f| %>
   <% if @check.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@check.errors.count, "error") %> prohibited this check from being saved:</h2>
