@@ -69,6 +69,6 @@ class ChecksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def check_params
-      params.require(:check).permit(:student_id, :amount, :received_date, :deposited_date, :check_number, :name_on_check)
+      params.require(:check).permit(:student_id, :amount, :pay_date, :deposited_date, :check_number, :name_on_check)
     end
 end

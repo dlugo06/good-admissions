@@ -2,8 +2,19 @@
 
 <p>
   <strong>Student:</strong>
-  <%= @stripe.student %>
+  <%= @stripe.student.full_name %>
 </p>
-
+<p>
+  <strong>Amount:</strong>
+  <%= @stripe.amount %>
+</p>
+<p>
+  <strong>Refunded:</strong>
+  <%= @stripe.refunded %>
+</p>
+<p>
+  <strong>Pay Date:</strong>
+  <%= @stripe.pay_date %>
+</p>
 <%= link_to 'Edit', edit_stripe_path(@stripe) %> |
 <%= link_to 'Back', stripes_path %>

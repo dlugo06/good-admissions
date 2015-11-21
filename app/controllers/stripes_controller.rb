@@ -69,6 +69,6 @@ class StripesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def stripe_params
-      params.require(:stripe).permit(:student_id)
+      params.require(:stripe).permit(:student_id, :amount, :refunded, :pay_date)
     end
 end

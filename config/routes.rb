@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  get 'students/:id/payments/new' => 'payments#new', as: :new_student_payment
+  get 'students/:id/payments' => 'students#payments', as: :student_payments
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
   resources :stripes
   resources :wires
   resources :checks
   resources :loans
   resources :students
-  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

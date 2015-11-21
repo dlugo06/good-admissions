@@ -1,4 +1,4 @@
-<%= form_for(@loan) do |f| %>
+<%= form_for @loan, html: {class: "new_loan new_payment"} do |f| %>
   <% if @loan.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@loan.errors.count, "error") %> prohibited this loan from being saved:</h2>
@@ -20,12 +20,12 @@
     <%= f.number_field :amount %>
   </div>
   <div class="field">
-    <%= f.label :company %><br>
-    <%= f.select :company, [["Select", :none], ["Climb", :climb], ["Pave", :pave], ["Affirm", :affirm]] %>
+    <%= f.label :pay_date, "Date Funded" %><br>
+    <%= f.date_field :pay_date %>
   </div>
   <div class="field">
-    <%= f.label :application_status, "Application Status" %><br>
-    <%= f.select :application_status, [["Select", :none], ["Applied", :applied], ["Approved", :approved], ["Funded", :funded]] %>
+    <%= f.label :company %><br>
+    <%= f.select :company, [["Select", :none], ["Climb", :climb], ["Pave", :pave], ["Affirm", :affirm]] %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
