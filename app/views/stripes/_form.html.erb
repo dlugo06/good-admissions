@@ -1,4 +1,4 @@
-<%= form_for(@stripe) do |f| %>
+<%= form_for @stripe, html: {class: "new_stripe new_payment"} do |f| %>
   <% if @stripe.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@stripe.errors.count, "error") %> prohibited this stripe from being saved:</h2>

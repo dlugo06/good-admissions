@@ -1,4 +1,4 @@
-<%= form_for(@wire) do |f| %>
+<%= form_for @wire, html: {class: "new_wire new_payment"} do |f| %>
   <% if @wire.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@wire.errors.count, "error") %> prohibited this wire from being saved:</h2>
