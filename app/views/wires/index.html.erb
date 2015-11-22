@@ -18,7 +18,7 @@
     <% @wires.each do |wire| %>
       <tr>
         <td><%= wire.student.first_name %> <%= wire.student.last_name %></td>
-        <td><%= wire.amount %></td>
+        <td><%= number_to_currency(wire.amount) %></td>
         <td><%= wire.send_date %></td>
         <td><%= wire.pay_date %></td>
         <td><%= wire.sender %></td>
