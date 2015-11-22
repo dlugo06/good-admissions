@@ -21,8 +21,18 @@
 </p>
 
 <p>
+  <strong>Discount:</strong>
+  <%= @student.discount %>
+</p>
+
+<p>
   <strong>Balance:</strong>
   <%= @student.balance %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @student.notes %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |
