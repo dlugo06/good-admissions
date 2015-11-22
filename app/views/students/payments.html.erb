@@ -1,36 +1,40 @@
-<h1>This is the Student Payments page.</h1>
-<p>
+<!-- <h1>This is the Student Payments page.</h1> -->
+<!-- <p>
   The name of the student and links to all of the students payment shoudl be here.
-</p>
+</p> -->
 
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Payments For <%= @student.full_name %></h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Payment Date</th>
-      <th>Payment Type</th>
-      <th>Amount</th>
-      <!-- <th>Details</th> -->
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @student.payments.each do |payment| %>
+<div class="table-responsive col-md-10 col-md-offset-1">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= payment.pay_date %></td>
-        <td><%= payment.class %></td>
-        <td><%= payment.amount %></td>
-        <td><%= link_to "Details", payment %></td>
-        <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Payment Date</th>
+        <th>Payment Type</th>
+        <th>Amount</th>
+        <!-- <th>Details</th> -->
+        <!-- <th colspan="3"></th> -->
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<%= link_to 'New Payment', new_student_payment_path(@student) %>
-<%= link_to 'Back To Students', students_path %>
+    <tbody>
+      <% @student.payments.each do |payment| %>
+        <tr>
+          <td><%= payment.pay_date %></td>
+          <td><%= payment.class %></td>
+          <td><%= payment.amount %></td>
+          <td><%= link_to "Details", payment %></td>
+          <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="row new-payment col-md-12">
+  <%= link_to 'New Payment', new_student_payment_path(@student) %>
+</div>
+<div class="row back-to-students col-md-12">
+  <%= link_to 'Back To Students', students_path %>
+</div>

@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// universal
 html {
   overflow-y: scroll;
 }
@@ -19,6 +20,7 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
+
 /* typography */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -71,4 +73,21 @@ p {
 // }
 .field_with_errors {
   margin: auto;
+}
+
+//Payment type radio button styling
+input[type="radio"] {
+    margin-right: 10px;
+}
+#payment_render {
+  padding-top: 20px;
+}
+// Student listing
+.new-student {
+  text-align: center;
+}
+// Listing payment
+.back-to-students, .new-payment {
+  text-align: center;
+  margin-top: 10px;
 }
