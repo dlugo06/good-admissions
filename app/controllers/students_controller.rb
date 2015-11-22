@@ -2,8 +2,6 @@ class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :payments]
   before_filter :authenticate_user!
 
-
-
   def payments
     # @payments = @student.payments
   end
