@@ -10,28 +10,3 @@
 <%= render 'checks/form' %>
 <%= render 'stripes/form' %>
 <%= render 'wires/form' %>
-
-<!-- This needs to go in the payments.js file after we know how to listen for the right things.  -->
-<script type="text/javascript">
-  $('.new_payment').hide();
-  $('#payment_type').on('click', function() {
-    switch($('input:radio[name=payment_type]:checked').val()) {
-      case 'stripe':
-        $('.new_payment').hide();
-        $('.new_stripe').toggle();
-        break;
-      case 'check':
-        $('.new_payment').hide();
-        $('.new_check').toggle();
-        break;
-      case 'loan':
-        $('.new_payment').hide();
-        $('.new_loan').toggle();
-        break;
-      case 'wire':
-        $('.new_payment').hide();
-        $('.new_wire').toggle();
-        break;
-    }
-  });
-</script>
