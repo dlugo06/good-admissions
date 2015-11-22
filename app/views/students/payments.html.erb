@@ -5,11 +5,14 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Payments For <%= @student.full_name %></h1>
-<div class="table-responsive col-md-10 col-md-offset-1">
+<div id="payment-listing">
+  <h2>Listing Payments For <%= @student.full_name %></h2>
+</div>
+
+<div class="table-responsive col-md-8 col-md-offset-2">
   <table class="table">
     <thead>
-      <tr>
+      <tr class="well">
         <th>Payment Date</th>
         <th>Payment Type</th>
         <th>Amount</th>
@@ -32,9 +35,16 @@
   </table>
 </div>
 
-<div class="row new-payment col-md-12">
-  <%= link_to 'New Payment', new_student_payment_path(@student) %>
+ <div class="row new-payment col-md-2 col-md-offset-5">
+  <%= link_to('New Payment', new_student_payment_path(@student), :class => 'btn btn-large btn-primary') %>
 </div>
-<div class="row back-to-students col-md-12">
-  <%= link_to 'Back To Students', students_path %>
+<div class="row back-to-students col-md-2 col-md-offset-5">
+  <%= link_to('Back To Students', students_path, :class => 'btn btn-large btn-primary') %>
 </div>
+
+  <!-- <div class="row new-payment col-md-2 col-md-offset-5 well">
+    <%= link_to 'New Payment', new_student_payment_path(@student) %>
+  </div> -->
+  <!-- <div class="row back-to-students col-md-2 col-md-offset-5 well">
+    <%= link_to 'Back To Students', students_path %>
+  </div> -->
