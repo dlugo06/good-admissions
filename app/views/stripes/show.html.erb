@@ -6,15 +6,15 @@
 </p>
 <p>
   <strong>Amount:</strong>
-  <%= @stripe.amount %>
+  <%= number_to_currency(@stripe.amount) %>
 </p>
 <p>
   <strong>Refunded:</strong>
-  <%= @stripe.refunded %>
+  <%= @stripe.refunded.to_s.upcase %>
 </p>
 <p>
   <strong>Pay Date:</strong>
-  <%= @stripe.pay_date %>
+  <%= @stripe.pay_date.strftime("%m/%d/%Y") %>
 </p>
 <%= link_to 'Edit', edit_stripe_path(@stripe) %> |
 <%= link_to 'Back', stripes_path %>

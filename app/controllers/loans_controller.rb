@@ -19,6 +19,7 @@ class LoansController < ApplicationController
 
   # GET /loans/1/edit
   def edit
+    # @student = Student.find(params[:id])
   end
 
   # POST /loans

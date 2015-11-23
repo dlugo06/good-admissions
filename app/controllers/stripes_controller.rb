@@ -19,6 +19,7 @@ class StripesController < ApplicationController
 
   # GET /stripes/1/edit
   def edit
+    # @student = Student.find(student_params)
   end
 
   # POST /stripes

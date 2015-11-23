@@ -19,6 +19,7 @@ class WiresController < ApplicationController
 
   # GET /wires/1/edit
   def edit
+    # @student = Student.find(params[:id])
   end
 
   # POST /wires

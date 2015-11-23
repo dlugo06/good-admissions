@@ -18,9 +18,9 @@
     <% @loans.each do |loan| %>
       <tr>
         <td><%= loan.student.first_name %> <%= loan.student.last_name %></td>
-        <td><%= loan.amount %></td>
-        <td><%= loan.pay_date %></td>
-        <td><%= loan.company %></td>
+        <td><%= number_to_currency(loan.amount) %></td>
+        <td><%= loan.pay_date.strftime("%m/%d/%Y") %></td>
+        <td><%= loan.company.upcase %></td>
         <td><%= loan.notes %></td>
         <td><%= link_to 'Show', loan %></td>
         <td><%= link_to 'Edit', edit_loan_path(loan) %></td>

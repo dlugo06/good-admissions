@@ -17,9 +17,9 @@
     <% @stripes.each do |stripe| %>
       <tr>
         <td><%= stripe.student.full_name %></td>
-        <td><%= stripe.amount %></td>
-        <td><%= stripe.pay_date %></td>
-        <td><%= stripe.refunded %></td>
+        <td><%= number_to_currency(stripe.amount) %></td>
+        <td><%= stripe.pay_date.strftime("%m/%d/%Y") %></td>
+        <td><%= stripe.refunded.to_s.upcase %></td>
         <td><%= link_to 'Show', stripe %></td>
         <td><%= link_to 'Edit', edit_stripe_path(stripe) %></td>
         <td><%= link_to 'Destroy', stripe, method: :delete, data: { confirm: 'Are you sure?' } %></td>

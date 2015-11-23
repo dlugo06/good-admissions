@@ -7,15 +7,15 @@
 </p>
 <p>
   <strong>Amount:</strong>
-  <%= @check.amount %>
+  <%= number_to_currency(@check.amount) %>
 </p>
 <p>
   <strong>Date Received:</strong>
-  <%= @check.pay_date %>
+  <%= @check.pay_date.strftime("%m/%d/%Y") %>
 </p>
 <p>
   <strong>Deposited Date:</strong>
-  <%= @check.deposited_date %>
+  <%= @check.deposited_date.strftime("%m/%d/%Y") %>
 </p>
 <p>
   <strong>Check Number:</strong>
@@ -23,7 +23,7 @@
 </p>
 <p>
   <strong>Name on Check:</strong>
-  <%= @check.name_on_check %>
+  <%= @check.name_on_check.upcase %>
 </p>
 
 <%= link_to 'Edit', edit_check_path(@check) %> |
