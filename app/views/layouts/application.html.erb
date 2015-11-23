@@ -8,15 +8,22 @@
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 <body>
+     <p class="notice "><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+     <% if user_signed_in? %>
+       <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+       <%= yield %>
+     <% else %>
+       <%= yield %>
+     <% end %>
 
-<!-- <p class="notice"><%= notice %></p> -->
-<p class="alert"><%= alert %></p>
-<% if user_signed_in? %>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-  <%= yield %>
-<% else %>
-  <%= yield %>
-<% end %>
+
+  <!-- <% if notice %>
+    <p class="alert alert-success col-md-2 "><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger col-md-2"><%= alert %></p>
+  <% end %> -->
 
 </body>
 </html>

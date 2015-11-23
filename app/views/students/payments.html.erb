@@ -3,7 +3,7 @@
   The name of the student and links to all of the students payment shoudl be here.
 </p> -->
 
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <div id="payment-listing">
   <h2>Listing Payments For <%= @student.full_name %></h2>
@@ -36,10 +36,10 @@
 </div>
 
  <div class="row new-payment col-md-2 col-md-offset-5">
-  <%= link_to('New Payment', new_student_payment_path(@student), :class => 'btn btn-large btn-primary') %>
+  <%= link_to('New Payment', new_student_payment_path(@student), :class => 'btn btn-large btn-info') %>
 </div>
 <div class="row back-to-students col-md-2 col-md-offset-5">
-  <%= link_to('Back To Students', students_path, :class => 'btn btn-large btn-primary') %>
+  <%= link_to('Back To Students', students_path, :class => 'btn btn-large btn-info') %>
 </div>
 
   <!-- <div class="row new-payment col-md-2 col-md-offset-5 well">
