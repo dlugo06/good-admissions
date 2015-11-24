@@ -30,19 +30,9 @@
 // $(document).on('page:load', displayForm);
 
 // Something to try...
-$(document).ready( function () {
+$(document).ready( function() {
   $('#location-filter').on('change',function(){ // use event as per your need
-         $.ajax({
-                type: "GET",
-                url:    "/students_by_location", // should be mapped in routes.rb
-                data: {comment:"new comment"},
-                datatype:"json", // check more option
-                success: function(data) {
-                         // handle response data
-                         console.log("some content");
-                         },
-                async:   true
-              });
-
+    console.log("about to ajax");
+    $.ajax("location");
   });
 });
