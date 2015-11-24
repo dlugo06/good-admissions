@@ -1,3 +1,41 @@
-<%= form_for @wire do |f| %>
-  <%= render partial: "wires/wire_shared", locals: {f: f} %>
-<% end %>
+<%= form_for @wire, html: {class: "new_wire new_payment"} do |f| %>
+  <% if @wire.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wire.errors.count, "error") %> prohibited this wire from being saved:</h2>
+
+      <ul>
+      <% @wire.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row span12">
+  <div class="login text-center">
+
+    <div class="field top-label-element">
+      <%= f.hidden_field :student_id %>
+    </div>
+    <div class="field">
+      <%= f.label :amount %><br>
+      <%= f.number_field :amount %>
+    </div>
+    <div class="field">
+      <%= f.label :send_date, "Send Date" %><br>
+      <%= f.date_field :send_date %>
+    </div>
+    <div class="field">
+      <%= f.label :pay_date, "Date Received" %><br>
+      <%= f.date_field :pay_date %>
+    </div>
+    <div class="field">
+      <%= f.label :sender %><br>
+      <%= f.text_field :sender %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+  </div>
+</div>

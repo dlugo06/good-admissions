@@ -1,3 +1,39 @@
-<%= form_for @stripe do |f| %>
-  <%= render partial: "stripes/stripe_shared", locals: {f: f} %>
-<% end %>
+<%= form_for @stripe, html: {class: "new_stripe new_payment"} do |f| %>
+  <% if @stripe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stripe.errors.count, "error") %> prohibited this stripe from being saved:</h2>
+
+      <ul>
+      <% @stripe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="row span12">
+  <div class="login text-center">
+
+    <div class="field top-label-element">
+      <%= f.hidden_field :student_id %>
+    </div>
+    <div class="field">
+      <%= f.label :amount %><br>
+      <%= f.number_field :amount %>
+    </div>
+    <div class="field">
+      <%= f.label :pay_date %><br>
+      <%= f.date_field :pay_date %>
+    </div>
+    <div class="field">
+      <%= f.label :refunded %><br>
+      <%= f.check_box :refunded %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  </div>
+</div>

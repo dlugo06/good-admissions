@@ -1,35 +1,50 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Students</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>Phone number</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @students.each do |student| %>
+<!-- <p id="notice"><%= notice %></p> -->
+<div>
+  <h1>Listing Students</h1>
+</div>
+<div class="table-responsive col-md-10 col-md-offset-1">
+  <table class="table table-striped table-hover student-list dropshadow">
+    <thead>
       <tr>
-        <td><%= student.first_name %></td>
-        <td><%= student.last_name %></td>
-        <td><%= student.email %></td>
-        <td><%= student.phone_num %></td>
-        <td><%= link_to 'New Payment', new_student_payment_path(student) %> | </td>
-        <td><%= link_to 'View Payments', student_payments_path(student) %> | </td>
-        <td><%= link_to 'Student Profile', student %> | </td>
-        <td><%= link_to 'Edit Student', edit_student_path(student) %> | </td>
-        <td><%= link_to 'Destroy Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone number</th>
+        <th>Discount</th>
+        <th>Balance</th>
+        <th>Notes</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    
+    <tbody>
+      <% @students.each do |student| %>
 
+        <tr>
+          <td><%= student.first_name %></td>
+          <td><%= student.last_name %></td>
+          <td><%= student.email %></td>
+          <td><%= student.phone_num %></td>
+          <td><%= student.discount %></td>
+          <td><%= student.balance %></td>
+          <td><%= student.notes %></td>
+          <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
+          <td><%= link_to 'View Payments', student_payments_path(student) %></td>
+          <td><%= link_to 'Student Profile', student %></td>
+          <td><%= link_to 'Edit Student', edit_student_path(student) %></td>
+          <td><%= link_to 'Destroy Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Student', new_student_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+      <%= link_to 'New Student', new_student_path, class: " btn btn-info new-student-btn" %>
+    </div>
+  </div>
+</div>
