@@ -1,39 +1,53 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
-  <strong>First name:</strong>
-  <%= @student.first_name %>
-</p>
+<div class="row col-md-9 col-md-offset-3 student-list">
+  <div class="panel panel-default student-list-detail">
+    <div class="panel-heading">
+      <strong>First name:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.first_name %>
+      </div>
+    <div class="panel-heading">
+      <strong>Last name:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.last_name %>
+      </div>
+    <div class="panel-heading">
+      <strong>Email:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.email %>
+      </div>
+    <div class="panel-heading">
+      <strong>Phone number:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.phone_num %>
+      </div>
+      <div class="panel-heading">
+        <strong>Discount:</strong>
+      </div>
+        <div class="panel-body">
+          <%= @student.discount %>
+        </div>
+      <div class="panel-heading">
+          <strong>Balace:</strong>
+      </div>
+          <div class="panel-body">
+            <%= @student.balance %>
+          </div>
+      <div class="panel-heading">
+        <strong>Notes:</strong>
+      </div>
+        <div class="panel-body">
+          <%= @student.notes %>
+        </div>
+ </div>
+</div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @student.email %>
-</p>
-
-<p>
-  <strong>Phone number:</strong>
-  <%= @student.phone_num %>
-</p>
-
-<p>
-  <strong>Discount:</strong>
-  <%= @student.discount %>
-</p>
-
-<p>
-  <strong>Balance:</strong>
-  <%= @student.balance %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @student.notes %>
-</p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<div class="row col-md-9 col-md-offset-3 edit-student">
+  <%= link_to 'Back', students_path, class: " btn btn-info new-student-btn" %>
+  <%= link_to 'Edit', edit_student_path(@student), class: " btn btn-info new-student-btn" %>
+</div>
