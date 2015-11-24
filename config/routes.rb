@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'students/:id/payments/new' => 'payments#new', as: :new_student_payment
   get 'students/:id/payments' => 'students#payments', as: :student_payments
+  # get 'students/by_location(.:format)' => 'students#'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'

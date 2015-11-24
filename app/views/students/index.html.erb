@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Students</h1>
+<ul class="student-filters">
+  <li><strong>Filter By Location</strong></li>
+  <li><strong>Filter By Cohort Number</strong></li>
+</ul>
+<!-- This should make a read to the db to check the different locations available and generate them as they come -->
+<select name="location" id="location-filter">
+  <option value="none">Not Specified<br>
+  <option value="Miami">Miami<br>
+  <option value="Miami Beach">Miami Beach<br>
+  <option value="Fort Lauderdale">Fort Lauderdale<br>
+</select>
 
 <table>
   <thead>
@@ -9,6 +20,8 @@
       <th>Last name</th>
       <th>Email</th>
       <th>Phone number</th>
+      <th>Location</th>
+      <th>Cohort Number</th>
       <th>Discount</th>
       <th>Balance</th>
       <th>Notes</th>
@@ -23,6 +36,8 @@
         <td><%= student.last_name %></td>
         <td><%= student.email %></td>
         <td><%= student.phone_num %></td>
+        <td><%= student.location %></td>
+        <td><%= student.cohort_number %></td>
         <td><%= student.discount %></td>
         <td><%= student.balance %></td>
         <td><%= student.notes %></td>
