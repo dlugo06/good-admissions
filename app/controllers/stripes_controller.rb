@@ -10,15 +10,18 @@ class StripesController < ApplicationController
   # GET /stripes/1
   # GET /stripes/1.json
   def show
+    @student = @stripe.student
   end
 
   # GET /stripes/new
   def new
     @stripe = Stripe.new
+    @student = @stripe.student
   end
 
   # GET /stripes/1/edit
   def edit
+    @student = @stripe.student
   end
 
   # POST /stripes

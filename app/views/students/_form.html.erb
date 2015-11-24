@@ -11,43 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+<div class="row">
+  <div class="login text-center">
+    <div class="field">
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name %>
+    </div>
+    <div class="field">
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :phone_num, 'Phone number' %><br>
+      <%= f.text_field :phone_num %>
+    </div>
+    <div class="field">
+      <%= f.label :discount %><br>
+      <%= f.number_field :discount, value: 0 %>
+    </div>
+    <div class="field">
+      <%= f.label :balance %><br>
+      <%= f.number_field :balance, value: 10000 %>
+    </div>
+    <div class="field">
+      <%= f.label :notes %><br>
+      <%= f.text_area :notes %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_num, 'Phone Number' %><br>
-    <%= f.text_field :phone_num %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.select :location, [["Miami"], ["Miami Beach"], ["Fort Lauderdale"]] %>
-  </div>
-  <div class="field">
-    <%= f.label :cohort_number, "Cohort Number" %><br>
-    <%= f.number_field :cohort_number %>
-  </div>
-  <div class="field">
-    <%= f.label :discount %><br>
-    <%= f.number_field :discount, value: 0 %>
-  </div>
-  <div class="field">
-    <%= f.label :balance %><br>
-    <%= f.number_field :balance, value: 10000 %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
 <% end %>

@@ -10,15 +10,18 @@ class LoansController < ApplicationController
   # GET /loans/1
   # GET /loans/1.json
   def show
+    @student = @loan.student
   end
 
   # GET /loans/new
   def new
     @loan = Loan.new
+    @student = @loan.student
   end
 
   # GET /loans/1/edit
   def edit
+    @student = @loan.student
   end
 
   # POST /loans
