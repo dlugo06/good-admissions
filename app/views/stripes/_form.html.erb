@@ -11,23 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
+<div class="row span12">
+  <div class="login text-center">
+
+    <div class="field top-label-element">
+      <%= f.label :student_id %><br>
+      <%= f.text_field :student_id %>
+    </div>
+    <div class="field">
+      <%= f.label :amount %><br>
+      <%= f.number_field :amount %>
+    </div>
+    <div class="field">
+      <%= f.label :pay_date %><br>
+      <%= f.date_field :pay_date %>
+    </div>
+    <div class="field">
+      <%= f.label :refunded %><br>
+      <%= f.check_box :refunded %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
   </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label :pay_date %><br>
-    <%= f.date_field :pay_date %>
-  </div>
-  <div class="field">
-    <%= f.label :refunded %><br>
-    <%= f.check_box :refunded %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

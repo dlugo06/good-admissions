@@ -11,7 +11,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
-  background-attachment: fixed;
+  // background-attachment: fixed;
 }
 section {
   overflow: auto;
@@ -33,6 +33,10 @@ box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
 }
 .logout-btn {
   opacity: .9;
+}
+.notice, .alert {
+  color: #eaeaea;
+  margin-left: 10px;
 }
 
 /* typography */
@@ -108,9 +112,6 @@ p {
 .field_with_errors {
   margin: auto;
 }
-.alert-success {
-
-}
 
 //Payment type radio button styling
 input[type="radio"] {
@@ -118,6 +119,10 @@ input[type="radio"] {
 }
 #payment_render {
   padding-top: 20px;
+}
+.input-group {
+  border-style: solid;
+  border-color: black;
 }
 
 // Student listing
