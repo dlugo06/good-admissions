@@ -2,5 +2,11 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @student %> |
-<%= link_to 'Back', students_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+<%= link_to 'Back', students_path, class: " btn btn-info new-student-btn" %>
+<%= link_to 'Show', @student, class: " btn btn-info new-student-btn" %>
+    </div>
+  </div>
+</div>|

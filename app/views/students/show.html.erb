@@ -42,11 +42,13 @@
       <strong>Phone number:</strong>
       <%= @student.phone_num %>
   </div> -->
+ </div>
 </div>
 
 <div class="row col-md-9 col-md-offset-3 edit-student">
-  <%= link_to 'Edit', edit_student_path(@student) %>
+  <%= link_to 'Back', students_path, class: " btn btn-info new-student-btn" %>
+  <%= link_to 'Edit', edit_student_path(@student), class: " btn btn-info new-student-btn" %>
 </div>
-<div class="row col-md-12">
-  <%= link_to 'Back', students_path %>
-</div>
+<!-- <div class="row col-md-9 col-md-offset-3 edit-student">
+  <%= link_to 'Back', students_path, class: " btn btn-info new-student-btn" %>
+</div> -->
