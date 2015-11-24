@@ -7,15 +7,15 @@
 </p>
 <p>
   <strong>Amount:</strong>
-  <%= @wire.amount %>
+  <%= number_to_currency(@wire.amount) %>
 </p>
 <p>
   <strong>Send Date:</strong>
-  <%= @wire.send_date %>
+  <%= @wire.send_date.strftime("%m/%d/%Y") %>
 </p>
 <p>
   <strong>Date Received:</strong>
-  <%= @wire.pay_date %>
+  <%= @wire.pay_date.strftime("%m/%d/%Y") %>
 </p>
 <p>
   <strong>Sender:</strong>

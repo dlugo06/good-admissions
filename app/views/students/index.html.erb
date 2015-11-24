@@ -11,6 +11,10 @@
         <th>Last name</th>
         <th>Email</th>
         <th>Phone number</th>
+        <th>Discount</th>
+        <th>Balance</th>
+        <th>Notes</th>
+        <th colspan="3"></th>
       </tr>
     </thead>
 
@@ -22,6 +26,9 @@
           <td><%= student.last_name %></td>
           <td><%= student.email %></td>
           <td><%= student.phone_num %></td>
+          <td><%= student.discount %></td>
+          <td><%= student.balance %></td>
+          <td><%= student.notes %></td>
           <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
           <td><%= link_to 'View Payments', student_payments_path(student) %></td>
           <td><%= link_to 'Student Profile', student %></td>

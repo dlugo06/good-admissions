@@ -1,6 +1,7 @@
 <%= link_to 'Back to Students', students_path, class: " btn btn-info new-student-btn" %>
 
-<h1>Create A New Payment</h1>
+<h1>Create A New Payment for <%= @student.full_name %> </h1>
+
 
 <div class="row">
   <div class="col-md-12">
@@ -33,26 +34,3 @@
 </div>
 
 <!-- This needs to go in the payments.js file after we know how to listen for the right things.  -->
-<script type="text/javascript">
-  $('.new_payment').hide();
-  $('#payment_type').on('click', function() {
-    switch($('input:radio[name=payment_type]:checked').val()) {
-      case 'stripe':
-        $('.new_payment').hide();
-        $('.new_stripe').toggle();
-        break;
-      case 'check':
-        $('.new_payment').hide();
-        $('.new_check').toggle();
-        break;
-      case 'loan':
-        $('.new_payment').hide();
-        $('.new_loan').toggle();
-        break;
-      case 'wire':
-        $('.new_payment').hide();
-        $('.new_wire').toggle();
-        break;
-    }
-  });
-</script>

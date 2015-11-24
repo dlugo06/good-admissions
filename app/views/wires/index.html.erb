@@ -18,9 +18,9 @@
     <% @wires.each do |wire| %>
       <tr>
         <td><%= wire.student.first_name %> <%= wire.student.last_name %></td>
-        <td><%= wire.amount %></td>
-        <td><%= wire.send_date %></td>
-        <td><%= wire.pay_date %></td>
+        <td><%= number_to_currency(wire.amount) %></td>
+        <td><%= wire.send_date.strftime("%m/%d/%Y") %></td>
+        <td><%= wire.pay_date.strftime("%m/%d/%Y") %></td>
         <td><%= wire.sender %></td>
         <td><%= link_to 'Show', wire %></td>
         <td><%= link_to 'Edit', edit_wire_path(wire) %></td>
