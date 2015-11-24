@@ -7,6 +7,11 @@ html {
 }
 body {
   padding-top: 60px;
+  background: url(/assets/bckGrdImg3.jpg) no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
 }
 section {
   overflow: auto;
@@ -20,8 +25,18 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
+.dropshadow {
+height: auto;
+-webkit-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
+-moz-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
+box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
+}
+.logout-btn {
+  opacity: .9;
+}
 
 /* typography */
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -30,7 +45,9 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
-  color: #777;
+  color: #eaeaea;
+  text-shadow: 2px 2px #ff0000;
+  // color: #777;
   text-align: center;
 }
 h2 {
@@ -39,12 +56,29 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  // color: #777;
+  color: #eaeaea;
+  text-shadow: 2px 2px #ff0000;
 }
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
+
+/* login page */
+.login {
+  background-color: #eaeaea;
+  opacity: 0.8;
+  width: 40%;
+  margin: auto;
+  border-style: solid;
+  border-color: black;
+}
+/* padding for text in login page */
+.top-label-element {
+  padding-top: 10px;
+}
+
 
 
 /* Devise styling */
@@ -91,8 +125,11 @@ input[type="radio"] {
   text-align: center;
 }
 .student-list {
-  // background-color: gray;
-  // text-align: left;
+  background-color: #eaeaea;
+
+
+
+// text-align: left;
 }
 .student-list-detail {
   padding-top: 10px;

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Good-Admissions</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -11,7 +11,7 @@
      <p class="notice "><%= notice %></p>
      <p class="alert"><%= alert %></p>
      <% if user_signed_in? %>
-       <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+       <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-info col-md-2 col-md-offset-10 logout-btn") %>
        <%= yield %>
      <% else %>
        <%= yield %>
