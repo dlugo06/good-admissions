@@ -4,26 +4,29 @@
 //
 
 displayForm = function() {
-  $('#payment_type').on('click', function() {
-    switch($('input:radio[name=payment_type]:checked').val()) {
-      case 'stripe':
-        hideForm();
-        $('.new_stripe').toggle();
-        break;
-      case 'check':
-        hideForm();
-        $('.new_check').toggle();
-        break;
-      case 'loan':
-        hideForm();
-        $('.new_loan').toggle();
-        break;
-      case 'wire':
-        hideForm();
-        $('.new_wire').toggle();
-        break;
-    }
-  });
+  if($("#" + "new-payment-creation").length > 0) {
+    $('.new_payment').hide();
+    $('#payment_type').on('click', function() {
+      switch($('input:radio[name=payment_type]:checked').val()) {
+        case 'stripe':
+          hideForm();
+          $('.new_stripe').toggle();
+          break;
+        case 'check':
+          hideForm();
+          $('.new_check').toggle();
+          break;
+        case 'loan':
+          hideForm();
+          $('.new_loan').toggle();
+          break;
+        case 'wire':
+          hideForm();
+          $('.new_wire').toggle();
+          break;
+      }
+    });
+  }
 }
 
 hideForm = function() {
