@@ -16,11 +16,11 @@ class LoansController < ApplicationController
   # GET /loans/new
   def new
     @loan = Loan.new
+    @student = @loan.student
   end
 
   # GET /loans/1/edit
   def edit
-    # @student = Student.find(params[:id])
     @student = @loan.student
   end
 

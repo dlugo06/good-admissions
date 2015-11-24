@@ -16,6 +16,7 @@ class StripesController < ApplicationController
   # GET /stripes/new
   def new
     @stripe = Stripe.new
+    @student = @stripe.student
   end
 
   # GET /stripes/1/edit

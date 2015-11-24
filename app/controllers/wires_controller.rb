@@ -16,11 +16,11 @@ class WiresController < ApplicationController
   # GET /wires/new
   def new
     @wire = Wire.new
+    @student = @wire.student
   end
 
   # GET /wires/1/edit
   def edit
-    # @student = Student.find(params[:id])
     @student = @wire.student
   end
 

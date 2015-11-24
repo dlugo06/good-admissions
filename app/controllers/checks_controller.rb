@@ -16,6 +16,7 @@ class ChecksController < ApplicationController
   # GET /checks/new
   def new
     @check = Check.new
+    @student = @check.student
   end
 
   # GET /checks/1/edit
