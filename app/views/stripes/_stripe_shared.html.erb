@@ -1,0 +1,31 @@
+<% if @stripe.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@stripe.errors.count, "error") %> prohibited this stripe from being saved:</h2>
+
+    <ul>
+    <% @stripe.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%# f.label :student_id %>
+  <%= f.hidden_field :student_id, :value => @student.id %>
+</div>
+<div class="field">
+  <%= f.label :amount %><br>
+  <%= f.number_field :amount %>
+</div>
+<div class="field">
+  <%= f.label :pay_date %><br>
+  <%= f.date_field :pay_date %>
+</div>
+<div class="field">
+  <%= f.label :refunded %><br>
+  <%= f.check_box :refunded %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>

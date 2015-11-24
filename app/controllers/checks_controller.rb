@@ -10,6 +10,7 @@ class ChecksController < ApplicationController
   # GET /checks/1
   # GET /checks/1.json
   def show
+    @student = @check.student
   end
 
   # GET /checks/new
@@ -19,7 +20,7 @@ class ChecksController < ApplicationController
 
   # GET /checks/1/edit
   def edit
-    @student = Student.find(params[:id])
+    @student = @check.student
   end
 
   # POST /checks

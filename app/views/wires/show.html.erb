@@ -2,6 +2,8 @@
 
 <p>
   <strong>Student:</strong>
+  <%#= hidden_field :student_id, value: @wire.student.id %>
+  <%#= @wire.student.id %>
   <%= @wire.student.first_name %>
   <%= @wire.student.last_name %>
 </p>

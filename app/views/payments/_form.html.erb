@@ -6,7 +6,11 @@
   <input type="radio" name="payment_type" value="stripe">Stripe<br>
   <input type="radio" name="payment_type" value="wire">Wire
 </form>
-<%= render 'loans/form' %>
-<%= render 'checks/form' %>
-<%= render 'stripes/form' %>
-<%= render 'wires/form' %>
+<%#= render 'loans/form' %>
+<%= render 'loans/form_for_new_loan' %>
+<%#= render 'checks/form' %>
+<%= render 'checks/form_for_new_check' %>
+<%#= render 'stripes/form' %>
+<%= render 'stripes/form_for_new_stripe' %>
+<%#= render 'wires/form' %>
+<%= render 'wires/form_for_new_wire' %>

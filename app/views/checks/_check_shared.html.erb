@@ -1,0 +1,39 @@
+<% if @check.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@check.errors.count, "error") %> prohibited this check from being saved:</h2>
+
+    <ul>
+    <% @check.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%# f.label :student_id %>
+  <%= f.hidden_field :student_id, :value => @student.id %>
+</div>
+<div class="field">
+  <%= f.label :amount %><br>
+  <%= f.number_field :amount %>
+</div>
+<div class="field">
+  <%= f.label :pay_date, "Date Received" %><br>
+  <%= f.date_field :pay_date %>
+</div>
+<div class="field">
+  <%= f.label :deposited_date, "Deposited Date" %><br>
+  <%= f.date_field :deposited_date %>
+</div>
+<div class="field">
+  <%= f.label :check_number, "Check Number" %><br>
+  <%= f.number_field :check_number %>
+</div>
+<div class="field">
+  <%= f.label :name_on_check, "Name On Check" %><br>
+  <%= f.text_field :name_on_check %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
