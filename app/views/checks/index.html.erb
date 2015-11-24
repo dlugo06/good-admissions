@@ -24,8 +24,8 @@
         <td><%= check.deposited_date.strftime("%m/%d/%Y") %></td>
         <td><%= check.check_number %></td>
         <td><%= check.name_on_check.upcase %></td>
-        <td><%= link_to 'Show', check %></td>
-        <td><%= link_to 'Edit', edit_check_path(check) %></td>
+        <td><%= link_to 'Show', check %> | </td>
+        <td><%= link_to 'Edit', edit_check_path(check) %> | </td>
         <td><%= link_to 'Destroy', check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

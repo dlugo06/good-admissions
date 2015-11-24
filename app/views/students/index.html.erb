@@ -20,10 +20,10 @@
         <td><%= student.last_name %></td>
         <td><%= student.email %></td>
         <td><%= student.phone_num %></td>
-        <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
-        <td><%= link_to 'View Payments', student_payments_path(student) %></td>
-        <td><%= link_to 'Student Profile', student %></td>
-        <td><%= link_to 'Edit Student', edit_student_path(student) %></td>
+        <td><%= link_to 'New Payment', new_student_payment_path(student) %> | </td>
+        <td><%= link_to 'View Payments', student_payments_path(student) %> | </td>
+        <td><%= link_to 'Student Profile', student %> | </td>
+        <td><%= link_to 'Edit Student', edit_student_path(student) %> | </td>
         <td><%= link_to 'Destroy Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

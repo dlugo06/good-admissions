@@ -22,8 +22,8 @@
         <td><%= loan.pay_date.strftime("%m/%d/%Y") %></td>
         <td><%= loan.company.upcase %></td>
         <td><%= loan.notes %></td>
-        <td><%= link_to 'Show', loan %></td>
-        <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
+        <td><%= link_to 'Show', loan %> | </td>
+        <td><%= link_to 'Edit', edit_loan_path(loan) %> | </td>
         <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
