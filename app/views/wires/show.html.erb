@@ -2,8 +2,8 @@
 
 <p>
   <strong>Student:</strong>
-  <%= @wire.student.first_name %>
-  <%= @wire.student.last_name %>
+
+  <%= @wire.student.full_name %>
 </p>
 <p>
   <strong>Amount:</strong>
@@ -19,7 +19,7 @@
 </p>
 <p>
   <strong>Sender:</strong>
-  <%= @wire.sender %>
+  <%= @wire.sender.upcase %>
 </p>
 
 <%= link_to 'Edit', edit_wire_path(@wire) %> |

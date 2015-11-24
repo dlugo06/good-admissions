@@ -7,15 +7,15 @@
 </p>
 <p>
   <strong>Amount:</strong>
-  <%= @loan.amount %>
+  <%= number_to_currency(@loan.amount) %>
 </p>
 <p>
   <strong>Company:</strong>
-  <%= @loan.company %>
+  <%= @loan.company.upcase %>
 </p>
 <p>
   <strong>Date Funded:</strong>
-  <%= @loan.pay_date %>
+  <%= @loan.pay_date.strftime("%m/%d/%Y") %>
 </p>
 <p>
   <strong>Notes:</strong>
