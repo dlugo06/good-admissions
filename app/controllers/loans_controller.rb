@@ -1,6 +1,5 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: [:show, :edit, :update, :destroy]
-
   # GET /loans
   # GET /loans.json
   def index
@@ -10,25 +9,21 @@ class LoansController < ApplicationController
   # GET /loans/1
   # GET /loans/1.json
   def show
-    @student = @loan.student
   end
 
   # GET /loans/new
   def new
     @loan = Loan.new
-    @student = @loan.student
   end
 
   # GET /loans/1/edit
   def edit
-    @student = @loan.student
   end
 
   # POST /loans
   # POST /loans.json
   def create
     @loan = Loan.new(loan_params)
-
     respond_to do |format|
       if @loan.save
         format.html { redirect_to @loan, notice: 'Loan was successfully created.' }

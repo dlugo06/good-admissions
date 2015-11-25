@@ -12,11 +12,11 @@
   <% end %>
 
 
-<!-- <div class="row span12">
-  <div class="login text-center"> -->
+<div class="row span12">
+  <div class="new-payment-field text-center dropshadow ">
 
     <div class="field top-label-element">
-      <%= f.hidden_field :student_id %>
+      <%= f.hidden_field :student_id, value: @student.id %>
     </div>
     <div class="field">
       <%= f.label :amount %><br>
@@ -38,3 +38,5 @@
       <%= f.submit %>
     </div>
     <% end %>
+  </div>
+</div>
