@@ -10,18 +10,15 @@ class ChecksController < ApplicationController
   # GET /checks/1
   # GET /checks/1.json
   def show
-    @student = @check.student
   end
 
   # GET /checks/new
   def new
     @check = Check.new
-    @student = @check.student
   end
 
   # GET /checks/1/edit
   def edit
-    @student = @check.student
   end
 
   # POST /checks

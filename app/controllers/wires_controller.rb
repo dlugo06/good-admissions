@@ -10,18 +10,15 @@ class WiresController < ApplicationController
   # GET /wires/1
   # GET /wires/1.json
   def show
-    @student = @wire.student
   end
 
   # GET /wires/new
   def new
     @wire = Wire.new
-    @student = @wire.student
   end
 
   # GET /wires/1/edit
   def edit
-    @student = @wire.student
   end
 
   # POST /wires
