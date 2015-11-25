@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cohort.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @cohort.location %>
+</p>
+
+<p>
+  <strong>Cohort number:</strong>
+  <%= @cohort.cohort_number %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @cohort.capacity %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @cohort.start_date %>
+</p>
+
+<%= link_to 'Edit', edit_cohort_path(@cohort) %> |
+<%= link_to 'Back', cohorts_path %>

@@ -11,7 +11,6 @@
     </div>
   <% end %>
 
-
 <div class="row">
   <div class="login text-center">
     <div class="field">
@@ -31,6 +30,14 @@
       <%= f.text_field :phone_num %>
     </div>
     <div class="field">
+      <%= f.label :location %><br>
+      <%= f.select :location, [["Miami"], ["Miami Beach"], ["Fort Lauderdale"]] %>
+    </div>
+    <div class="field">
+      <%= f.label :cohort_number, 'Cohort Number' %><br>
+      <%= f.number_field :cohort_number %>
+    </div>
+    <div class="field">
       <%= f.label :discount %><br>
       <%= f.number_field :discount, value: 0 %>
     </div>
@@ -42,10 +49,13 @@
       <%= f.label :notes %><br>
       <%= f.text_area :notes %>
     </div>
+    <div class="field">
+      <%= f.label :cohort_id %><br>
+      <%= f.select :cohort_id, Cohort.all.collect { |c| [c.name, c.id] } %>
+    </div>
     <div class="actions">
       <%= f.submit %>
     </div>
-
   </div>
 </div>
 <% end %>

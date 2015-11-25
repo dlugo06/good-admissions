@@ -5,10 +5,22 @@ class StudentsController < ApplicationController
   def payments
     # @payments = @student.payments
   end
+
+  def location
+    # raise
+    # @location = params[:location]
+    # respond_to do |format|
+    #   format.html { redirect_to @student, notice: 'Location was successfully found.' }
+    # end
+  end
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))
+      @students = Student.where(cohort_id: params[:cohort][:id])
+    else
+      @students = Student.all
+    end
   end
 
   # GET /students/1
@@ -74,6 +86,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :email, :phone_num, :balance, :discount, :notes)
+      params.require(:student).permit(:first_name, :last_name, :email, :phone_num, :balance, :discount, :notes, :location, :cohort_number, :cohort_id)
     end
 end

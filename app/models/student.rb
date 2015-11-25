@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
+  belongs_to :cohort
   has_many :loans
   has_many :checks
   has_many :wires
@@ -22,6 +23,8 @@ class Student < ActiveRecord::Base
   end
 
   def calculate_balance
+    deposit = 1000
     self.balance -= discount
+    self.balance -= deposit
   end
 end

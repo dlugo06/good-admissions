@@ -1,39 +1,51 @@
-
 <!-- <p id="notice"><%= notice %></p> -->
-<div>
-  <h2>Listing Students</h2>
+<div class="table-responsive col-md-10 col-md-offset-1">
+  <h2>Listing
+    <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
+      <%= Cohort.find(params[:cohort][:id].to_i).name %>
+    <% end %>
+    Students</h2>
+
+  <form class="student-filters">
+    <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}) %>
+    <input type="submit" value="Filter" />
+  </form>
 </div>
+<!-- This should make a read to the db to check the different locations available and generate them as they come -->
+
 <div class="table-responsive col-md-12">
   <table class="table table-striped table-hover student-list dropshadow">
     <thead>
       <tr>
+        <th>Cohort</th>
         <th>First name</th>
         <th>Last name</th>
         <th>Email</th>
-        <th>Phone number</th>
-        <th>Discount</th>
-        <th>Balance</th>
-        <th>Notes</th>
+        <th>Phone Number</th>
+        <% if current_user.admin? %>
+          <th>Balance</th>
+        <% end %>
         <th colspan="3"></th>
       </tr>
     </thead>
-    
+
     <tbody>
       <% @students.each do |student| %>
 
         <tr>
+          <td><%= Cohort.find(student.cohort).name %></td>
           <td><%= student.first_name %></td>
           <td><%= student.last_name %></td>
           <td><%= student.email %></td>
           <td><%= student.phone_num %></td>
-          <td><%= student.discount %></td>
-          <td><%= student.balance %></td>
-          <td><%= student.notes %></td>
-          <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
-          <td><%= link_to 'View Payments', student_payments_path(student) %></td>
-          <td><%= link_to 'Student Profile', student %></td>
-          <td><%= link_to 'Edit Student', edit_student_path(student) %></td>
-          <td><%= link_to 'Destroy Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if current_user.admin? %>
+            <td><%= student.balance %></td>
+            <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
+            <td><%= link_to 'View Payments', student_payments_path(student) %></td>
+            <td><%= link_to 'Student Profile', student %></td>
+            <td><%= link_to 'Edit Student', edit_student_path(student) %></td>
+            <td><%= link_to 'Destroy Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

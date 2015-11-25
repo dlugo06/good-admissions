@@ -8,7 +8,12 @@
   <div class="panel panel-default student-list-detail"> -->
     <div class="row span12">
       <div class="panel panel-default student-list-detail ">
-
+    <div class="panel-heading">
+      <strong>Cohort:</strong>
+    </div>
+      <div class="panel-body">
+        <%= Cohort.find(@student.cohort_id).name %>
+      </div>
     <div class="panel-heading">
       <strong>First name:</strong>
     </div>
@@ -33,24 +38,26 @@
       <div class="panel-body">
         <%= @student.phone_num %>
       </div>
-      <div class="panel-heading">
-        <strong>Discount:</strong>
-      </div>
-        <div class="panel-body">
-          <%= @student.discount %>
+      <% if current_user.admin? %>
+        <div class="panel-heading">
+          <strong>Discount:</strong>
         </div>
-      <div class="panel-heading">
-          <strong>Balance:</strong>
-      </div>
           <div class="panel-body">
-            <%= @student.balance %>
+            <%= @student.discount %>
           </div>
-      <div class="panel-heading">
-        <strong>Notes:</strong>
-      </div>
-        <div class="panel-body">
-          <%= @student.notes %>
+        <div class="panel-heading">
+            <strong>Balace:</strong>
         </div>
+            <div class="panel-body">
+              <%= @student.balance %>
+            </div>
+        <div class="panel-heading">
+          <strong>Notes:</strong>
+        </div>
+          <div class="panel-body">
+            <%= @student.notes %>
+          </div>
+      <% end %>
  </div>
 </div>
 
