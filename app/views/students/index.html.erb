@@ -3,17 +3,11 @@
   <h1>Listing Students</h1>
 </div>
 
-<ul class="student-filters">
-  <li><strong>Filter By Location</strong></li>
-  <li><strong>Filter By Cohort Number</strong></li>
-</ul>
+<div class="student-filters">
+  <%= select("student", "location", Student.all.collect(&:location).uniq, {include_blank: 'None'}) %>
+  <input type="submit" value="Filter" />
+</div>
 <!-- This should make a read to the db to check the different locations available and generate them as they come -->
-<select name="location" id="location-filter">
-  <option value="none">Not Specified<br>
-  <option value="Miami">Miami<br>
-  <option value="Miami Beach">Miami Beach<br>
-  <option value="Fort Lauderdale">Fort Lauderdale<br>
-</select>
 
 <div class="table-responsive col-md-10 col-md-offset-1">
   <table class="table table-striped table-hover student-list dropshadow">

@@ -16,7 +16,11 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    if (params[:student] && Student.all.collect(&:location).include?(params[:student][:location]))
+      @students = Student.send(params[:student][:location].downcase)
+    else
+      @students = Student.all
+    end
   end
 
   # GET /students/1
