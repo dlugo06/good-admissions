@@ -16,8 +16,8 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    if (params[:student] && Student.all.collect(&:location).include?(params[:student][:location]))
-      @students = Student.send(params[:student][:location].downcase)
+    if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))
+      @students = Student.where(cohort_id: params[:cohort][:id])
     else
       @students = Student.all
     end
