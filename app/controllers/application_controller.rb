@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
 
   private
   def check_admin
-    if current_user.admin? == false
+    if current_user == nil
+      #default action to send to sign in
+    elsif
+        current_user.admin? == false
       redirect_to students_path, notice: "You are not authorized to take that action"
     end
   end
