@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151125023607) do
+ActiveRecord::Schema.define(version: 20151125023923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,10 @@ ActiveRecord::Schema.define(version: 20151125023607) do
     t.decimal  "balance",       default: 10000.0
     t.decimal  "discount",      default: 0.0
     t.text     "notes"
+    t.integer  "cohort_id"
   end
 
+  add_index "students", ["cohort_id"], name: "index_students_on_cohort_id", using: :btree
   add_index "students", ["cohort_number"], name: "index_students_on_cohort_number", using: :btree
   add_index "students", ["location"], name: "index_students_on_location", using: :btree
 
@@ -114,5 +116,6 @@ ActiveRecord::Schema.define(version: 20151125023607) do
   add_foreign_key "checks", "students"
   add_foreign_key "loans", "students"
   add_foreign_key "stripes", "students"
+  add_foreign_key "students", "cohorts"
   add_foreign_key "wires", "students"
 end

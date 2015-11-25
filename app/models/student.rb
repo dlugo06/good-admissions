@@ -1,4 +1,5 @@
 class Student < ActiveRecord::Base
+  belongs_to :cohort
   has_many :loans
   has_many :checks
   has_many :wires
