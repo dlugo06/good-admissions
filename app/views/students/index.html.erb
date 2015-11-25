@@ -7,10 +7,9 @@
       <% end %>
       Students
     </h2>
-
     <form class="student-filters">
-      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}) %>
-      <input type="submit" value="Filter" />
+      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}, class: "btn") %>
+        <input type="submit" value="Filter" class="btn btn-info" />
     </form>
   </div>
 </div>
