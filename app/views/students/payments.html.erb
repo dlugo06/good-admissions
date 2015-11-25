@@ -21,8 +21,7 @@
         <!-- <th colspan="3"></th> -->
     </tr>
   </thead>
-
-
+  
     <tbody>
       <% @student.payments.each do |payment| %>
         <tr>
@@ -37,10 +36,7 @@
   </table>
 </div>
 
-  
-
 <br>
-
 
  <div class="row new-payment col-md-2 col-md-offset-5">
   <%= link_to('New Payment', new_student_payment_path(@student), :class => 'btn btn-large btn-info') %>

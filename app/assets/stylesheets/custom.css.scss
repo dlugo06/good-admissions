@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-// universal
+//--------------universal---------------------
 html {
   overflow-y: scroll;
 }
@@ -39,7 +39,7 @@ box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
   margin-left: 10px;
 }
 
-/* typography */
+//------------typography-------------------
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -69,7 +69,7 @@ p {
   line-height: 1.7em;
 }
 
-/* login page */
+//----------login page-------------------
 .login {
   background-color: #eaeaea;
   opacity: 0.8;
@@ -85,7 +85,7 @@ p {
 
 
 
-/* Devise styling */
+//-------------Devise styling-----------------
 
 .field  {
   text-align: center;
@@ -102,7 +102,6 @@ p {
     margin: 0, 0, 30px, 0;
   }
 }
-
 // .field_with_errors {
 //   @extend .has-error;
 //   .form-control {
@@ -113,6 +112,41 @@ p {
   margin: auto;
 }
 
+//-----------Student listing--------------
+.new-student {
+  text-align: center;
+}
+.student-list {
+  background-color: #eaeaea;
+}
+.new-student-btn {
+  margin-top: 40px;
+}
+// text-align: left;
+.student-list-detail {
+  padding-top: 10px;
+}
+.edit-student {
+  padding-top: 15px;
+}
+
+//-------------Payments--------------------
+// Listing payment
+.back-to-students, .new-payment {
+  text-align: center;
+  margin-top: 10px;
+}
+// New payment fields
+.new-payment-field {
+  background-color: #eaeaea;
+  opacity: 0.8;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+  border-style: solid;
+  border-color: black;
+}
 //Payment type radio button styling
 input[type="radio"] {
     margin-right: 10px;
@@ -123,32 +157,4 @@ input[type="radio"] {
 .input-group {
   border-style: solid;
   border-color: black;
-}
-
-// Student listing
-.new-student {
-  text-align: center;
-}
-.student-list {
-  background-color: #eaeaea;
-}
-.new-student-btn {
-  margin-top: 40px;
-}
-
-// text-align: left;
-
-.student-list-detail {
-  padding-top: 10px;
-}
-
-// Edit student
-.edit-student {
-  // text-align: center;
-  padding-top: 15px;
-}
-// Listing payment
-.back-to-students, .new-payment {
-  text-align: center;
-  margin-top: 10px;
 }
