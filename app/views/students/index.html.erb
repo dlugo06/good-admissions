@@ -25,9 +25,9 @@
         <th>Phone Number</th>
         <th>Location</th>
         <th>Cohort Number</th>
-        <th>Discount</th>
-        <th>Balance</th>
-        <th>Notes</th>
+        <% if current_user.admin? %>
+          <th>Balance</th>
+        <% end %>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -42,14 +42,14 @@
           <td><%= student.phone_num %></td>
           <td><%= student.location %></td>
           <td><%= student.cohort_number %></td>
-          <td><%= student.discount %></td>
-          <td><%= student.balance %></td>
-          <td><%= student.notes %></td>
-          <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
-          <td><%= link_to 'View Payments', student_payments_path(student) %></td>
-          <td><%= link_to 'Student Profile', student %></td>
-          <td><%= link_to 'Edit Student', edit_student_path(student) %></td>
-          <td><%= link_to 'Destroy Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% if current_user.admin? %>
+            <td><%= student.balance %></td>
+            <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
+            <td><%= link_to 'View Payments', student_payments_path(student) %></td>
+            <td><%= link_to 'Student Profile', student %></td>
+            <td><%= link_to 'Edit Student', edit_student_path(student) %></td>
+            <td><%= link_to 'Destroy Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
