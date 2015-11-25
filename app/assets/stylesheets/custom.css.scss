@@ -116,8 +116,7 @@ p {
 .new-student {
   text-align: center;
 }
-.student-list
-{
+.student-list {
   background-color: #eaeaea;
 }
 .new-student-btn {
@@ -129,13 +128,17 @@ p {
   width: 35%;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 #new-student-back_btn {
   margin-left: 15px;
 }
 .edit-student {
   padding-top: 15px;
+}
+.edit-student-btn {
+  margin-top: 10px;
+  margin-bottom: 40px;  
 }
 
 
