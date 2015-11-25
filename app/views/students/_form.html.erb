@@ -52,7 +52,6 @@
     <div class="field">
       <%= f.label :cohort_id %><br>
       <%= f.select :cohort_id, Cohort.all.collect { |c| [c.name, c.id] } %>
-      <%#= f.number_field :cohort_id %>
     </div>
     <div class="actions">
       <%= f.submit %>
