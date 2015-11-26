@@ -42,11 +42,9 @@ class LoansController < ApplicationController
   # PATCH/PUT /loans/1.json
   def update
     respond_to do |format|
-      old_amount = @loan.amount
-      new_amount = loan_params["amount"].to_i
-      diff = old_amount - new_amount
+      difference = @loan.calculated_difference(loan_params)
       if @loan.update(loan_params)
-        @loan.student.balance = @loan.student.balance + diff
+        @loan.student.balance = @loan.student.balance + difference
         @loan.student.save
         format.html { redirect_to @loan, notice: 'Loan was successfully updated.' }
         format.json { render :show, status: :ok, location: @loan }

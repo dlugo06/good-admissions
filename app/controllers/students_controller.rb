@@ -68,7 +68,10 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1.json
   def update
     respond_to do |format|
+      difference = @student.discount_difference(student_params)
       if @student.update(student_params)
+        @student.balance = @student.balance + difference
+        @student.save
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
@@ -104,6 +107,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :email, :phone_num, :balance, :discount, :notes, :cohort_id)
+      params.require(:student).permit(:first_name, :last_name, :email, :phone_num, :balance, :discount, :notes, :cohort_id, :facebook, :twitter, :linkedin, :github, :portfolio_url, :final_project_url)
     end
 end

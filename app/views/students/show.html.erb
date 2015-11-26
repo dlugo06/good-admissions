@@ -4,10 +4,9 @@
   <%= link_to 'Back', students_path, class: " btn btn-info new-student-btn" %>
   </div>
 </div>
-<!-- <div class="row col-md-9 col-md-offset-3 student-list">
-  <div class="panel panel-default student-list-detail"> -->
-    <div class="row span12">
-      <div class="panel panel-default student-list-detail ">
+
+<div class="row span12">
+  <div class="panel panel-default student-list-detail ">
     <div class="panel-heading">
       <strong>Cohort:</strong>
     </div>
@@ -42,27 +41,63 @@
       <div class="panel-body">
         <%= @student.phone_num %>
       </div>
-      <% if current_user.admin? %>
-        <div class="panel-heading">
-          <strong>Discount:</strong>
+    <% if current_user.admin? %>
+      <div class="panel-heading">
+        <strong>Discount:</strong>
+      </div>
+        <div class="panel-body">
+          <%= @student.discount %>
         </div>
-          <div class="panel-body">
-            <%= @student.discount %>
-          </div>
-        <div class="panel-heading">
-            <strong>Balace:</strong>
+      <div class="panel-heading">
+          <strong>Balace:</strong>
+      </div>
+        <div class="panel-body">
+          <%= @student.balance %>
         </div>
-            <div class="panel-body">
-              <%= @student.balance %>
-            </div>
-        <div class="panel-heading">
-          <strong>Notes:</strong>
-        </div>
-          <div class="panel-body">
-            <%= @student.notes %>
-          </div>
-      <% end %>
- </div>
+    <% end %>
+    <div class="panel-heading">
+      <strong>Facebook:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.facebook %>
+      </div>
+    <div class="panel-heading">
+      <strong>Twitter:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.twitter %>
+      </div>
+    <div class="panel-heading">
+      <strong>LinkedIn:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.linkedin %>
+      </div>
+    <div class="panel-heading">
+      <strong>Github:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.github %>
+      </div>
+    <div class="panel-heading">
+      <strong>Portfolio URL:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.portfolio_url %>
+      </div>
+    <div class="panel-heading">
+      <strong>Final Project URL:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.final_project_url %>
+      </div>
+    <div class="panel-heading">
+      <strong>Notes:</strong>
+    </div>
+      <div class="panel-body">
+        <%= @student.notes %>
+      </div>
+  </div>
 </div>
 
 <% if current_user.admin? %>

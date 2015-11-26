@@ -24,10 +24,13 @@ class Student < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def calculate_balance
-    deposit = 1000
+  def calculate_balance(deposit=1000)
     self.balance -= discount
     self.balance -= deposit
+  end
+
+  def discount_difference(params)
+    self.discount - params["discount"].to_i
   end
 
   private
