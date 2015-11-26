@@ -29,14 +29,12 @@
       <%= f.label :phone_num, 'Phone Number' %><br>
       <%= f.text_field :phone_num %>
     </div>
-    <div class="field">
-      <%= f.label :discount %><br>
-      <%= f.number_field :discount, value: 0 %>
-    </div>
-    <div class="field">
-      <%= f.label :balance %><br>
-      <%= f.number_field :balance, value: 10000 %>
-    </div>
+<!-- This will render a different balance and discount default values depending on student create or update -->
+    <% if @student.id.nil? %>
+      <%= render 'create_bal_disc', f: f %>
+    <% else %>
+      <%= render 'update_bal_disc', f: f %>
+    <% end %>
     <div class="field">
       <%= f.label :facebook, 'Facebook' %><br>
       <%= f.text_field :facebook %>
