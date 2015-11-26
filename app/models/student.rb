@@ -4,7 +4,7 @@ class Student < ActiveRecord::Base
   has_many :checks
   has_many :wires
   has_many :stripes
-  before_save :calculate_balance
+  before_create :calculate_balance
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
