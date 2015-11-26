@@ -3,7 +3,6 @@ class StudentsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :set_cohort, only: :index
   before_filter :set_location, only: :index
-
   def payments
     # @payments = @student.payments
   end
@@ -92,6 +91,7 @@ class StudentsController < ApplicationController
     def set_cohort
         @cohort = Cohort.find_by(id: params[:cohort][:id]) if params[:cohort].present? && params[:cohort][:id].present?
     end
+
     def set_location
         @location = Cohort.where(location: params[:cohort][:location]) if params[:cohort].present? && params[:cohort][:location].present?
     end
