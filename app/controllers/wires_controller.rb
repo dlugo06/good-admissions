@@ -44,8 +44,12 @@ class WiresController < ApplicationController
   # PATCH/PUT /wires/1.json
   def update
     respond_to do |format|
+      old_amount = @wire.amount
+      new_amount = wire_params["amount"].to_i
+      diff = old_amount - new_amount
       if @wire.update(wire_params)
-        raise
+          @wire.student.balance = @wire.student.balance + diff
+          @wire.student.save
         format.html { redirect_to @wire, notice: 'Wire was successfully updated.' }
         format.json { render :show, status: :ok, location: @wire }
       else
