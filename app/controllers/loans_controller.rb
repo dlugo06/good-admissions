@@ -18,6 +18,7 @@ class LoansController < ApplicationController
 
   # GET /loans/1/edit
   def edit
+    @student = @loan.student
   end
 
   # POST /loans

@@ -19,6 +19,7 @@ class ChecksController < ApplicationController
 
   # GET /checks/1/edit
   def edit
+    @student = @check.student
   end
 
   # POST /checks
