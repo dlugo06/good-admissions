@@ -58,6 +58,8 @@
       <%= Cohort.find(params[:cohort][:id].to_i).name %>
     <% elsif params[:cohort].present? && params[:cohort][:location].present? %>
       <%= Cohort.find_by(location: params[:cohort][:location]).location %>
+    <% elsif params[:student].present? && params[:student][:balance].present? %>
+      <%= params[:student][:balance] %>
     <% end %>
     Students</h2>
 
@@ -67,6 +69,10 @@
     </form>
     <form class="student-filters">
       <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn") %>
+      <input type="submit" value="Filter" />
+    </form>
+    <form class="student-filters">
+      <%= select("student", "balance", ["Outstanding", "Cleared"], {include_blank: 'Balance'}, class: "btn") %>
       <input type="submit" value="Filter" />
     </form>
   </div>

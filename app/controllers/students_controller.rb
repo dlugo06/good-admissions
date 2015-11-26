@@ -22,6 +22,12 @@ class StudentsController < ApplicationController
     elsif @location.present?
       @students = @location.map(&:students)
       @students.flatten!
+    elsif params[:student].present? && params[:student][:balance].present?
+      if params[:student][:balance] == "Outstanding"
+        @students = Student.where("balance > ?", 0)
+      elsif params[:student][:balance] == "Cleared"
+        @students = Student.where(balance: 0)
+      end
     else
       @students = Student.all
     end
