@@ -68,7 +68,10 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1.json
   def update
     respond_to do |format|
+      difference = @student.discount_difference(student_params)
       if @student.update(student_params)
+        @student.balance = @student.balance + difference
+        @student.save
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else

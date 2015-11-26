@@ -29,6 +29,10 @@ class Student < ActiveRecord::Base
     self.balance -= deposit
   end
 
+  def discount_difference(params)
+    self.discount - params["discount"].to_i
+  end
+
   private
   def destroy_payments
     loans.destroy_all
