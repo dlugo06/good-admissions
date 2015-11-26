@@ -5,35 +5,35 @@
 html {
   overflow-y: scroll;
 }
-body {
-  padding-top: 30px;
-  background: url(/assets/bckGrdImg3.jpg) no-repeat;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center top;
-  // background-attachment: fixed;
-}
+// body {
+//   padding-top: 30px;
+//   background: url(/assets/bckGrdImg3.jpg) no-repeat;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center top;
+//   // background-attachment: fixed;
+// }
 section {
   overflow: auto;
 }
 textarea {
   resize: vertical;
 }
-.center {
-  text-align: center;
-}
-.center h1 {
-  margin-bottom: 10px;
-}
-.dropshadow {
-height: auto;
--webkit-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
--moz-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
-}
-.logout-btn {
-  opacity: .9;
-}
+// .center {
+//   text-align: center;
+// }
+// .center h1 {
+//   margin-bottom: 10px;
+// }
+// .dropshadow {
+// height: auto;
+// -webkit-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
+// -moz-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
+// box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
+// }
+// .logout-btn {
+//   opacity: .9;
+// }
 .notice, .alert {
   color: #eaeaea;
   margin-left: 10px;
@@ -41,28 +41,28 @@ box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
 
 //------------typography-------------------
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
+// h1, h2, h3, h4, h5, h6 {
+//   line-height: 1;
+
 h1 {
-  font-size: 4em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
-  color: #eaeaea;
-  text-shadow: 2px 2px #ff0000;
+  // font-size: 4em;
+  // letter-spacing: -2px;
+  // margin-bottom: 30px;
+  // text-align: center;
+  // color: #eaeaea;
+  // text-shadow: 2px 2px #ff0000;
   // color: #777;
-  text-align: center;
+
 }
 h2 {
-  font-size: 3em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: normal;
-  // color: #777;
-  color: #eaeaea;
-  text-shadow: 2px 2px #ff0000;
+  // font-size: 3em;
+  // letter-spacing: -1px;
+  // margin-bottom: 30px;
+  // text-align: center;
+  // font-weight: normal;
+  // // color: #777;
+  // color: #eaeaea;
+  // text-shadow: 2px 2px #ff0000;
 }
 p {
   font-size: 1.1em;
@@ -71,12 +71,13 @@ p {
 
 //----------login page-------------------
 .login {
-  background-color: #eaeaea;
-  opacity: 0.8;
-  width: 40%;
+  // background-color: #eaeaea;
+  background-color: #eee;
+  // opacity: 0.8;
+  width: 30%;
   margin: auto;
-  border-style: solid;
-  border-color: black;
+  // border-style: solid;
+  // border-color: black;
 }
 /* padding for text in login page */
 .top-label-element {
@@ -111,7 +112,9 @@ p {
 .field_with_errors {
   margin: auto;
 }
-
+.login-btn {
+  margin-bottom: 10px;
+}
 //-----------Student listing--------------
 .new-student {
   text-align: center;
@@ -138,7 +141,7 @@ p {
 }
 .edit-student-btn {
   margin-top: 10px;
-  margin-bottom: 40px;  
+  margin-bottom: 40px;
 }
 
 
