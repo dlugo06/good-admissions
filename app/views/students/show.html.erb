@@ -12,7 +12,11 @@
       <strong>Cohort:</strong>
     </div>
       <div class="panel-body">
-        <%= Cohort.find(@student.cohort_id).name %>
+        <% if @student.cohort.present? %>
+          <%= @student.cohort.name %>
+        <% else %>
+          Unspecified
+        <% end %>
       </div>
     <div class="panel-heading">
       <strong>First name:</strong>
