@@ -27,6 +27,8 @@ class LoansController < ApplicationController
     @loan = Loan.new(loan_params)
     respond_to do |format|
       if @loan.save
+        @loan.student.balance = (@loan.student.balance) - @loan.amount
+        @loan.student.save
         format.html { redirect_to @loan, notice: 'Loan was successfully created.' }
         format.json { render :show, status: :created, location: @loan }
       else
@@ -40,7 +42,12 @@ class LoansController < ApplicationController
   # PATCH/PUT /loans/1.json
   def update
     respond_to do |format|
+      old_amount = @loan.amount
+      new_amount = loan_params["amount"].to_i
+      diff = old_amount - new_amount
       if @loan.update(loan_params)
+        @loan.student.balance = @loan.student.balance + diff
+        @loan.student.save
         format.html { redirect_to @loan, notice: 'Loan was successfully updated.' }
         format.json { render :show, status: :ok, location: @loan }
       else
@@ -54,6 +61,8 @@ class LoansController < ApplicationController
   # DELETE /loans/1.json
   def destroy
     @loan.destroy
+    @loan.student.balance = @loan.student.balance + @loan.amount
+    @loan.student.save
     respond_to do |format|
       format.html { redirect_to loans_url, notice: 'Loan was successfully destroyed.' }
       format.json { head :no_content }
