@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :payments]
   before_filter :authenticate_user!
+  before_filter :set_cohort, only: :index
+  before_filter :set_location, only: :index
 
   def payments
     # @payments = @student.payments
@@ -16,8 +18,11 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))
-      @students = Student.where(cohort_id: params[:cohort][:id])
+    if @cohort.present?
+      @students = @cohort.students
+    elsif @location.present?
+      @students = @location.map(&:students)
+      @students.flatten!
     else
       @students = Student.all
     end
@@ -82,6 +87,13 @@ class StudentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
+    end
+
+    def set_cohort
+        @cohort = Cohort.find_by(id: params[:cohort][:id]) if params[:cohort].present? && params[:cohort][:id].present?
+    end
+    def set_location
+        @location = Cohort.where(location: params[:cohort][:location]) if params[:cohort].present? && params[:cohort][:location].present?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -7,7 +7,11 @@
     Students</h2>
 
   <form class="student-filters">
-    <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}) %>
+    <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Cohort'}) %>
+    <input type="submit" value="Filter" />
+  </form>
+  <form class="student-filters">
+    <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}) %>
     <input type="submit" value="Filter" />
   </form>
 </div>
@@ -32,7 +36,7 @@
       <% @students.each do |student| %>
 
         <tr>
-          <td><%= Cohort.find(student.cohort).name %></td>
+          <td><%= student.cohort.name %></td>
           <td><%= link_to "#{student.full_name}", student %></td>
           <td><%= student.email %></td>
           <td><%= student.phone_num %></td>
