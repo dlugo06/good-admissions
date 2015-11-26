@@ -1,4 +1,56 @@
 <!-- <p id="notice"><%= notice %></p> -->
+
+<!-- This table will only show if there are students that do not have an associated cohort -->
+<% nil_cohort = false %>
+<% @students.each do |student| %>
+  <% if student.cohort.present? == false %>
+    <% nil_cohort = true %>
+  <% end %>
+<% end %>
+
+  <% if nil_cohort == true %>
+    <div class="row span12">
+      <div class="text-center">
+        <h3>Students Without Cohort</h3>
+      </div>
+    </div>
+
+    <div class="table-responsive col-md-12">
+      <table class="table table-striped table-hover student-list dropshadow">
+        <thead>
+          <tr>
+            <th>Cohort</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <% if current_user.admin? %>
+              <th>Balance</th>
+            <% end %>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @students.each do |student| %>
+            <% if student.cohort.present? == false %>
+              <tr>
+                <td><%= link_to 'Unspecified', edit_student_path(student) %></td>
+                <td><%= link_to "#{student.full_name}", student %></td>
+                <td><%= student.email %></td>
+                <td><%= student.phone_num %></td>
+                <% if current_user.admin? %>
+                  <td><%= student.balance %></td>
+                  <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+<br>
+
 <div class="row span12">
   <div class="text-center">
     <h2>Listing
@@ -6,6 +58,8 @@
       <%= Cohort.find(params[:cohort][:id].to_i).name %>
     <% elsif params[:cohort].present? && params[:cohort][:location].present? %>
       <%= Cohort.find_by(location: params[:cohort][:location]).location %>
+    <% elsif params[:student].present? && params[:student][:balance].present? %>
+      <%= params[:student][:balance] %>
     <% end %>
     Students</h2>
 
@@ -17,9 +71,12 @@
       <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn") %>
       <input type="submit" value="Filter" />
     </form>
+    <form class="student-filters">
+      <%= select("student", "balance", ["Outstanding", "Cleared"], {include_blank: 'Balance'}, class: "btn") %>
+      <input type="submit" value="Filter" />
+    </form>
   </div>
 </div>
-<!-- This should make a read to the db to check the different locations available and generate them as they come -->
 
 <div class="table-responsive col-md-12">
   <table class="table table-striped table-hover student-list dropshadow">
@@ -38,19 +95,20 @@
 
     <tbody>
       <% @students.each do |student| %>
-
-        <tr>
-          <td><%= student.cohort.name %></td>
-          <td><%= link_to "#{student.full_name}", student %></td>
-          <td><%= student.email %></td>
-          <td><%= student.phone_num %></td>
-          <% if current_user.admin? %>
-            <td><%= student.balance %></td>
-            <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
-            <td><%= link_to 'View Payments', student_payments_path(student) %></td>
-            <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
+        <% if student.cohort.present? %>
+          <tr>
+            <td><%= student.cohort.name %></td>
+            <td><%= link_to "#{student.full_name}", student %></td>
+            <td><%= student.email %></td>
+            <td><%= student.phone_num %></td>
+            <% if current_user.admin? %>
+              <td><%= student.balance %></td>
+              <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
+              <td><%= link_to 'View Payments', student_payments_path(student) %></td>
+              <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

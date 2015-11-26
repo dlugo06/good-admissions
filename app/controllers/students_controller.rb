@@ -3,7 +3,6 @@ class StudentsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :set_cohort, only: :index
   before_filter :set_location, only: :index
-
   def payments
     # @payments = @student.payments
   end
@@ -23,6 +22,12 @@ class StudentsController < ApplicationController
     elsif @location.present?
       @students = @location.map(&:students)
       @students.flatten!
+    elsif params[:student].present? && params[:student][:balance].present?
+      if params[:student][:balance] == "Outstanding"
+        @students = Student.where("balance > ?", 0)
+      elsif params[:student][:balance] == "Cleared"
+        @students = Student.where(balance: 0)
+      end
     else
       @students = Student.all
     end
@@ -92,6 +97,7 @@ class StudentsController < ApplicationController
     def set_cohort
         @cohort = Cohort.find_by(id: params[:cohort][:id]) if params[:cohort].present? && params[:cohort][:id].present?
     end
+
     def set_location
         @location = Cohort.where(location: params[:cohort][:location]) if params[:cohort].present? && params[:cohort][:location].present?
     end

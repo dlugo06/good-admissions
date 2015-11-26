@@ -19,6 +19,7 @@ class StripesController < ApplicationController
 
   # GET /stripes/1/edit
   def edit
+    @student = @stripe.student
   end
 
   # POST /stripes
@@ -28,6 +29,8 @@ class StripesController < ApplicationController
 
     respond_to do |format|
       if @stripe.save
+        @stripe.student.balance = (@stripe.student.balance) - @stripe.amount
+        @stripe.student.save
         format.html { redirect_to @stripe, notice: 'Stripe was successfully created.' }
         format.json { render :show, status: :created, location: @stripe }
       else
@@ -41,7 +44,12 @@ class StripesController < ApplicationController
   # PATCH/PUT /stripes/1.json
   def update
     respond_to do |format|
+      old_amount = @stripe.amount
+      new_amount = stripe_params["amount"].to_i
+      diff = old_amount - new_amount
       if @stripe.update(stripe_params)
+        @stripe.student.balance = @stripe.student.balance + diff
+        @stripe.student.save
         format.html { redirect_to @stripe, notice: 'Stripe was successfully updated.' }
         format.json { render :show, status: :ok, location: @stripe }
       else
@@ -55,6 +63,8 @@ class StripesController < ApplicationController
   # DELETE /stripes/1.json
   def destroy
     @stripe.destroy
+    @stripe.student.balance = @stripe.student.balance + @stripe.amount
+    @stripe.student.save
     respond_to do |format|
       format.html { redirect_to stripes_url, notice: 'Stripe was successfully destroyed.' }
       format.json { head :no_content }
