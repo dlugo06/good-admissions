@@ -1,0 +1,44 @@
+typography.scss
+
+html {
+  font-family: "Rajdhani", Helvetica, Arial, sans-serif;
+  color: #4d4d4d;
+}
+strong { font-weight: bold; }
+h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #4d4d4d;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  text-align: center;
+  // letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+h2 {
+  color: #4d4d4d;
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: inline-block;
+  margin: 5px 0;
+  // letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+h3 {
+  font-weight: normal;
+  font-size: 1.705rem;
+}
+a {
+  color: #4d4d4d;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+p {
+  margin: 20px 0;
+  line-height: 1.5;
+}
+// pre {
+//   line-height: 1.5;
+//   overflow: scroll;
+// }

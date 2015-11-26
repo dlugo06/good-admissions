@@ -1,0 +1,19 @@
+body {
+  border-top: 20px solid #4d4d4d;
+  // nav { max-width: 1000px; }
+  // main { max-width: 900px; }
+}
+
+#navbar {
+  position: relative;
+  width: 80%;
+  height: 60px;
+  border-bottom: 1px solid #000;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+#navbar img {
+  padding: 0px;
+  height: 60px;
+}
