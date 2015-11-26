@@ -65,10 +65,10 @@
  </div>
 </div>
 
-<!-- <div class="row col-md-9 col-md-offset-3 edit-student"> -->
-<div class="row span12">
-  <div class="text-center">
-  <!-- <%= link_to 'Back', students_path, class: " btn btn-info new-student-btn" %> -->
-  <%= link_to 'Edit', edit_student_path(@student), class: " btn btn-info edit-student-btn" %>
+<% if current_user.admin? %>
+  <div class="row span12">
+    <div class="text-center">
+    <%= link_to 'Edit', edit_student_path(@student), class: " btn btn-info edit-student-btn" %>
+    </div>
   </div>
-</div>
+<% end %>
