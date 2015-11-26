@@ -1,15 +1,17 @@
 <!-- <p id="notice"><%= notice %></p> -->
-<div class="table-responsive col-md-10 col-md-offset-1">
-  <h2>Listing
-    <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
-      <%= Cohort.find(params[:cohort][:id].to_i).name %>
-    <% end %>
-    Students</h2>
-
-  <form class="student-filters">
-    <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}) %>
-    <input type="submit" value="Filter" />
-  </form>
+<div class="row span12">
+  <div class="text-center">
+    <h2>Listing
+      <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
+        <%= Cohort.find(params[:cohort][:id].to_i).name %>
+      <% end %>
+      Students
+    </h2>
+    <form class="student-filters">
+      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}, class: "btn") %>
+        <input type="submit" value="Filter" class="btn btn-info" />
+    </form>
+  </div>
 </div>
 <!-- This should make a read to the db to check the different locations available and generate them as they come -->
 

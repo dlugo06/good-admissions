@@ -1,7 +1,7 @@
 <div id="login-header">
   <h1>Wyncode GoodAdmissions</h1>
 </div>
-<h2>Log in</h2>
+<!-- <h2>Log in</h2> -->
 <div class="row span12">
   <div class="login text-center">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,7 +24,7 @@
       <% end %>
 
         <div class="actions form-group">
-          <%= f.submit "Log in", class: "btn btn-info" %>
+          <%= f.submit "Log in", class: "btn btn-info login-btn" %>
         </div>
     <% end %>
 
