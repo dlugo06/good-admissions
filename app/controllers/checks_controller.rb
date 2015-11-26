@@ -29,6 +29,8 @@ class ChecksController < ApplicationController
 
     respond_to do |format|
       if @check.save
+        @check.student.balance = (@check.student.balance) - @check.amount
+        @check.student.save
         format.html { redirect_to @check, notice: 'Check was successfully created.' }
         format.json { render :show, status: :created, location: @check }
       else
@@ -42,7 +44,12 @@ class ChecksController < ApplicationController
   # PATCH/PUT /checks/1.json
   def update
     respond_to do |format|
+      old_amount = @check.amount
+      new_amount = check_params["amount"].to_i
+      diff = old_amount - new_amount
       if @check.update(check_params)
+        @check.student.balance = @check.student.balance + diff
+        @check.student.save
         format.html { redirect_to @check, notice: 'Check was successfully updated.' }
         format.json { render :show, status: :ok, location: @check }
       else
@@ -56,6 +63,8 @@ class ChecksController < ApplicationController
   # DELETE /checks/1.json
   def destroy
     @check.destroy
+    @check.student.balance = @check.student.balance + @check.amount
+    @check.student.save
     respond_to do |format|
       format.html { redirect_to checks_url, notice: 'Check was successfully destroyed.' }
       format.json { head :no_content }
