@@ -2,14 +2,20 @@
 <div class="row span12">
   <div class="text-center">
     <h2>Listing
-      <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
-        <%= Cohort.find(params[:cohort][:id].to_i).name %>
-      <% end %>
-      Students
-    </h2>
+    <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
+      <%= Cohort.find(params[:cohort][:id].to_i).name %>
+    <% elsif params[:cohort].present? && params[:cohort][:location].present? %>
+      <%= Cohort.find_by(location: params[:cohort][:location]).location %>
+    <% end %>
+    Students</h2>
+
     <form class="student-filters">
-      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}, class: "btn") %>
-        <input type="submit" value="Filter" class="btn btn-info" />
+      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Cohort'}, class: "btn") %>
+      <input type="submit" value="Filter" />
+    </form>
+    <form class="student-filters">
+      <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn") %>
+      <input type="submit" value="Filter" />
     </form>
   </div>
 </div>
@@ -34,7 +40,7 @@
       <% @students.each do |student| %>
 
         <tr>
-          <td><%= Cohort.find(student.cohort).name %></td>
+          <td><%= student.cohort.name %></td>
           <td><%= link_to "#{student.full_name}", student %></td>
           <td><%= student.email %></td>
           <td><%= student.phone_num %></td>
