@@ -19,6 +19,7 @@ class WiresController < ApplicationController
 
   # GET /wires/1/edit
   def edit
+    @student = @wire.student
   end
 
   # POST /wires
@@ -28,6 +29,8 @@ class WiresController < ApplicationController
 
     respond_to do |format|
       if @wire.save
+        @wire.student.balance = (@wire.student.balance) - @wire.amount
+        @wire.student.save
         format.html { redirect_to @wire, notice: 'Wire was successfully created.' }
         format.json { render :show, status: :created, location: @wire }
       else
@@ -42,6 +45,7 @@ class WiresController < ApplicationController
   def update
     respond_to do |format|
       if @wire.update(wire_params)
+        raise
         format.html { redirect_to @wire, notice: 'Wire was successfully updated.' }
         format.json { render :show, status: :ok, location: @wire }
       else
@@ -55,6 +59,8 @@ class WiresController < ApplicationController
   # DELETE /wires/1.json
   def destroy
     @wire.destroy
+    @wire.student.balance = @wire.student.balance + @wire.amount
+    @wire.student.save
     respond_to do |format|
       format.html { redirect_to wires_url, notice: 'Wire was successfully destroyed.' }
       format.json { head :no_content }
