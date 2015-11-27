@@ -39,11 +39,6 @@ ActiveRecord::Schema.define(version: 20151126182025) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "google_apis", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "loans", force: :cascade do |t|
     t.integer  "student_id"
     t.datetime "created_at",                          null: false
@@ -56,11 +51,6 @@ ActiveRecord::Schema.define(version: 20151126182025) do
 
   add_index "loans", ["company"], name: "index_loans_on_company", using: :btree
   add_index "loans", ["student_id"], name: "index_loans_on_student_id", using: :btree
-
-  create_table "performance_charts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "stripes", force: :cascade do |t|
     t.integer  "student_id"
