@@ -2,9 +2,7 @@
 @import "bootstrap";
 
 //--------------universal---------------------
-html {
-  overflow-y: scroll;
-}
+
 // body {
 //   padding-top: 30px;
 //   background: url(/assets/bckGrdImg3.jpg) no-repeat;
@@ -19,18 +17,6 @@ section {
 textarea {
   resize: vertical;
 }
-// .center {
-//   text-align: center;
-// }
-// .center h1 {
-//   margin-bottom: 10px;
-// }
-// .dropshadow {
-// height: auto;
-// -webkit-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
-// -moz-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
-// box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
-// }
 .logout-btn {
   margin-left: 15px;
 }
@@ -39,27 +25,23 @@ textarea {
   margin-left: 10px;
 }
 
-@btnInfoBackground: #AAD023;
-@btnInfoBackgroundHighlight: #eee;
+// @btnInfoBackground: #AAD023;
+// @btnInfoBackgroundHighlight: #eee;
 
 
 //----------login page-------------------
 .login {
-  // background-color: #eaeaea;
   background-color: #eee;
-  // opacity: 0.8;
   width: 30%;
   margin: auto;
-  // border-style: solid;
-  // border-color: black;
 }
 /* padding for text in login page */
 .top-label-element {
   padding-top: 10px;
 }
-
-
-
+.login-btn {
+  margin-bottom: 10px;
+}
 //-------------Devise styling-----------------
 
 .field  {
@@ -130,7 +112,6 @@ textarea {
 // New payment fields
 .new-payment-field {
   background-color: #eaeaea;
-  // opacity: 0.8;
   width: 40%;
   margin-right: auto;
   margin-left: auto;
@@ -149,27 +130,3 @@ input[type="radio"] {
   border-style: solid;
   border-color: black;
 }
-
-
-
-
-// .btn {
-//   display: inline-block;
-//   padding: 6px 12px;
-//   margin-bottom: 0;
-//   font-size: 14px;
-//   font-weight: normal;
-//   line-height: 1.428571429;
-//   text-align: center;
-//   white-space: nowrap;
-//   vertical-align: middle;
-//   cursor: pointer;
-//   background-image: none;
-//   border: 1px solid transparent;
-//   border-radius: 4px;
-//   -webkit-user-select: none;
-//      -moz-user-select: none;
-//       -ms-user-select: none;
-//        -o-user-select: none;
-//           user-select: none;
-// }
