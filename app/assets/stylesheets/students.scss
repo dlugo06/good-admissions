@@ -25,7 +25,11 @@
 }
 .new-student-btn {
   margin-top: 30px;
+
+}
+#new-student-add-btn {
   margin-bottom: 30px;
+  color: #fff;
 }
 .student-list-detail {
   padding-top: 10px;
@@ -40,10 +44,12 @@
 .edit-student {
   padding-top: 15px;
 }
-.edit-student-btn {
+#edit-student-btn {
   margin-top: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  color: #fff;
 }
+
 #student-list-btn-bckgrd {
   background-color: #eaeaea;
 }
