@@ -31,7 +31,7 @@ class StripesController < ApplicationController
       if @stripe.save
         @stripe.student.balance = (@stripe.student.balance) - @stripe.amount
         @stripe.student.save
-        format.html { redirect_to @stripe, notice: 'Stripe was successfully created.' }
+        format.html { redirect_to student_payments_path(@stripe.student), notice: 'Stripe was successfully created.' }
         format.json { render :show, status: :created, location: @stripe }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ class StripesController < ApplicationController
     @stripe.student.balance = @stripe.student.balance + @stripe.amount
     @stripe.student.save
     respond_to do |format|
-      format.html { redirect_to stripes_url, notice: 'Stripe was successfully destroyed.' }
+      format.html { redirect_to student_payments_path(@stripe.student), notice: 'Stripe was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

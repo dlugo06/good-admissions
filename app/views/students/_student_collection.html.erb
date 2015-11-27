@@ -20,9 +20,9 @@
             <td><%= student.cohort.name %></td>
             <td><%= link_to "#{student.full_name}", student %></td>
             <td><%= student.email %></td>
-            <td><%= student.phone_num %></td>
+            <td><%= number_to_phone(student.phone_num) %></td>
             <% if current_user.admin? %>
-              <td><%= student.balance %></td>
+              <td><%= number_to_currency(student.balance) %></td>
               <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
               <td><%= link_to 'View Payments', student_payments_path(student) %></td>
               <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -31,7 +31,7 @@ class WiresController < ApplicationController
       if @wire.save
         @wire.student.balance = (@wire.student.balance) - @wire.amount
         @wire.student.save
-        format.html { redirect_to @wire, notice: 'Wire was successfully created.' }
+        format.html { redirect_to student_payments_path(@wire.student), notice: 'Wire was successfully created.' }
         format.json { render :show, status: :created, location: @wire }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ class WiresController < ApplicationController
     @wire.student.balance = @wire.student.balance + @wire.amount
     @wire.student.save
     respond_to do |format|
-      format.html { redirect_to wires_url, notice: 'Wire was successfully destroyed.' }
+      format.html { redirect_to student_payments_path(@wire.student), notice: 'Wire was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
