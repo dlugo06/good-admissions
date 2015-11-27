@@ -20,7 +20,7 @@
     </thead>
 
     <tbody>
-      <% @students.each do |student| %>
+      <% @all_students.each do |student| %>
         <% if student.cohort.present? == false %>
           <tr>
             <td><%= link_to 'Unspecified', edit_student_path(student) %></td>

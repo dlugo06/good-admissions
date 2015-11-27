@@ -17,19 +17,21 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
+    # @unspecified_students = Student.all
+    @all_students = Student.all
     if @cohort.present?
-      @students = @cohort.students
+      @filtered_students = @cohort.students
     elsif @location.present?
-      @students = @location.map(&:students)
-      @students.flatten!
+      @filtered_students = @location.map(&:students)
+      @filtered_students.flatten!
     elsif params[:student].present? && params[:student][:balance].present?
       if params[:student][:balance] == "Outstanding"
-        @students = Student.where("balance > ?", 0)
+        @filtered_students = Student.where("balance > ?", 0)
       elsif params[:student][:balance] == "Cleared"
-        @students = Student.where(balance: 0)
+        @filtered_students = Student.where(balance: 0)
       end
     else
-      @students = Student.all
+      @filtered_students = @all_students
     end
   end
 

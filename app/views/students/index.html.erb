@@ -2,7 +2,7 @@
 
 <!-- This table will only show if there are students that do not have an associated cohort -->
 <% nil_cohort = false %>
-<% @students.each do |student| %>
+<% @all_students.each do |student| %>
   <% if student.cohort.present? == false %>
     <% nil_cohort = true %>
   <% end %>

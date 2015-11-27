@@ -43,7 +43,7 @@
     </thead>
 
     <tbody>
-      <% @students.each do |student| %>
+      <% @filtered_students.each do |student| %>
         <% if student.cohort.present? %>
           <tr>
             <td><%= student.cohort.name %></td>
