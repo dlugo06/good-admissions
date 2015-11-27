@@ -1,6 +1,9 @@
 // Place all the styles related to the Students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 
 .student-filters li {
   display: inline;
@@ -10,4 +13,50 @@
 .student-filters {
   padding-left: 0;
   margin-bottom: 35px;
+}
+.text-center .new-student-btn {
+  color: #FFF;
+}
+.new-student {
+  text-align: center;
+}
+.student-list {
+  background-color: #eaeaea;
+}
+.new-student-btn {
+  margin-top: 20px;
+}
+#new-student-add-btn {
+  margin-bottom: 30px;
+  color: #fff;
+}
+.student-list-detail {
+  padding-top: 10px;
+  width: 35%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+}
+#new-student-back-btn {
+  color: white;
+  margin-bottom: 20px;
+}
+.edit-student {
+  padding-top: 15px;
+}
+#edit-student-btn {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+#student-list-btn-bckgrd {
+  background-color: #eaeaea;
+}
+#student-detail-edit-btn {
+  margin-bottom: 30px;
+  color: white;
+}
+#edit-student-top-back-button {
+  color: #fff;
+  margin-left: 30px;
 }

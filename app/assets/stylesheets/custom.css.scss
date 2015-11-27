@@ -2,9 +2,7 @@
 @import "bootstrap";
 
 //--------------universal---------------------
-html {
-  overflow-y: scroll;
-}
+
 // body {
 //   padding-top: 30px;
 //   background: url(/assets/bckGrdImg3.jpg) no-repeat;
@@ -19,78 +17,27 @@ section {
 textarea {
   resize: vertical;
 }
-// .center {
-//   text-align: center;
-// }
-// .center h1 {
-//   margin-bottom: 10px;
-// }
-// .dropshadow {
-// height: auto;
-// -webkit-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
-// -moz-box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
-// box-shadow: -15px 13px 20px 3px rgba(0,0,0,0.91);
-// }
-// .logout-btn {
-//   opacity: .9;
-// }
+.logout-btn {
+  margin-right: 30px;
+}
 .notice, .alert {
   color: #eaeaea;
   margin-left: 10px;
 }
-// @btnInfoBackground: #AAD023;
-// @btnInfoBackgroundHighlight: #6CBA2C;
-@btnInfoBackground: #AAD023;
-@btnInfoBackgroundHighlight: #eee;
-
-
-//------------typography-------------------
-
-// h1, h2, h3, h4, h5, h6 {
-//   line-height: 1;
-
-// h1 {
-  // font-size: 4em;
-  // letter-spacing: -2px;
-  // margin-bottom: 30px;
-  // text-align: center;
-  // color: #eaeaea;
-  // text-shadow: 2px 2px #ff0000;
-  // color: #777;
-//
-// }
-// h2 {
-  // font-size: 3em;
-  // letter-spacing: -1px;
-  // margin-bottom: 30px;
-  // text-align: center;
-  // font-weight: normal;
-  // // color: #777;
-  // color: #eaeaea;
-//   // text-shadow: 2px 2px #ff0000;
-// }
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
 
 //----------login page-------------------
 .login {
-  // background-color: #eaeaea;
   background-color: #eee;
-  // opacity: 0.8;
   width: 30%;
   margin: auto;
-  // border-style: solid;
-  // border-color: black;
 }
 /* padding for text in login page */
 .top-label-element {
   padding-top: 10px;
 }
-
-
-
+#login-btn {
+  margin-bottom: 10px;
+}
 //-------------Devise styling-----------------
 
 .field  {
@@ -117,49 +64,41 @@ p {
 .field_with_errors {
   margin: auto;
 }
-.login-btn {
-  margin-bottom: 10px;
+---------------Students--------------------
+.back-to-students-btn .btn-info {
+  color: #FFF;
 }
-//-----------Student listing--------------
-.new-student {
-  text-align: center;
-}
-.student-list {
-  background-color: #eaeaea;
-}
-.new-student-btn {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-.student-list-detail {
-  padding-top: 10px;
-  width: 35%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 10px;
-}
-#new-student-back_btn {
-  margin-left: 15px;
-}
-.edit-student {
-  padding-top: 15px;
-}
-.edit-student-btn {
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
-
-
-//-------------Payments--------------------
-// Listing payment
-.back-to-students, .new-payment {
-  text-align: center;
-  margin-top: 10px;
-}
-// New payment fields
 .new-payment-field {
   background-color: #eaeaea;
-  opacity: 0.8;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+  border-style: solid;
+  border-color: black;
+}
+//Payment type radio button styling
+input[type="radio"] {
+    margin-right: 10px;
+}
+#payment_render {
+  padding-top: 20px;
+}
+.input-group {
+  border-style: solid;
+  border-color: black;
+}
+#student-detail-back-btn {
+  color: #fff;
+}
+
+
+-------------Payments----------------------
+.back-to-students-btn .btn-info {
+  color: #FFF;
+}
+.new-payment-field {
+  background-color: #eaeaea;
   width: 40%;
   margin-right: auto;
   margin-left: auto;

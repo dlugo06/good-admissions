@@ -1,35 +1,45 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<div class="row col-md-12">
+  <div class="text-center">
+    <h1>Listing Loans</h1>
+  </div>
+</div>
 
-<h1>Listing Loans</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Student</th>
-      <th>Amount</th>
-      <th>Date Funded</th>
-      <th>Company</th>
-      <th>Notes</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @loans.each do |loan| %>
+<div class="table-responsive col-md-12">
+  <table class="table table-striped table-hover student-list">
+    <thead>
       <tr>
-        <td><%= loan.student.first_name %> <%= loan.student.last_name %></td>
-        <td><%= number_to_currency(loan.amount) %></td>
-        <td><%= loan.pay_date.strftime("%m/%d/%Y") %></td>
-        <td><%= loan.company %></td>
-        <td><%= loan.notes %></td>
-        <td><%= link_to 'Show', loan %> | </td>
-        <td><%= link_to 'Edit', edit_loan_path(loan) %> | </td>
-        <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Student</th>
+        <th>Amount</th>
+        <th>Date Funded</th>
+        <th>Company</th>
+        <th>Notes</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @loans.each do |loan| %>
+        <tr>
+          <td><%= loan.student.first_name %> <%= loan.student.last_name %></td>
+          <td><%= number_to_currency(loan.amount) %></td>
+          <td><%= loan.pay_date.strftime("%m/%d/%Y") %></td>
+          <td><%= loan.company %></td>
+          <td><%= loan.notes %></td>
+          <td><%= link_to 'Show', loan %> | </td>
+          <td><%= link_to 'Edit', edit_loan_path(loan) %> | </td>
+          <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Loan', new_loan_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <%= link_to 'New Loan', new_loan_path, class: "btn btn-info" %>
+      </div>
+    </div>
+</div>

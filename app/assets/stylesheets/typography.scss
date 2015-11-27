@@ -1,7 +1,10 @@
-typography.scss
+// typography.scss
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
-html {
-  font-family: "Rajdhani", Helvetica, Arial, sans-serif;
+
+body {
+  font-family: 'Rajdhani', Helvetica, Arial, sans-serif;
   color: #4d4d4d;
 }
 strong { font-weight: bold; }
@@ -38,7 +41,3 @@ p {
   margin: 20px 0;
   line-height: 1.5;
 }
-// pre {
-//   line-height: 1.5;
-//   overflow: scroll;
-// }

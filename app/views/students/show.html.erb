@@ -1,7 +1,9 @@
 <!-- <p id="notice"><%= notice %></p> -->
-<div class="span12">
-  <div id="new-student-back_btn">
-  <%= link_to 'Back', students_path, class: " btn btn-info new-student-btn" %>
+<div class="row">
+  <div class="col-md-12">
+    <div id="new-student-back_btn">
+      <%= link_to 'Back', students_path, class: "btn btn-info", id: "student-detail-back-btn" %>
+    </div>
   </div>
 </div>
 
@@ -103,7 +105,7 @@
 <% if current_user.admin? %>
   <div class="row span12">
     <div class="text-center">
-    <%= link_to 'Edit', edit_student_path(@student), class: " btn btn-info edit-student-btn" %>
+    <%= link_to 'Edit', edit_student_path(@student), class: " btn btn-info", id: "student-detail-edit-btn" %>
     </div>
   </div>
 <% end %>
