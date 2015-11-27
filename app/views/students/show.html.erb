@@ -39,7 +39,7 @@
       <strong>Phone number:</strong>
     </div>
       <div class="panel-body">
-        <%= @student.phone_num %>
+        <%= number_to_phone(@student.phone_num) %>
       </div>
     <% if current_user.admin? %>
       <div class="panel-heading">
