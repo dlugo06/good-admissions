@@ -46,13 +46,13 @@
         <strong>Discount:</strong>
       </div>
         <div class="panel-body">
-          <%= @student.discount %>
+          <%= number_to_currency(@student.discount) %>
         </div>
       <div class="panel-heading">
           <strong>Balace:</strong>
       </div>
         <div class="panel-body">
-          <%= @student.balance %>
+          <%= number_to_currency(@student.balance) %>
         </div>
     <% end %>
     <div class="panel-heading">

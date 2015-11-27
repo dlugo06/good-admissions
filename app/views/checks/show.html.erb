@@ -23,7 +23,11 @@
 </p>
 <p>
   <strong>Name on Check:</strong>
-  <%= @check.name_on_check.upcase %>
+  <% if @check.name_on_check == "" %>
+    <%= @check.student.full_name %>
+  <% else %>
+    <%= @check.name_on_check.upcase %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_check_path(@check) %> |
