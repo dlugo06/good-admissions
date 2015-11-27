@@ -19,10 +19,7 @@
 </p>
 <p>
   <strong>Sender:</strong>
-  <% if @wire.sender == "" %>
-  <%= @wire.student.full_name %>
-  <% else %>
-  <%= @wire.sender.upcase %>
+  <%= @wire.sender %>
   <% end %>
 </p>
 
