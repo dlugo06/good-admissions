@@ -16,7 +16,7 @@
     <div class="notice"><%= notice %></div>
     <div class="alert"><%= alert %></div>
      <% if user_signed_in? %>
-       <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-info col-md-2 col-md-offset-10 logout-btn") %>
+       <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-info col-md-1 logout-btn") %>
        <%= yield %>
      <% else %>
        <%= yield %>
