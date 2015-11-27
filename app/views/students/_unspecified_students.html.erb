@@ -28,6 +28,7 @@
           <td><%= student.phone_num %></td>
           <% if current_user.admin? %>
             <td><%= student.balance %></td>
+            <td><a href="https://docs.google.com/a/wyncode.co/spreadsheets/d/1n1lLJlgHSLdfrG0zx9dDsqISUwOfne1QN9VPC8tQj1w/edit?usp=sharing" target="_blank">View Form</a></td>
             <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
         </tr>

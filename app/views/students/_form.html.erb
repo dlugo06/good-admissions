@@ -65,7 +65,7 @@
     </div>
     <div class="field">
       <%= f.label :cohort_id %><br>
-      <%= f.select :cohort_id, Cohort.all.collect { |c| [c.name, c.id] } %>
+      <%= f.select :cohort_id, Cohort.all.collect { |c| [c.name, c.id] }, {include_blank: 'Unspecified'}, class: 'btn' %>
     </div>
     <div class="actions">
       <%= f.submit %>
