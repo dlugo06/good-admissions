@@ -17,7 +17,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    # @unspecified_students = Student.all
+    @unspecified_students = Student.where(cohort_id: nil)
     @all_students = Student.all
     if @cohort.present?
       @filtered_students = @cohort.students

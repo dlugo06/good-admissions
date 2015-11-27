@@ -20,19 +20,17 @@
     </thead>
 
     <tbody>
-      <% @all_students.each do |student| %>
-        <% if student.cohort.present? == false %>
-          <tr>
-            <td><%= link_to 'Unspecified', edit_student_path(student) %></td>
-            <td><%= link_to "#{student.full_name}", student %></td>
-            <td><%= student.email %></td>
-            <td><%= student.phone_num %></td>
-            <% if current_user.admin? %>
-              <td><%= student.balance %></td>
-              <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-          </tr>
-        <% end %>
+      <% @unspecified_students.each do |student| %>
+        <tr>
+          <td><%= link_to 'Unspecified', edit_student_path(student) %></td>
+          <td><%= link_to "#{student.full_name}", student %></td>
+          <td><%= student.email %></td>
+          <td><%= student.phone_num %></td>
+          <% if current_user.admin? %>
+            <td><%= student.balance %></td>
+            <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
       <% end %>
     </tbody>
   </table>
