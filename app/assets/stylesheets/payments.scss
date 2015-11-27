@@ -5,3 +5,23 @@
 .back-to-students-btn .btn-info {
   color: #FFF;
 }
+.new-payment-field {
+  background-color: #eaeaea;
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+  border-style: solid;
+  border-color: black;
+}
+//Payment type radio button styling
+input[type="radio"] {
+    margin-right: 10px;
+}
+#payment_render {
+  padding-top: 20px;
+}
+.input-group {
+  border-style: solid;
+  border-color: black;
+}

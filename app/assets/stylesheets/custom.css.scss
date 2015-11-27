@@ -25,10 +25,6 @@ textarea {
   margin-left: 10px;
 }
 
-// @btnInfoBackground: #AAD023;
-// @btnInfoBackgroundHighlight: #eee;
-
-
 //----------login page-------------------
 .login {
   background-color: #eee;
@@ -71,45 +67,37 @@ textarea {
 .login-btn {
   // margin-bottom: 10px;
 }
-//-----------Student listing--------------
-.new-student {
-  text-align: center;
+---------------Students--------------------
+.back-to-students-btn .btn-info {
+  color: #FFF;
 }
-.student-list {
+.new-payment-field {
   background-color: #eaeaea;
-}
-.new-student-btn {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-.student-list-detail {
-  padding-top: 10px;
-  width: 35%;
+  width: 40%;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 10px;
+  margin-bottom: 50px;
+  border-style: solid;
+  border-color: black;
 }
-#new-student-back_btn {
-  margin-left: 15px;
+//Payment type radio button styling
+input[type="radio"] {
+    margin-right: 10px;
 }
-.edit-student {
-  padding-top: 15px;
+#payment_render {
+  padding-top: 20px;
 }
-.edit-student-btn {
-  margin-top: 10px;
-  margin-bottom: 40px;
-}
-#student-list-btn-bckgrd {
-  background-color: #eaeaea;
+.input-group {
+  border-style: solid;
+  border-color: black;
 }
 
-//-------------Payments--------------------
-// Listing payment
-.back-to-students, .new-payment {
-  // text-align: center;
-  // margin-top: 10px;
+
+
+-------------Payments----------------------
+.back-to-students-btn .btn-info {
+  color: #FFF;
 }
-// New payment fields
 .new-payment-field {
   background-color: #eaeaea;
   width: 40%;
