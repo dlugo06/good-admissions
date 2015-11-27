@@ -8,7 +8,7 @@
       Students
     </h2>
     <form class="student-filters">
-      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}, class: "btn") %>
+      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}, class: "btn", id: "student-list-btn-bckgrd") %>
         <input type="submit" value="Filter" class="btn btn-info" />
     </form>
   </div>
@@ -54,7 +54,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-      <%= link_to 'New Student', new_student_path, class: " btn btn-info new-student-btn" %>
+      <%= link_to 'New Student', new_student_path, class: "btn btn-info" %>
     </div>
   </div>
 </div>
