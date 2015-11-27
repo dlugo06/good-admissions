@@ -18,6 +18,7 @@ class LoansController < ApplicationController
 
   # GET /loans/1/edit
   def edit
+    @student = @loan.student
   end
 
   # POST /loans
@@ -26,6 +27,8 @@ class LoansController < ApplicationController
     @loan = Loan.new(loan_params)
     respond_to do |format|
       if @loan.save
+        @loan.student.balance = (@loan.student.balance) - @loan.amount
+        @loan.student.save
         format.html { redirect_to @loan, notice: 'Loan was successfully created.' }
         format.json { render :show, status: :created, location: @loan }
       else
@@ -39,7 +42,10 @@ class LoansController < ApplicationController
   # PATCH/PUT /loans/1.json
   def update
     respond_to do |format|
+      difference = @loan.calculated_difference(loan_params)
       if @loan.update(loan_params)
+        @loan.student.balance = @loan.student.balance + difference
+        @loan.student.save
         format.html { redirect_to @loan, notice: 'Loan was successfully updated.' }
         format.json { render :show, status: :ok, location: @loan }
       else
@@ -53,6 +59,8 @@ class LoansController < ApplicationController
   # DELETE /loans/1.json
   def destroy
     @loan.destroy
+    @loan.student.balance = @loan.student.balance + @loan.amount
+    @loan.student.save
     respond_to do |format|
       format.html { redirect_to loans_url, notice: 'Loan was successfully destroyed.' }
       format.json { head :no_content }

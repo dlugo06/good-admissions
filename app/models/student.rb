@@ -4,7 +4,9 @@ class Student < ActiveRecord::Base
   has_many :checks
   has_many :wires
   has_many :stripes
-  before_save :calculate_balance
+  before_create :calculate_balance
+  before_destroy :destroy_payments
+
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -22,9 +24,20 @@ class Student < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  def calculate_balance
-    deposit = 1000
+  def calculate_balance(deposit=1000)
     self.balance -= discount
     self.balance -= deposit
+  end
+
+  def discount_difference(params)
+    self.discount - params["discount"].to_i
+  end
+
+  private
+  def destroy_payments
+    loans.destroy_all
+    checks.destroy_all
+    stripes.destroy_all
+    wires.destroy_all
   end
 end

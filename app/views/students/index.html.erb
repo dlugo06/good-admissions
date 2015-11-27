@@ -1,60 +1,60 @@
 <!-- <p id="notice"><%= notice %></p> -->
+
+
+<!-- This table will only show if there are students that do not have an associated cohort -->
+<% nil_cohort = false %>
+<% @all_students.each do |student| %>
+  <% if student.cohort.present? == false %>
+    <% nil_cohort = true %>
+  <% end %>
+<% end %>
+
+<% if nil_cohort == true %>
+  <%= render 'unspecified_students' %>
+<% end %>
+
+<br>
+
 <div class="row col-md-12">
   <div class="text-center">
     <h2>Listing
-      <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
-        <%= Cohort.find(params[:cohort][:id].to_i).name %>
-      <% end %>
-      Students
-    </h2>
+    <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
+      <%= Cohort.find(params[:cohort][:id].to_i).name %>
+    <% elsif params[:cohort].present? && params[:cohort][:location].present? %>
+      <%= Cohort.find_by(location: params[:cohort][:location]).location %>
+    <% elsif params[:student].present? && params[:student][:balance].present? %>
+      <%= params[:student][:balance] %>
+    <% end %>
+    Students</h2>
+
     <form class="student-filters">
-      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Select Cohort'}, class: "btn", id: "student-list-btn-bckgrd") %>
+      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Cohort'}, class: "btn", id: "student-list-btn-bckgrd") %>
         <input type="submit" value="Filter" class="btn btn-info" />
     </form>
+    <form class="student-filters">
+      <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn", id: "student-list-btn-bckgrd") %>
+      <input type="submit" value="Filter" class="btn btn-info" />
+    </form>
+    <% if current_user.admin? %>
+      <form class="student-filters">
+        <%= select("student", "balance", ["Outstanding", "Cleared"], {include_blank: 'Balance'}, class: "btn", id: "student-list-btn-bckgrd") %>
+        <input type="submit" value="Filter" class="btn btn-info" />
+      </form>
+    <% end %>
   </div>
-</div>
-<!-- This should make a read to the db to check the different locations available and generate them as they come -->
-
-<div class="table-responsive col-md-12">
-  <table class="table table-striped table-hover student-list">
-    <thead>
-      <tr>
-        <th>Cohort</th>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <% if current_user.admin? %>
-          <th>Balance</th>
-        <% end %>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @students.each do |student| %>
-
-        <tr>
-          <td><%= Cohort.find(student.cohort).name %></td>
-          <td><%= link_to "#{student.full_name}", student %></td>
-          <td><%= student.email %></td>
-          <td><%= student.phone_num %></td>
-          <% if current_user.admin? %>
-            <td><%= student.balance %></td>
-            <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
-            <td><%= link_to 'View Payments', student_payments_path(student) %></td>
-            <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>
 <br>
 
-<div class="container">
+<%= render 'student_collection' %>
+
+<br>
+
+<% if current_user.admin? %>
+  <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-      <%= link_to 'New Student', new_student_path, class: "btn btn-info new-student-btn" %>
+        <%= link_to 'New Student', new_student_path, class: " btn btn-info new-student-btn" %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
