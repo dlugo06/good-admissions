@@ -29,7 +29,7 @@ class LoansController < ApplicationController
       if @loan.save
         @loan.student.balance = (@loan.student.balance) - @loan.amount
         @loan.student.save
-        format.html { redirect_to @loan, notice: 'Loan was successfully created.' }
+        format.html { redirect_to student_payments_path(@loan.student), notice: 'Loan was successfully created.' }
         format.json { render :show, status: :created, location: @loan }
       else
         format.html { render :new }
@@ -62,7 +62,7 @@ class LoansController < ApplicationController
     @loan.student.balance = @loan.student.balance + @loan.amount
     @loan.student.save
     respond_to do |format|
-      format.html { redirect_to loans_url, notice: 'Loan was successfully destroyed.' }
+      format.html { redirect_to student_payments_path(@loan.student), notice: 'Loan was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

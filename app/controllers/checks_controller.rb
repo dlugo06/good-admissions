@@ -31,7 +31,7 @@ class ChecksController < ApplicationController
       if @check.save
         @check.student.balance = (@check.student.balance) - @check.amount
         @check.student.save
-        format.html { redirect_to @check, notice: 'Check was successfully created.' }
+        format.html { redirect_to student_payments_path(@check.student), notice: 'Check was successfully created.' }
         format.json { render :show, status: :created, location: @check }
       else
         format.html { render :new }
@@ -66,7 +66,7 @@ class ChecksController < ApplicationController
     @check.student.balance = @check.student.balance + @check.amount
     @check.student.save
     respond_to do |format|
-      format.html { redirect_to checks_url, notice: 'Check was successfully destroyed.' }
+      format.html { redirect_to student_payments_path(@check.student), notice: 'Check was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
