@@ -9,8 +9,7 @@ class TwilioController < ApplicationController
 
   def voice
   	response = Twilio::TwiML::Response.new do |r|
-  	  r.Say 'Hey there. Congrats on integrating Twilio into your Rails 4 app.', :voice => 'alice'
-      r.Play 'http://linode.rabasa.com/cantina.mp3'
+  	  r.Say "Thank you for calling Wyncode's Twilio number. If you would like to get in touch you can email us at we are at Wyncode dot co or call us at 305 702 2422.", :voice => 'alice'
   	end
 
   	render_twiml response
