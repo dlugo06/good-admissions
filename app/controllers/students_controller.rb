@@ -106,7 +106,12 @@ class StudentsController < ApplicationController
     end
 
     def default_filter
-      @default_cohort = Cohort.where("start_date >= ?", Date.today).first
+      if Cohort.where("start_date >= ?", Date.today).empty?
+        @default_cohort = Cohort.where("start_date <= ?", Date.today).order(start_date: :desc).first
+      else
+        @default_cohort = Cohort.where("start_date >= ?", Date.today).first
+      end
+      raise
     end
 
     def set_student
