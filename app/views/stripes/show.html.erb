@@ -2,9 +2,9 @@
 
 <div class="container">
     <div class="row">
-      <div class="col-md-12">
-          <%= link_to 'Back', stripes_path, class: "btn btn-info" %>
-      </div>
+      <!-- <div class="col-md-12"> -->
+          <%= link_to 'Back', stripes_path, class: "btn btn-info", id:"stripes-show-back-btn" %>
+      <!-- </div> -->
     </div>
 </div>
 
@@ -32,7 +32,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-          <%= link_to 'Edit', edit_stripe_path(@stripe), class: "btn btn-info" %>
+          <%= link_to 'Edit', edit_stripe_path(@stripe), class: "btn btn-info", id: "stripes-show-edit-btn"  %>
       </div>
     </div>
 </div>

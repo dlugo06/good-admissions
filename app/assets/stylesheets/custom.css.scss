@@ -17,8 +17,9 @@ section {
 textarea {
   resize: vertical;
 }
-.logout-btn {
-  margin-right: 30px;
+#logout-btn {
+  margin-left: 75%;
+  color: #fff;
 }
 .notice, .alert {
   color: #4d4d4d;
@@ -64,6 +65,7 @@ textarea {
 .field_with_errors {
   margin: auto;
 }
+
 ---------------Students--------------------
 .back-to-students-btn .btn-info {
   color: #FFF;
