@@ -1,11 +1,11 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :payments]
   before_filter :authenticate_user!
   before_filter :set_cohort, only: :index
   before_filter :set_location, only: :index
   before_filter :default_filter, only: :index
-  def all_payments
-    # @payments = @student.payments
+  
+  def payments
   end
 
   def location
