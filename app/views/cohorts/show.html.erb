@@ -27,6 +27,10 @@
         <%= @cohort.capacity %>
       </p>
       <p>
+        <strong>Available:</strong>
+        <%= @cohort.capacity - @cohort.students.count%>
+      </p>
+      <p>
         <strong>Start date:</strong>
         <%= @cohort.start_date %>
       </p>
