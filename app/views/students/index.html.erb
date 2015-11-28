@@ -24,6 +24,12 @@
       <%= Cohort.find_by(location: params[:cohort][:location]).location %>
     <% elsif params[:student].present? && params[:student][:balance].present? %>
       <%= params[:student][:balance] %>
+    <% else %>
+      <% if @filtered_students == @all_students %>
+        All
+      <% else %>
+        <%= @default_cohort.name %>
+      <% end %>
     <% end %>
     Students</h2>
 
@@ -41,6 +47,14 @@
         <input type="submit" value="Filter" class="btn btn-info" />
       </form>
     <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <%= link_to "View All Students", students_path, class: " btn btn-info", id: "new-student-add-btn" %>
+      </div>
+    </div>
+  </div>
+
   </div>
 </div>
 <br>

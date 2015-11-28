@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'stripes/new' => redirect('/stripes')
   get 'loans/new' => redirect('/loans')
   get 'wires/new' => redirect('/wires')
-
+  get 'payments' => 'students#all_payments', as: :all_payments
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
