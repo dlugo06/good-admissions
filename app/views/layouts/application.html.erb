@@ -5,6 +5,94 @@
   <%= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Rajdhani:500,700', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript"
+          src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }"></script>
+
+  <script type="text/javascript">
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var studentHash = $('#students').data('students');
+        alert(studentHash[0].cohort_id);
+
+        // Logic goes here..
+
+        // Create the table
+        var data = google.visualization.arrayToDataTable([
+          ['Weeks Out', 'Students Registered'],
+          ['15',  0.1],
+          ['14',  0.13],
+          ['13',  0.19],
+          ['12',  0.16],
+          ['11',  0.20],
+          ['10',  0.40],
+          ['9',  0.45],
+          ['8',  0.20],
+          ['7',  0.39],
+          ['6',  0.61],
+          ['5',  0.68],
+          ['4',  0.50],
+          ['3',  0.99],
+          ['2',  0.90],
+          ['1',  1.10],
+        ]);
+
+        // Create the table
+        var data2 = google.visualization.arrayToDataTable([
+          ['Weeks Out', 'Students Registered'],
+          ['15',  0.1],
+          ['14',  0.18],
+          ['13',  0.16],
+          ['12',  0.13],
+          ['11',  0.20],
+          ['10',  0.28],
+          ['9',  0.37],
+          ['8',  0.30],
+          ['7',  0.42],
+          ['6',  0.55],
+          ['5',  0.68],
+          ['4',  0.63],
+          ['3',  0.78],
+          ['2',  0.90],
+          ['1',  1.10],
+        ]);
+
+        var options = {
+          title: 'Miami Cohort 5 Performance',
+          vAxis: { title: 'Capacity',
+            gridlines: { count: 13},
+            minValue: 0,
+            maxValue: 1.10,
+            format: 'percent' },
+          hAxis: { title: 'Weeks Out' },
+          legend: { position: 'bottom' }
+        };
+
+        var options2 = {
+          title: 'Miami Cohort 6 Performance',
+          vAxis: { title: 'Capacity',
+            gridlines: { count: 13},
+            minValue: 0,
+            maxValue: 1.10,
+            format: 'percent' },
+          hAxis: { title: 'Weeks Out' },
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+
+        chart.draw(data, options);
+        chart2.draw(data2, options2);
+      }
+    </script>
 </head>
 <body>
 
@@ -21,7 +109,6 @@
      <% else %>
        <%= yield %>
      <% end %>
-
 
   <!-- <% if notice %>
     <p class="alert alert-success col-md-2 "><%= notice %></p>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :performance_charts
   resources :cohorts
   get 'students/:id/payments/new' => 'payments#new', as: :new_student_payment
   get 'students/:id/payments' => 'students#payments', as: :student_payments
