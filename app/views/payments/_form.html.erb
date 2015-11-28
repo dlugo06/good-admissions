@@ -1,8 +1,7 @@
-<!-- <div class="row"> -->
-  <div class="col-md-12 back-to-students-btn">
-  <%= link_to 'To Students', root_path, class: " btn btn-info col-md-1" %>
-  </div>
-<!-- </div> -->
+<div class="col-md-1 col-md-offset-1 back-to-students-btn">
+  <%= link_to 'To Students', root_path, class: " btn btn-info" %>
+</div>
+
 <div class="row">
   <div class="col-md-12 text-center">
       <h2>Create A New Payment for <%= @student.full_name %> </h2>
@@ -10,24 +9,24 @@
 </div>
 
 
-<div class="row">
+<div class="row" id="payment-type-selector">
   <div class="col-md-12">
     <div class="input-group" id="payment_type">
 
-      <!-- <form id="payment_type"> -->
+      <form id="payment_type">
         <label class="input-group-addon">
-          <input type="radio" name="payment_type" value="loan">Loan<br>
+          <input type="radio" name="payment_type" value="loan">   Loan<br>
         </label>
         <label class="input-group-addon">
-          <input type="radio" name="payment_type" value="check" class="check">Check<br>
+          <input type="radio" name="payment_type" value="check" class="check">   Check<br>
         </label>
         <label class="input-group-addon">
-          <input type="radio" name="payment_type" value="stripe">Stripe<br>
+          <input type="radio" name="payment_type" value="stripe">   Stripe<br>
         </label>
         <label class="input-group-addon">
-          <input type="radio" name="payment_type" value="wire">Wire
+          <input type="radio" name="payment_type" value="wire">   Wire
         </label>
-      <!-- </form> -->
+      </form>
     </div>
   </div>
 </div>

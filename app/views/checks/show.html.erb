@@ -1,30 +1,49 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <%= link_to 'Back', checks_path, class: "btn btn-info" %>
+      </div>
+    </div>
+</div>
 
-<p>
-  <strong>Student:</strong>
-  <%= @check.student.first_name %>
-  <%= @check.student.last_name %>
-</p>
-<p>
-  <strong>Amount:</strong>
-  <%= number_to_currency(@check.amount) %>
-</p>
-<p>
-  <strong>Date Received:</strong>
-  <%= @check.pay_date.strftime("%m/%d/%Y") %>
-</p>
-<p>
-  <strong>Deposited Date:</strong>
-  <%= @check.deposited_date.strftime("%m/%d/%Y") %>
-</p>
-<p>
-  <strong>Check Number:</strong>
-  <%= @check.check_number %>
-</p>
-<p>
-  <strong>Name on Check:</strong>
-    <%= @check.name_on_check %>
-</p>
+<div class="row span12">
+  <div class="new-payment-field text-center ">
+    <p>
+      <strong>Student:</strong>
+      <%= @check.student.first_name %>
+      <%= @check.student.last_name %>
+    </p>
+    <p>
+      <strong>Amount:</strong>
+      <%= number_to_currency(@check.amount) %>
+    </p>
+    <p>
+      <strong>Date Received:</strong>
+      <%= @check.pay_date.strftime("%m/%d/%Y") %>
+    </p>
+    <p>
+      <strong>Deposited Date:</strong>
+      <%= @check.deposited_date.strftime("%m/%d/%Y") %>
+    </p>
+    <p>
+      <strong>Check Number:</strong>
+      <%= @check.check_number %>
+    </p>
+    <p>
+      <strong>Name on Check:</strong>
+        <%= @check.name_on_check %>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_check_path(@check) %> |
-<%= link_to 'Back', checks_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <%= link_to 'Edit', edit_check_path(@check), class: "btn btn-info" %>
+      </div>
+    </div>
+</div>
+
+<!-- <%= link_to 'Edit', edit_check_path(@check) %> |
+<%= link_to 'Back', checks_path %> -->
