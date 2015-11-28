@@ -2,32 +2,39 @@
 
 <h1>Listing Stripes</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Student</th>
-      <th>Amount</th>
-      <th>Pay Date</th>
-      <th>Refunded?</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @stripes.each do |stripe| %>
+<div class="table-responsive col-md-12">
+  <table class="table table-striped table-hover student-list">
+    <thead>
       <tr>
-        <td><%= stripe.student.full_name %></td>
-        <td><%= number_to_currency(stripe.amount) %></td>
-        <td><%= stripe.pay_date.strftime("%m/%d/%Y") %></td>
-        <td><%= stripe.refunded %></td>
-        <td><%= link_to 'Show', stripe %> | </td>
-        <td><%= link_to 'Edit', edit_stripe_path(stripe) %> | </td>
-        <td><%= link_to 'Destroy', stripe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Student</th>
+        <th>Amount</th>
+        <th>Pay Date</th>
+        <th>Refunded?</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @stripes.each do |stripe| %>
+        <tr>
+          <td><%= stripe.student.full_name %></td>
+          <td><%= number_to_currency(stripe.amount) %></td>
+          <td><%= stripe.pay_date.strftime("%m/%d/%Y") %></td>
+          <td><%= stripe.refunded %></td>
+          <td><%= link_to 'Show', stripe %> | </td>
+          <td><%= link_to 'Edit', edit_stripe_path(stripe) %> | </td>
+          <td><%= link_to 'Destroy', stripe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Stripe', new_stripe_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <%= link_to 'New Stripe', new_stripe_path, class: "btn btn-info" %>
+      </div>
+    </div>
+</div>

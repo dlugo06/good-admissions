@@ -1,26 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Student:</strong>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <%= link_to 'Back', wires_path, class: "btn btn-info" %>
+      </div>
+    </div>
+</div>
 
-  <%= @wire.student.full_name %>
-</p>
-<p>
-  <strong>Amount:</strong>
-  <%= number_to_currency(@wire.amount) %>
-</p>
-<p>
-  <strong>Send Date:</strong>
-  <%= @wire.send_date.strftime("%m/%d/%Y") %>
-</p>
-<p>
-  <strong>Date Received:</strong>
-  <%= @wire.pay_date.strftime("%m/%d/%Y") %>
-</p>
-<p>
-  <strong>Sender:</strong>
-  <%= @wire.sender %>
-</p>
+<div class="row span12">
+  <div class="new-payment-field text-center ">
+    <p>
+      <strong>Student:</strong>
 
-<%= link_to 'Edit', edit_wire_path(@wire) %> |
-<%= link_to 'Back', wires_path %>
+      <%= @wire.student.full_name %>
+    </p>
+    <p>
+      <strong>Amount:</strong>
+      <%= number_to_currency(@wire.amount) %>
+    </p>
+    <p>
+      <strong>Send Date:</strong>
+      <%= @wire.send_date.strftime("%m/%d/%Y") %>
+    </p>
+    <p>
+      <strong>Date Received:</strong>
+      <%= @wire.pay_date.strftime("%m/%d/%Y") %>
+    </p>
+    <p>
+      <strong>Sender:</strong>
+      <%= @wire.sender %>
+    </p>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+          <%= link_to 'Edit', edit_wire_path(@wire), class: "btn btn-info" %>
+      </div>
+    </div>
+</div>
+
+<!-- <%= link_to 'Edit', edit_wire_path(@wire) %> | -->
+<!-- <%= link_to 'Back', wires_path %> -->
