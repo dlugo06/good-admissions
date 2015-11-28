@@ -19,7 +19,7 @@
     </div>
     <div class="field">
       <%= f.label :amount %><br>
-      <%= f.number_field :amount %>
+      <%= f.number_field :amount, step: 0.01 %>
     </div>
     <div class="field">
       <%= f.label :send_date, "Send Date" %><br>
