@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'loans/new' => redirect('/loans')
   get 'wires/new' => redirect('/wires')
   get 'payments' => 'payments#index', as: :payments
-
+  post 'twilio/voice' => 'twilio#voice'
+  post 'students/:student_id/:payment_type/:id/notify' => 'notifications#notify', as: :payment_notification
+  
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
