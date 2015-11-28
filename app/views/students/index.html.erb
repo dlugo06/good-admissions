@@ -27,20 +27,44 @@
     <% end %>
     Students</h2>
 
-    <form class="student-filters">
-      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Cohort'}, class: "btn", id: "student-list-btn-bckgrd") %>
-        <input type="submit" value="Filter" class="btn btn-info" />
-    </form>
-    <form class="student-filters">
-      <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn", id: "student-list-btn-bckgrd") %>
-      <input type="submit" value="Filter" class="btn btn-info" />
-    </form>
-    <% if current_user.admin? %>
+      <!-- <form class="student-filters">
+        <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Cohort'}, class: "btn", id: "student-list-btn-bckgrd") %>
+          <input type="submit" value="Filter" class="btn btn-info" />
+      </form>
       <form class="student-filters">
-        <%= select("student", "balance", ["Outstanding", "Cleared"], {include_blank: 'Balance'}, class: "btn", id: "student-list-btn-bckgrd") %>
+        <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn", id: "student-list-btn-bckgrd") %>
         <input type="submit" value="Filter" class="btn btn-info" />
       </form>
-    <% end %>
+      <% if current_user.admin? %>
+        <form class="student-filters">
+          <%= select("student", "balance", ["Outstanding", "Cleared"], {include_blank: 'Balance'}, class: "btn", id: "student-list-btn-bckgrd") %>
+          <input type="submit" value="Filter" class="btn btn-info" />
+        </form> -->
+
+      <div class="form-inline" id="listing-students-form">
+        <div class="form-group student-filters">
+        <!-- <form class="student-filters"> -->
+          <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Cohort'}, class: "btn", id: "student-list-btn-bckgrd") %>
+            <input type="submit" value="Filter" class="btn btn-info" />
+        <!-- </form> -->
+        </div>
+
+        <div class="form-group student-filters">
+          <!-- <form class="student-filters"> -->
+            <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn", id: "student-list-btn-bckgrd") %>
+            <input type="submit" value="Filter" class="btn btn-info" />
+          <!-- </form> -->
+        </div>
+        <div class="form-group student-filters">
+        <% if current_user.admin? %>
+          <!-- <form class="student-filters"> -->
+            <%= select("student", "balance", ["Outstanding", "Cleared"], {include_blank: 'Balance'}, class: "btn", id: "student-list-btn-bckgrd") %>
+            <input type="submit" value="Filter" class="btn btn-info" />
+          <!-- </form> -->
+          <% end %>
+        </div>
+      </div>
+      <!-- <% end %> -->
   </div>
 </div>
 <br>

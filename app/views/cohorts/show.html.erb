@@ -1,29 +1,44 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @cohort.name %>
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <%= link_to 'Back', cohorts_path, class: "btn btn-info" %>
+      </div>
+    </div>
+</div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @cohort.location %>
-</p>
+<div class="row span12">
+  <div class="new-payment-field text-center ">
+      <p>
+        <strong>Name:</strong>
+        <%= @cohort.name %>
+      </p>
+      <p>
+        <strong>Location:</strong>
+        <%= @cohort.location %>
+      </p>
+      <p>
+        <strong>Cohort number:</strong>
+        <%= @cohort.cohort_number %>
+      </p>
+      <p>
+        <strong>Capacity:</strong>
+        <%= @cohort.capacity %>
+      </p>
+      <p>
+        <strong>Start date:</strong>
+        <%= @cohort.start_date %>
+      </p>
+    </div>
+</div>
 
-<p>
-  <strong>Cohort number:</strong>
-  <%= @cohort.cohort_number %>
-</p>
-
-<p>
-  <strong>Capacity:</strong>
-  <%= @cohort.capacity %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @cohort.start_date %>
-</p>
-
-<%= link_to 'Edit', edit_cohort_path(@cohort) %> |
-<%= link_to 'Back', cohorts_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <%= link_to 'Edit', edit_cohort_path(@cohort), class: "btn btn-info" %>
+      </div>
+    </div>
+</div>
+<!-- <%= link_to 'Edit', edit_cohort_path(@cohort) %> | -->
+<!-- <%= link_to 'Back', cohorts_path %> -->

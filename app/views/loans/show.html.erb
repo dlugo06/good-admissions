@@ -1,27 +1,42 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <%= link_to 'Back', loans_path, class: "btn btn-info" %>
+      </div>
+    </div>
+</div>
 
-<p>
-  <strong>Student:</strong>
-  <%= @loan.student.first_name %>
-  <%= @loan.student.last_name %>
-</p>
-<p>
-  <strong>Amount:</strong>
-  <%= number_to_currency(@loan.amount) %>
-</p>
-<p>
-  <strong>Company:</strong>
-  <%= @loan.company %>
-</p>
-<p>
-  <strong>Date Funded:</strong>
-  <%= @loan.pay_date.strftime("%m/%d/%Y") %>
-</p>
-<p>
-  <strong>Notes:</strong>
-  <%= @loan.notes %>
-</p>
-  
+<div class="row span12">
+  <div class="new-payment-field text-center ">
+    <p>
+      <strong>Student:</strong>
+      <%= @loan.student.first_name %>
+      <%= @loan.student.last_name %>
+    </p>
+    <p>
+      <strong>Amount:</strong>
+      <%= number_to_currency(@loan.amount) %>
+    </p>
+    <p>
+      <strong>Company:</strong>
+      <%= @loan.company %>
+    </p>
+    <p>
+      <strong>Date Funded:</strong>
+      <%= @loan.pay_date.strftime("%m/%d/%Y") %>
+    </p>
+    <p>
+      <strong>Notes:</strong>
+      <%= @loan.notes %>
+    </p>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_loan_path(@loan) %> |
-<%= link_to 'Back', loans_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <%= link_to 'Edit', edit_loan_path(@loan), class: "btn btn-info" %>
+      </div>
+    </div>
+</div>

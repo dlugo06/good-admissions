@@ -21,7 +21,7 @@ textarea {
   margin-right: 30px;
 }
 .notice, .alert {
-  color: #eaeaea;
+  color: #4d4d4d;
   margin-left: 10px;
 }
 
@@ -84,14 +84,16 @@ input[type="radio"] {
 #payment_render {
   padding-top: 20px;
 }
-.input-group {
-  border-style: solid;
-  border-color: black;
-}
+// .input-group {
+//   border-style: solid;
+//   border-color: black;
+// }
 #student-detail-back-btn {
   color: #fff;
 }
-
+#listing-students-form {
+  margin-bottom: 10px;
+}
 
 -------------Payments----------------------
 .back-to-students-btn .btn-info {
@@ -112,8 +114,4 @@ input[type="radio"] {
 }
 #payment_render {
   padding-top: 20px;
-}
-.input-group {
-  border-style: solid;
-  border-color: black;
 }

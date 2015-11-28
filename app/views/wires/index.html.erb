@@ -1,35 +1,43 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Wires</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Student</th>
-      <th>Amount</th>
-      <th>Send Date</th>
-      <th>Date Received</th>
-      <th>Sender</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @wires.each do |wire| %>
+<div class="table-responsive col-md-12">
+  <table class="table table-striped table-hover student-list">
+    <thead>
       <tr>
-        <td><%= wire.student.first_name %> <%= wire.student.last_name %></td>
-        <td><%= number_to_currency(wire.amount) %></td>
-        <td><%= wire.send_date.strftime("%m/%d/%Y") %></td>
-        <td><%= wire.pay_date.strftime("%m/%d/%Y") %></td>
-        <td><%= wire.sender %></td>
-        <td><%= link_to 'Show', wire %> | </td>
-        <td><%= link_to 'Edit', edit_wire_path(wire) %> | </td>
-        <td><%= link_to 'Destroy', wire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Student</th>
+        <th>Amount</th>
+        <th>Send Date</th>
+        <th>Date Received</th>
+        <th>Sender</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @wires.each do |wire| %>
+        <tr>
+          <td><%= wire.student.first_name %> <%= wire.student.last_name %></td>
+          <td><%= number_to_currency(wire.amount) %></td>
+          <td><%= wire.send_date.strftime("%m/%d/%Y") %></td>
+          <td><%= wire.pay_date.strftime("%m/%d/%Y") %></td>
+          <td><%= wire.sender %></td>
+          <td><%= link_to 'Show', wire %> | </td>
+          <td><%= link_to 'Edit', edit_wire_path(wire) %> | </td>
+          <td><%= link_to 'Destroy', wire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
-<%= link_to 'New Wire', new_wire_path %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <%= link_to 'New Wire', new_wire_path, class: "btn btn-info" %>
+      </div>
+    </div>
+</div>
+
+<!-- <%= link_to 'New Wire', new_wire_path %> -->
