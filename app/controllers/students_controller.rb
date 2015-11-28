@@ -97,7 +97,7 @@ class StudentsController < ApplicationController
           @filtered_students = Student.where(balance: 0)
         end
       else
-        if (request.original_url.include?("/students") && !request.original_url.include?("?")) || Cohort.all.length == 0
+        if (request.original_url.include?("/students") && !request.original_url.include?("?")) || Cohort.all.length == 0 || Student.all.length == 0
           @filtered_students = @all_students
         else
           @filtered_students = @default_cohort.students
