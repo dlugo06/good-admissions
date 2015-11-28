@@ -12,10 +12,16 @@
 }
 .student-filters {
   padding-left: 0;
-  margin-bottom: 35px;
+  margin-bottom: 1.2em;
+}
+.header-title {
+  margin-bottom: 0;
 }
 .text-center .new-student-btn {
   color: #FFF;
+}
+.text-center .student-filters {
+  display: inline-flex;
 }
 .new-student {
   text-align: center;
@@ -26,8 +32,8 @@
 .new-student-btn {
   margin-top: 20px;
 }
-#new-student-add-btn {
-  margin-bottom: 30px;
+#new-student-add-btn, #all-students-btn {
+  margin-bottom: 0.6em;
   color: #fff;
 }
 .student-list-detail {

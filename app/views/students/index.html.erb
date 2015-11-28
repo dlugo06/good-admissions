@@ -9,6 +9,24 @@
   <% end %>
 <% end %>
 
+<div class="text-center">
+  <form class="student-filters">
+    <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Cohort'}, class: "btn", id: "student-list-btn-bckgrd") %>
+      <input type="submit" value="Filter" class="btn btn-info" />
+  </form>
+  <form class="student-filters">
+    <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn", id: "student-list-btn-bckgrd") %>
+    <input type="submit" value="Filter" class="btn btn-info" />
+  </form>
+  <% if current_user.admin? %>
+    <form class="student-filters">
+      <%= select("student", "balance", ["Outstanding", "Cleared"], {include_blank: 'Balance'}, class: "btn", id: "student-list-btn-bckgrd") %>
+      <input type="submit" value="Filter" class="btn btn-info" />
+    </form>
+</div>
+
+<% end %>
+
 <% if nil_cohort == true %>
   <%= render 'unspecified_students' %>
 <% end %>
@@ -17,44 +35,34 @@
 
 <div class="row col-md-12">
   <div class="text-center">
-    <h2>Listing
-    <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
-      <%= Cohort.find(params[:cohort][:id].to_i).name %>
-    <% elsif params[:cohort].present? && params[:cohort][:location].present? %>
-      <%= Cohort.find_by(location: params[:cohort][:location]).location %>
-    <% elsif params[:student].present? && params[:student][:balance].present? %>
-      <%= params[:student][:balance] %>
-    <% else %>
-      <% if @filtered_students == @all_students %>
-        All
+    <div class="index-header">
+      <h2 class="header-title">Listing
+      <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
+        <%= Cohort.find(params[:cohort][:id].to_i).name %>
+      <% elsif params[:cohort].present? && params[:cohort][:location].present? %>
+        <%= Cohort.find_by(location: params[:cohort][:location]).location %>
+      <% elsif params[:student].present? && params[:student][:balance].present? %>
+        <%= params[:student][:balance] %>
       <% else %>
-        <%= @default_cohort.name %>
+        <% if @filtered_students == @all_students %>
+          All
+        <% else %>
+          <%= @default_cohort.name %>
+        <% end %>
       <% end %>
-    <% end %>
-    Students</h2>
+      Students</h2>
+    </div>
 
-    <form class="student-filters">
-      <%= select("cohort", "id", Cohort.all.collect {|c| [c.name, c.id ]}, {include_blank: 'Cohort'}, class: "btn", id: "student-list-btn-bckgrd") %>
-        <input type="submit" value="Filter" class="btn btn-info" />
-    </form>
-    <form class="student-filters">
-      <%= select("cohort", "location", Cohort.all.collect(&:location).uniq, {include_blank: 'Location'}, class: "btn", id: "student-list-btn-bckgrd") %>
-      <input type="submit" value="Filter" class="btn btn-info" />
-    </form>
-    <% if current_user.admin? %>
-      <form class="student-filters">
-        <%= select("student", "balance", ["Outstanding", "Cleared"], {include_blank: 'Balance'}, class: "btn", id: "student-list-btn-bckgrd") %>
-        <input type="submit" value="Filter" class="btn btn-info" />
-      </form>
-    <% end %>
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <%= link_to "View All Students", students_path, class: " btn btn-info", id: "new-student-add-btn" %>
+          <%= link_to "View All Students", students_path, class: " btn btn-info", id: "all-students-btn" %>
+          <% if current_user.admin? %>
+            <%= link_to 'New Student', new_student_path, class: " btn btn-info", id: "new-student-add-btn" %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-
   </div>
 </div>
 <br>
@@ -62,13 +70,3 @@
 <%= render 'student_collection' %>
 
 <br>
-
-<% if current_user.admin? %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <%= link_to 'New Student', new_student_path, class: " btn btn-info", id: "new-student-add-btn" %>
-      </div>
-    </div>
-  </div>
-<% end %>
