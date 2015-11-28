@@ -56,7 +56,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <%= link_to "View All Students", students_path, class: " btn btn-info", id: "all-students-btn" %>
+          <% if @filtered_students != @all_students %>
+            <%= link_to "View All Students", students_path, class: " btn btn-info", id: "all-students-btn" %>
+          <% end %>
           <% if current_user.admin? %>
             <%= link_to 'New Student', new_student_path, class: " btn btn-info", id: "new-student-add-btn" %>
           <% end %>
