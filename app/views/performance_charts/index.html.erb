@@ -13,10 +13,21 @@
 
     function drawChart() {
       var studentHash = $('#students').data('students');
-      alert(studentHash[0].cohort_id);
+      var cohortsHash = $('#cohorts').data('cohorts');
+      var unspecified = [];
 
-      // Logic goes here..
+      for (var i = 0; i < cohortsHash.length; i++) {
+        var cohortId = cohortsHash[i].id;
+        var cohortName = cohortsHash[i].name;
+      }
 
+      for (var i = 0; i < studentHash.length; i++) {
+        console.log(studentHash[i].cohort_id);
+        if (studentHash[i].cohort_id === null) {
+          unspecified.push(studentHash[i]);
+          console.log(unspecified);
+        }
+      }
       // Create the table
       var data = google.visualization.arrayToDataTable([
         ['Weeks Out', 'Students Registered'],
@@ -56,11 +67,49 @@
         ['2',  0.90],
         ['1',  1.10],
       ]);
+      
+      var data3 = google.visualization.arrayToDataTable([
+        ['Weeks Out', 'Students Registered'],
+        ['15',  0.1],
+        ['14',  0.18],
+        ['13',  0.16],
+        ['12',  0.13],
+        ['11',  0.20],
+        ['10',  0.28],
+        ['9',  0.37],
+        ['8',  0.30],
+        ['7',  0.42],
+        ['6',  0.55],
+        ['5',  0.68],
+        ['4',  0.63],
+        ['3',  0.78],
+        ['2',  0.90],
+        ['1',  1.10],
+      ]);
+
+      var data4 = google.visualization.arrayToDataTable([
+        ['Weeks Out', 'Students Registered'],
+        ['15',  0.1],
+        ['14',  0.18],
+        ['13',  0.16],
+        ['12',  0.13],
+        ['11',  0.20],
+        ['10',  0.28],
+        ['9',  0.37],
+        ['8',  0.30],
+        ['7',  0.42],
+        ['6',  0.55],
+        ['5',  0.68],
+        ['4',  0.63],
+        ['3',  0.78],
+        ['2',  0.90],
+        ['1',  1.10],
+      ]);
 
       var options = {
         title: 'Miami Cohort 5 Performance',
         vAxis: { title: 'Capacity',
-          gridlines: { count: 13},
+          gridlines: { count: 13 },
           minValue: 0,
           maxValue: 1.10,
           format: 'percent' },
@@ -79,11 +128,37 @@
         legend: { position: 'bottom' }
       };
 
+      var options3 = {
+        title: 'Miami Cohort 7 Performance',
+        vAxis: { title: 'Capacity',
+          gridlines: { count: 13},
+          minValue: 0,
+          maxValue: 1.10,
+          format: 'percent' },
+        hAxis: { title: 'Weeks Out' },
+        legend: { position: 'bottom' }
+      };
+
+      var options4 = {
+        title: 'Miami Cohort 8 Performance',
+        vAxis: { title: 'Capacity',
+          gridlines: { count: 13},
+          minValue: 0,
+          maxValue: 1.10,
+          format: 'percent' },
+        hAxis: { title: 'Weeks Out' },
+        legend: { position: 'bottom' }
+      };
+
       var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
       var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+      var chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+      var chart4 = new google.visualization.LineChart(document.getElementById('curve_chart4'));
 
       chart.draw(data, options);
       chart2.draw(data2, options2);
+      chart3.draw(data3, options3);
+      chart4.draw(data4, options4);
     }
   </script>
 
@@ -113,7 +188,11 @@
 
 <%= content_tag "div", id: "students", data: { students: @students} do %>
 <% end %>
-<div id="performance_chart" style="width: 2000px">
+<%= content_tag "div", id: "cohorts", data: { cohorts: @cohorts} do %>
+<% end %>
+<div id="performance_chart" style="width: 1500px">
   <div id="curve_chart" style="width: 650px; height: 350px; float: left"></div>
   <div id="curve_chart2" style="width: 650px; height: 350px; float: left"></div>
+  <div id="curve_chart3" style="width: 650px; height: 350px; float: left"></div>
+  <div id="curve_chart4" style="width: 650px; height: 350px; float: left"></div>
 </div>

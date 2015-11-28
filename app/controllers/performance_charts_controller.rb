@@ -6,6 +6,7 @@ class PerformanceChartsController < ApplicationController
   def index
     @performance_charts = PerformanceChart.all
     @students = Student.all
+    @cohorts = Cohort.all
   end
 
   # GET /performance_charts/1
