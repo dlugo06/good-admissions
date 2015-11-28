@@ -17,7 +17,7 @@
       <% @filtered_students.each do |student| %>
         <% if student.cohort.present? %>
           <tr>
-            <td><%= student.cohort.name %></td>
+            <td><%= link_to "#{student.cohort.name}", student.cohort %></td>
             <td><%= link_to "#{student.full_name}", student %></td>
             <td><%= student.email %></td>
             <td><%= number_to_phone(student.phone_num) %></td>

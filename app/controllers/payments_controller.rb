@@ -6,4 +6,8 @@ class PaymentsController < ApplicationController
     @wire = Wire.new
     @stripe = Stripe.new
   end
+
+  def index
+    @payments = Student.all.map{ |s| s.payments }.flatten.sort_by(&:pay_date).reverse!
+  end
 end

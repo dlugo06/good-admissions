@@ -3,8 +3,9 @@ class StudentsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :set_cohort, only: :index
   before_filter :set_location, only: :index
+  before_filter :default_filter, only: :index
+
   def payments
-    # @payments = @student.payments
   end
 
   def location
@@ -18,21 +19,8 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @unspecified_students = Student.where(cohort_id: nil)
-    @all_students = Student.all
-    if @cohort.present?
-      @filtered_students = @cohort.students
-    elsif @location.present?
-      @filtered_students = @location.map(&:students)
-      @filtered_students.flatten!
-    elsif params[:student].present? && params[:student][:balance].present?
-      if params[:student][:balance] == "Outstanding"
-        @filtered_students = Student.where("balance > ?", 0)
-      elsif params[:student][:balance] == "Cleared"
-        @filtered_students = Student.where(balance: 0)
-      end
-    else
-      @filtered_students = @all_students
-    end
+    @all_students = Student.all.order(created_at: :asc)
+    filters
   end
 
   # GET /students/1
@@ -95,6 +83,36 @@ class StudentsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def filters
+      if @cohort.present?
+        @filtered_students = @cohort.students
+      elsif @location.present?
+        @filtered_students = @location.map(&:students)
+        @filtered_students.flatten!
+      elsif params[:student].present? && params[:student][:balance].present?
+        if params[:student][:balance] == "Outstanding"
+          @filtered_students = Student.where("balance > ?", 0).order(balance: :desc)
+        elsif params[:student][:balance] == "Cleared"
+          @filtered_students = Student.where(balance: 0)
+        end
+      else
+        if (request.original_url.include?("/students") && !request.original_url.include?("?")) || Cohort.all.length == 0 || Student.all.length == 0
+          @filtered_students = @all_students
+        else
+          @filtered_students = @default_cohort.students
+        end
+      end
+    end
+
+    def default_filter
+      if Cohort.where("start_date >= ?", Date.today).empty?
+        @default_cohort = Cohort.where("start_date <= ?", Date.today).order(start_date: :desc).first
+      else
+        @default_cohort = Cohort.where("start_date >= ?", Date.today).first
+      end
+    end
+
     def set_student
       @student = Student.find(params[:id])
     end

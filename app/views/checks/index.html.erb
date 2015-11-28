@@ -1,37 +1,34 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 <h1>Listing Checks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Student</th>
-      <th>Amount</th>
-      <th>Date Received</th>
-      <th>Deposited Date</th>
-      <th>Check Number</th>
-      <th>Name on Check</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @checks.each do |check| %>
+<div class="table-responsive col-md-12">
+  <table class="table table-striped table-hover student-list">
+    <thead>
       <tr>
-        <td><%= check.student.first_name %> <%= check.student.last_name %></td>
-        <td><%= number_to_currency(check.amount) %></td>
-        <td><%= check.pay_date.strftime("%m/%d/%Y") %></td>
-        <td><%= check.deposited_date.strftime("%m/%d/%Y") %></td>
-        <td><%= check.check_number %></td>
-        <td><%= check.name_on_check %></td>
-        <td><%= link_to 'Show', check %> | </td>
-        <td><%= link_to 'Edit', edit_check_path(check) %> | </td>
-        <td><%= link_to 'Destroy', check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Student</th>
+        <th>Amount</th>
+        <th>Date Received</th>
+        <th>Deposited Date</th>
+        <th>Check Number</th>
+        <th>Name on Check</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Check', new_check_path %>
+    <tbody>
+      <% @checks.each do |check| %>
+        <tr>
+          <td><%= check.student.first_name %> <%= check.student.last_name %></td>
+          <td><%= number_to_currency(check.amount) %></td>
+          <td><%= check.pay_date.strftime("%m/%d/%Y") %></td>
+          <td><%= check.deposited_date.strftime("%m/%d/%Y") %></td>
+          <td><%= check.check_number %></td>
+          <td><%= check.name_on_check %></td>
+          <td><%= link_to 'Show', check %></td>
+          <td><%= link_to 'Edit', edit_check_path(check) %></td>
+          <td><%= link_to 'Destroy', check, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

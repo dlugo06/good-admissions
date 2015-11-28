@@ -11,16 +11,14 @@
     </div>
   <% end %>
 
-
 <div class="row span12">
   <div class="new-payment-field text-center ">
-
     <div class="field top-label-element">
       <%= f.hidden_field :student_id, value: @student.id %>
     </div>
     <div class="field">
       <%= f.label :amount %><br>
-      <%= f.number_field :amount %>
+      <%= f.number_field :amount, step: 0.01 %>
     </div>
     <div class="field">
       <%= f.label :pay_date, "Date Funded" %><br>

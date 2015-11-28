@@ -1,3 +1,13 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to 'To Students', root_path, class: " btn btn-info" %>
+        <%= link_to 'Back', student_payments_path(@student), class: " btn btn-info" %>
+      </div>
+    </div>
+</div>
+
+
 <div id="new-payment-creation">
   <%= render 'form' %>
 </div>

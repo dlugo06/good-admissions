@@ -11,27 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name, "Cohort Name" %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.select :location, ["Miami", "Fort Lauderdale", "Miami Beach"] %>
-  </div>
-  <div class="field">
-    <%= f.label :cohort_number, "Cohort Number" %><br>
-    <%= f.number_field :cohort_number %>
-  </div>
-  <div class="field">
-    <%= f.label :capacity %><br>
-    <%= f.number_field :capacity %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date, "Start Date" %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="row span12">
+    <div class="new-payment-field text-center ">
+        <div class="field top-label-element">
+          <%= f.label :name, "Cohort Name" %><br>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :location %><br>
+          <%= f.select :location, ["Miami", "Fort Lauderdale", "Miami Beach"] %>
+        </div>
+        <div class="field">
+          <%= f.label :cohort_number, "Cohort Number" %><br>
+          <%= f.number_field :cohort_number %>
+        </div>
+        <div class="field">
+          <%= f.label :capacity %><br>
+          <%= f.number_field :capacity %>
+        </div>
+        <div class="field">
+          <%= f.label :start_date, "Start Date" %><br>
+          <%= f.date_select :start_date %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
+</div>

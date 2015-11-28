@@ -1,17 +1,22 @@
-
-<!-- <h1>This is the Student Payments page.</h1> -->
-<!-- <p>
-  The name of the student and links to all of the students payment shoudl be here.
-</p> -->
-
 <!-- <p id="notice"><%= notice %></p> -->
+
+<div class="row back-to-students col-md-2">
+  <%= link_to('Back To Students', root_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
+</div>
+
+
 <div class="row">
-  <div class="col-md-12 text-center"
+  <div class="col-md-12 text-center">
     <div id="payment-listing">
-      <h2>Listing Payments For <%= @student.full_name %></h2>
+      <h2 id="student-payment-header-title">Listing Payments For <%= @student.full_name %></h2>
+      <div class="row new-payment col-md-12 text-center">
+        <%= link_to('New Payment', new_student_payment_path(@student), :class => 'btn btn-large btn-info', id: "new-payment-button-paypage") %>
+      </div>
     </div>
+
   </div>
 </div>
+
 <div class="table-responsive col-md-8 col-md-offset-2">
   <table class="table">
     <thead>
@@ -19,8 +24,7 @@
         <th>Payment Date</th>
         <th>Payment Type</th>
         <th>Amount</th>
-        <!-- <th>Details</th> -->
-        <!-- <th colspan="3"></th> -->
+        <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -30,6 +34,8 @@
           <td><%= payment.pay_date.strftime("%m/%d/%Y") %></td>
           <td><%= payment.class %></td>
           <td><%= number_to_currency(payment.amount) %></td>
+          <% payment_type = payment.class.to_s.downcase %>
+          <td><%= link_to "Notify", payment_notification_path(@student.id, payment_type, payment), method: :post, data: {confirm: "Are you sure you want to text #{@student.full_name} about this #{payment.class.to_s.downcase} payment?"} %></td>
           <td><%= link_to "Details", payment %></td>
           <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -39,17 +45,3 @@
 </div>
 
 <br>
-
- <div class="row new-payment col-md-2 col-md-offset-5">
-  <%= link_to('New Payment', new_student_payment_path(@student), :class => 'btn btn-large btn-info') %>
-</div>
-<div class="row back-to-students col-md-2 col-md-offset-5">
-  <%= link_to('Back To Students', students_path, :class => 'btn btn-large btn-info') %>
-</div>
-
-  <!-- <div class="row new-payment col-md-2 col-md-offset-5 well">
-    <%= link_to 'New Payment', new_student_payment_path(@student) %>
-  </div> -->
-  <!-- <div class="row back-to-students col-md-2 col-md-offset-5 well">
-    <%= link_to 'Back To Students', students_path %>
-  </div> -->
