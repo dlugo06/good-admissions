@@ -111,7 +111,6 @@ class StudentsController < ApplicationController
       else
         @default_cohort = Cohort.where("start_date >= ?", Date.today).first
       end
-      raise
     end
 
     def set_student
