@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
   def check_admin
     if current_user.try(:admin?) == false
-      redirect_to students_path, notice: "You are not authorized to take that action"
+      redirect_to root_path, notice: "You are not authorized to take that action"
     end
   end
 end

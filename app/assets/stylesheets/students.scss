@@ -12,10 +12,23 @@
 }
 .student-filters {
   padding-left: 0;
-  margin-bottom: 35px;
+  margin-bottom: 1.2em;
+}
+.header-title {
+  margin-bottom: 0;
+}
+#student-payment-header-title {
+  margin-bottom: 0;
+}
+#new-payment-button-paypage {
+  margin-bottom: 0.7em;
+  color: #FFF;
 }
 .text-center .new-student-btn {
   color: #FFF;
+}
+.text-center .student-filters {
+  display: inline-flex;
 }
 .new-student {
   text-align: center;
@@ -26,8 +39,8 @@
 .new-student-btn {
   margin-top: 20px;
 }
-#new-student-add-btn {
-  margin-bottom: 30px;
+#new-student-add-btn, #all-students-btn {
+  margin-bottom: 0.6em;
   color: #fff;
 }
 .student-list-detail {
@@ -59,4 +72,8 @@
 #edit-student-top-back-button {
   color: #fff;
   margin-left: 30px;
+}
+#btn-text-color {
+  color: #FFF;
+  margin-left: 69%;
 }

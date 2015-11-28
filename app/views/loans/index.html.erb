@@ -13,8 +13,7 @@
         <th>Amount</th>
         <th>Date Funded</th>
         <th>Company</th>
-        <th>Notes</th>
-        <!-- <th colspan="3"></th> -->
+        <th colspan="3"></th>
       </tr>
     </thead>
 
@@ -25,21 +24,11 @@
           <td><%= number_to_currency(loan.amount) %></td>
           <td><%= loan.pay_date.strftime("%m/%d/%Y") %></td>
           <td><%= loan.company %></td>
-          <td><%= loan.notes %></td>
-          <td><%= link_to 'Show', loan %> | </td>
-          <td><%= link_to 'Edit', edit_loan_path(loan) %> | </td>
+          <td><%= link_to 'Show', loan %></td>
+          <td><%= link_to 'Edit', edit_loan_path(loan) %> </td>
           <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<br>
-
-<!-- <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-          <%= link_to 'New Loan', new_loan_path, class: "btn btn-info" %>
-      </div>
-    </div>
-</div> -->
