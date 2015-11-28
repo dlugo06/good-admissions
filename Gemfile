@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'better_errors'
 
+gem 'twilio-ruby'
+
 gem 'devise'
 
 gem 'rails_12factor', group: :production
