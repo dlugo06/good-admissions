@@ -32,12 +32,20 @@ h3 {
   font-weight: normal;
   font-size: 1.705rem;
 }
-a {
-  // color: #4d4d4d;
+a{
+}
+a:hover {
   text-decoration: none;
-  &:hover { text-decoration: underline; }
+  background-color: inherit;
+  text-decoration: underline;
 }
 p {
   margin: 20px 0;
   line-height: 1.5;
+}
+a.button-color-white {
+  color: #fff;
+}
+a:hover.button-color-white {
+  text-decoration: underline;
 }

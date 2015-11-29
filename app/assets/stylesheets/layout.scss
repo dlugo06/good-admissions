@@ -28,3 +28,11 @@ body {
 .loan-listing-back-btns {
   margin-left: 10%;
 }
+// bootstrap default text color override
+.btn-text-color {
+  color: #fff !important;
+}
+//global offset for buttons aligned to the Wyncode logo
+.left-side-btn-offset {
+  margin-left: 11%;
+}
