@@ -18,7 +18,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @default = false
+    @default_students_filter = false
     @all_students_filter = false
     @cohort_students_filter = false
     @location_students_filter = false
@@ -110,7 +110,7 @@ class StudentsController < ApplicationController
           @all_students_filter = true
         else
           @filtered_students = @default_cohort.students
-          @default = true
+          @default_students_filter = true
         end
       end
     end
