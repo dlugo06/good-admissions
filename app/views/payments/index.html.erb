@@ -5,14 +5,44 @@
 </p> -->
 
 <!-- <p id="notice"><%= notice %></p> -->
-<div class="row">
-  <div class="col-md-12 text-center"
+
+<!-- <div class="row">
+  <div class="col-md-12 text-center inline">
     <div id="payment-listing">
-      <h2>Listing Payments For All Students</h2>
+      <%= link_to('Stripes', stripes_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
+      <%= link_to('Stripes', stripes_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
+      <%= link_to('Stripes', stripes_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
       <%= link_to('Stripes', stripes_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
     </div>
   </div>
+</div> -->
+<div class="row">
+  <div class="col-md-12 text-center">
+    <div id="payment-listing">
+      <h2>Listing Payments For All Students</h2>
+    </div>
+  </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12 text-center">
+      <div class="btn-group " role="group" id="listing-payments-btn-group">
+        <div button type="button" class="btn btn-info">
+          <%= link_to('Stripes', stripes_path, id: "btn-text-color") %>
+        </div>
+        <div button type="button" class="btn btn-info">
+          <%= link_to('Loans', loans_path, id: "btn-text-color") %>
+        </div>
+        <div button type="button" class="btn btn-info">
+          <%= link_to('Checks', checks_path, id: "btn-text-color") %>
+        </div>
+        <div button type="button" class="btn btn-info">
+          <%= link_to('Wires', wires_path, id: "btn-text-color") %>
+        </div>
+      </div>
+    </div>
+</div>
+
 <div class="table-responsive col-md-8 col-md-offset-2">
   <table class="table">
     <thead>
@@ -43,13 +73,13 @@
 <br>
 
 
-<div class="row back-to-students col-md-2 col-md-offset-5">
+<div class="row col-md-2 col-md-offset-5">
   <%= link_to('Back To Students', root_path, :class => 'btn btn-large btn-info') %>
 </div>
 
   <!-- <div class="row new-payment col-md-2 col-md-offset-5 well">
     <%# link_to 'New Payment', new_student_payment_path(@student) %>
   </div> -->
-  <!-- <div class="row back-to-students col-md-2 col-md-offset-5 well">
+  <!-- <div class="row col-md-2 col-md-offset-5 well">
     <%# link_to 'Back To Students', students_path %>
   </div> -->
