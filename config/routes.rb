@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'stripes/new' => redirect('/stripes')
   get 'loans/new' => redirect('/loans')
   get 'wires/new' => redirect('/wires')
+  # get 'students/:student_id/:payment_type/:id/notify' => redirect('student/:student_id/payments')
   get 'webhooks/stripe_webhook' => redirect('/')
   get 'payments' => 'payments#index', as: :payments
   post 'twilio/voice' => 'twilio#voice'

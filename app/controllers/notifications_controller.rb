@@ -21,8 +21,9 @@ class NotificationsController < ApplicationController
       date = Check.find(params[:id]).pay_date.strftime("%m/%d/%Y")
     end
     message_content = "Notification from Wyncode Academy. Hello #{student.first_name}! We have received your #{payment_type} payment of #{number_to_currency(amount)} on #{date}. If you have any questions please contact us at weare@wyncode.co"
-    # raise
     client.messages.create from: '760-313-7138', to: "#{student.phone_num}", body: message_content
     redirect_to student_payments_path(student), notice: "Text notification successfully sent to #{student.full_name}"
+  rescue Twilio::REST::RequestError => e
+    redirect_to student_payments_path(student), alert: e.message
   end
 end
