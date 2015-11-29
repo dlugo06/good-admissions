@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'payments' => 'payments#index', as: :payments
   post 'twilio/voice' => 'twilio#voice'
   post 'students/:student_id/:payment_type/:id/notify' => 'notifications#notify', as: :payment_notification
-  post 'stripe/deposit' => 'webhooks#stripe_webhook'
+  post 'stripe/deposit' => 'students#stripe_webhook'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations'
