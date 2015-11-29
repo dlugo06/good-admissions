@@ -37,17 +37,17 @@
   <div class="text-center">
     <div class="index-header">
       <h2 class="header-title">Listing
-      <% if (params[:cohort] && Cohort.all.collect(&:id).include?(params[:cohort][:id].to_i))%>
+      <% if @cohort_students_filter == true %>
         <%= Cohort.find(params[:cohort][:id].to_i).name %>
-      <% elsif params[:cohort].present? && params[:cohort][:location].present? %>
+      <% elsif @location_students_filter == true %>
         <%= Cohort.find_by(location: params[:cohort][:location]).location %>
-      <% elsif params[:student].present? && params[:student][:balance].present? %>
+      <% elsif @balance_students_filter == true %>
         <%= params[:student][:balance] %>
       <% else %>
-        <% if @filtered_students == @all_students %>
-          All
-        <% else %>
+        <% if @default_students_filter == true %>
           <%= @default_cohort.name %>
+        <% elsif @all_students_filter == true  %>
+          All
         <% end %>
       <% end %>
       Students</h2>
@@ -56,13 +56,18 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
-          <% if @filtered_students != @all_students %>
+          <% if @all_students_filter == false %>
             <%= link_to "View All Students", students_path, class: " btn btn-info", id: "all-students-btn" %>
           <% end %>
           <% if current_user.admin? %>
             <%= link_to 'New Student', new_student_path, class: " btn btn-info", id: "new-student-add-btn" %>
           <% end %>
         </div>
+        <% if @cohort_students_filter == true %>
+          <h3 id="capacity" class="text-center"><strong>Capacity:</strong> <%= Cohort.find(params[:cohort][:id].to_i).capacity %> <strong>Available:</strong> <%= Cohort.find(params[:cohort][:id].to_i).capacity - Cohort.find(params[:cohort][:id].to_i).students.count %></h3>
+        <% elsif @default_students_filter == true %>
+          <h3 id="capacity" class="text-center"><strong>Capacity:</strong> <%= @default_cohort.capacity %> <strong>Available:</strong> <%= @default_cohort.capacity - @default_cohort.students.count %></h3>
+        <% end %>
       </div>
     </div>
   </div>

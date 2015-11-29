@@ -18,6 +18,11 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
+    @default_students_filter = false
+    @all_students_filter = false
+    @cohort_students_filter = false
+    @location_students_filter = false
+    @balance_students_filter = false
     @unspecified_students = Student.where(cohort_id: nil)
     @all_students = Student.all.order(created_at: :asc)
     filters
@@ -87,20 +92,25 @@ class StudentsController < ApplicationController
     def filters
       if @cohort.present?
         @filtered_students = @cohort.students
+        @cohort_students_filter = true
       elsif @location.present?
         @filtered_students = @location.map(&:students)
         @filtered_students.flatten!
+        @location_students_filter = true
       elsif params[:student].present? && params[:student][:balance].present?
         if params[:student][:balance] == "Outstanding"
           @filtered_students = Student.where("balance > ?", 0).order(balance: :desc)
         elsif params[:student][:balance] == "Cleared"
           @filtered_students = Student.where(balance: 0)
         end
+        @balance_students_filter = true
       else
         if (request.original_url.include?("/students") && !request.original_url.include?("?")) || Cohort.all.length == 0 || Student.all.length == 0
           @filtered_students = @all_students
+          @all_students_filter = true
         else
           @filtered_students = @default_cohort.students
+          @default_students_filter = true
         end
       end
     end
