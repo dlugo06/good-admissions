@@ -9,11 +9,6 @@ class StudentsController < ApplicationController
   end
 
   def location
-    # raise
-    # @location = params[:location]
-    # respond_to do |format|
-    #   format.html { redirect_to @student, notice: 'Location was successfully found.' }
-    # end
   end
   # GET /students
   # GET /students.json

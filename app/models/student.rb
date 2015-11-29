@@ -13,7 +13,7 @@ class Student < ActiveRecord::Base
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 25 }
   validates :last_name, presence: true, length: { maximum: 25 }
-  validates :phone_num, presence: true, length: { maximum: 20 }
+  # validates :phone_num, presence: true, length: { maximum: 20 }
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
   def payments
