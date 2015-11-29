@@ -9,10 +9,29 @@ class WebhooksController < ApplicationController
     description = event_json["data"]["object"]["description"]
     diglabs0 = event_json["data"]["object"]["metadata"]["diglabs0"]
     diglabs1 = event_json["data"]["object"]["metadata"]["diglabs1"]
-    dig_labs = eval(diglabs0 + diglabs1)
-    first_name = dig_labs[:fname]
-    last_name = dig_labs[:lname]
-    notes = dig_labs[:cohort]
+    dig_labs = diglabs0 + diglabs1
+    dig_labs.chop!
+    dig_labs.slice!(0)
+    dig_labs = dig_labs.split(',')
+    first_name = ""
+    last_name = ""
+    notes = ""
+
+    dig_labs.each do |string|
+      if string.include?('fname')
+        string = string.partition(":").last
+        string.slice!(0)
+        first_name = string.chop!
+      elsif string.include?('lname')
+        string = string.partition(":").last
+        string.slice!(0)
+        last_name = string.chop!
+      elsif string.include?('cohort')
+        string = string.partition(":").last
+        string.slice!(0)
+        notes = string.chop!
+      end
+    end
 
     if (amount_in_dollars == 1000.0) && (description == "DigLabs Stripe Plugin Charge")
       @student = Student.new(first_name: first_name, last_name: last_name, email: email, notes: notes)
