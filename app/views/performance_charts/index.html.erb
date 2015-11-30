@@ -1,27 +1,26 @@
 <p id="notice"><%= notice %></p>
-<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}">
-</script>
+<h1>Performance Charts</h1>
+
+<div id="performance_chart" style="width: 100%">
+  <% @locations.each do |location| %>
+    <%= content_tag "div", id: location + "-chart", style: "width: 110%; height: 700px; float: center; margin-left: -5%; padding: 0;" do %>
+    <% end %>
+  <% end %>
+  <%= div_for(@cohorts, style: "width: 50%; height: 350px; float: left", class: "cohort_chart") do |cohort|%>
+  <% end %>
+</div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}"></script>
 
 
 <script type="text/javascript">
     google.setOnLoadCallback(drawChart);
-
     function drawChart() {
       var studentHash = $('#students').data('students');
       var cohortsHash = $('#cohorts').data('cohorts');
-      var locations = [];
+      var locations = $('#locations').data('locations');
       var unspecified = [];
       var createdAt = "";
-      var locationData = [];
-
-      for (var i = 15; i >= 1; i--) {
-        locationData.push([i.toString()]);
-      }
-
-      for (var i = 0; i < cohortsHash.length; i++) {
-        locations.push(cohortsHash[i].location);
-      }
-      $.unique(locations);
 
       function weeksOutTicker(week, cohort) {
         var diff = 0;
@@ -33,9 +32,9 @@
               if (cohortsHash[j].id === cohort) {
                 cohortIndex = j;
                 cohortStartDate = cohortsHash[j].start_date;
-                cohortStartDate = new Date(cohortStartDate)
+                cohortStartDate = new Date(cohortStartDate);
                 studentCreateDate = studentHash[i].created_at;
-                studentCreateDate = new Date(studentCreateDate)
+                studentCreateDate = new Date(studentCreateDate);
                 diff = Math.ceil((cohortStartDate - studentCreateDate)/1000/60/60/24/7);
                 if (diff >= week) {
                   studentsInWeek++;
@@ -52,18 +51,21 @@
         for (var i = 15; i >= 1; i--) {
           allData.push([i.toString(), weeksOutTicker(i, cohortId)]);
         }
-        return google.visualization.arrayToDataTable(allData)
-      }
-
-      function generateLocationData(cohortId, location) {
-        var allData = [];
-        for (var i = 15; i >= 1; i--) {
-          allData.push([weeksOutTicker(i, cohortId)]);
-        }
-        return allData
+        return google.visualization.arrayToDataTable(allData);
       }
 
       var options = {
+        title: '',
+        vAxis: { title: 'Capacity',
+          gridlines: { count: 13 },
+          minValue: 0,
+          maxValue: 1.10,
+          format: 'percent' },
+        hAxis: { title: 'Weeks Out' },
+        legend: { position: 'bottom' }
+      };
+
+      var optionsLoc = {
         title: '',
         vAxis: { title: 'Capacity',
           gridlines: { count: 13 },
@@ -78,33 +80,61 @@
         var id = "cohort_" + cohortsHash[i].id.toString();
         var chart = new google.visualization.LineChart(document.getElementById(id));
         var data = generateData(cohortsHash[i].id);
-        options["title"] = cohortsHash[i].location + " Cohort " + cohortsHash[i].cohort_number + " Performance"
+        options["title"] = cohortsHash[i].location + " Cohort " + cohortsHash[i].cohort_number + " Performance";
         chart.draw(data, options);
       }
 
-      for (var i = 0; i < locations.length; i++) {
+      function generateLocationData(cohortId) {
+        var locData = [];
+        for (var i = 15; i >= 1; i--) {
+          locData.push(weeksOutTicker(i, cohortId));
+        }
+        return locData;
+      }
+
+      function locationGraphGenerator(location) {
+        var locationData = [];
+        for (var m = 15; m >= 1; m--) {
+          locationData.push([m.toString()]);
+        }
+
         for (var j = 0; j < cohortsHash.length; j++) {
-          if (cohortsHash[j].location === locations[i]) {
-            var dirtyData = generateLocationData(cohortsHash[j].id, locations[i]);
-            for (var k = 0; k < dirtyData.length; k++) {
-              console.log(locationData.push(dirtyData[i]);
+          if (cohortsHash[j].location === location) {
+            singleCohortData = generateLocationData(cohortsHash[j].id);
+            for (var i = 0; i < locationData.length; i++) {
+              locationData[i].push(singleCohortData[i]);
             }
           }
         }
+        return locationData;
+      }
+
+      function columnGen(location) {
+        for (var j = 0; j < cohortsHash.length; j++) {
+          if (cohortsHash[j].location === location) {
+            var title = cohortsHash[j].location + " C" + cohortsHash[j].cohort_number;
+            locationChart.addColumn('number', title);
+          }
+        }
+      }
+
+      for (var i = 0; i < locations.length; i++) {
+        var id = locations[i] + "-chart";
+        var chart = new google.visualization.LineChart(document.getElementById(id));
+        optionsLoc["title"] = locations[i] + " Performance"
+        var locationChart = new google.visualization.DataTable();
+        locationChart.addColumn('string', 'Weeks Out');
+        columnGen(locations[i]);
+        locationChart.addRows(locationGraphGenerator(locations[i]));
+        chart.draw(locationChart, optionsLoc);
       }
     }
   </script>
 
-<h1>Performance Charts</h1>
 
 <%= content_tag "div", id: "students", data: { students: @students} do %>
 <% end %>
 <%= content_tag "div", id: "cohorts", data: { cohorts: @cohorts} do %>
 <% end %>
-
-<div id="performance_chart" style="width: 100%">
-  <%= content_tag "div", id: "miami", style: "width: 100%; height: 700px; float: center" do %>
-  <% end %>
-  <%= div_for(@cohorts, style: "width: 50%; height: 350px; float: left", class: "cohort_chart") do |cohort|%>
-  <% end %>
-</div>
+<%= content_tag "div", id: "locations", data: { locations: @locations} do %>
+<% end %>
