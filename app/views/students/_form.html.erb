@@ -29,7 +29,6 @@
       <%= f.label :phone_num, 'Phone Number' %><br>
       <%= f.text_field :phone_num %>
     </div>
-<!-- This will render a different balance and discount default values depending on student create or update -->
     <% if @student.id.nil? %>
       <%= render 'create_bal_disc', f: f %>
     <% else %>

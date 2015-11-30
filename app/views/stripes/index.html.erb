@@ -1,22 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<!-- <div class="row">
-    <div class="col-md-2">
-      <%= link_to(' To  Students', root_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
-      <%= link_to('All Payments', payments_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
-    </div>
-</div> -->
-
 <div class="btn-group loan-listing-back-btns" role="group">
   <button type="button" class="btn btn-info">
-    <%= link_to('To  Students', root_path, class: "button-color-white")%>
+    <%= link_to('To Students', root_path, class: "button-color-white")%>
   </button>
   <button type="button" class="btn btn-info">
     <%= link_to('All Payments', payments_path, class: "button-color-white") %>
   </button>
 </div>
 
-<h1>Listing Stripes</h1>
+<h1>Stripe Payments</h1>
 
 <div class="table-responsive col-md-8 col-md-offset-2">
   <table class="table table-hover">
@@ -37,9 +30,9 @@
           <td><%= number_to_currency(stripe.amount) %></td>
           <td><%= stripe.pay_date.strftime("%m/%d/%Y") %></td>
           <td><%= stripe.refunded %></td>
-          <td><%= link_to 'Show', stripe %> | </td>
-          <td><%= link_to 'Edit', edit_stripe_path(stripe) %> | </td>
-          <td><%= link_to 'Destroy', stripe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', stripe %></td>
+          <td><%= link_to 'Edit', edit_stripe_path(stripe) %></td>
+          <td><%= link_to 'Remove', stripe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

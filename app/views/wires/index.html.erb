@@ -1,21 +1,15 @@
 <p id="notice"><%= notice %></p>
-<!-- <div class="row">
-    <div class="col-md-2">
-      <%= link_to(' To  Students', root_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
-      <%= link_to('All Payments', payments_path, :class => 'btn btn-large btn-info', id: "btn-text-color") %>
-    </div>
-</div> -->
 
 <div class="btn-group loan-listing-back-btns" role="group">
   <button type="button" class="btn btn-info">
-    <%= link_to('To  Students', root_path, class: "button-color-white")%>
+    <%= link_to('To Students', root_path, class: "button-color-white")%>
   </button>
   <button type="button" class="btn btn-info">
     <%= link_to('All Payments', payments_path, class: "button-color-white") %>
   </button>
 </div>
 
-<h1>Listing Wires</h1>
+<h1>Wire Payments</h1>
 <div class="table-responsive col-md-8 col-md-offset-2">
   <table class="table table-hover">
     <thead>
@@ -37,20 +31,11 @@
           <td><%= wire.send_date.strftime("%m/%d/%Y") %></td>
           <td><%= wire.pay_date.strftime("%m/%d/%Y") %></td>
           <td><%= wire.sender %></td>
-          <td><%= link_to 'Show', wire %> | </td>
-          <td><%= link_to 'Edit', edit_wire_path(wire) %> | </td>
-          <td><%= link_to 'Destroy', wire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', wire %></td>
+          <td><%= link_to 'Edit', edit_wire_path(wire) %></td>
+          <td><%= link_to 'Remove', wire, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-</div>
-<br>
-
-<div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-          <%= link_to 'New Wire', new_wire_path, class: "btn btn-info button-color-white" %>
-      </div>
-    </div>
 </div>
