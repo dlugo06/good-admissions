@@ -12,8 +12,9 @@
           <th>Location</th>
           <th>Cohort number</th>
           <th>Capacity</th>
+          <th>Available</th>
           <th>Start date</th>
-          <!-- <th colspan="3"></th> -->
+          <th colspan="3"></th>
         </tr>
       </thead>
 
@@ -24,6 +25,7 @@
             <td><%= cohort.location %></td>
             <td><%= cohort.cohort_number %></td>
             <td><%= cohort.capacity %></td>
+            <td><%= cohort.capacity - cohort.students.count %></td>
             <td><%= cohort.start_date %></td>
             <td><%= link_to 'Show', cohort %></td>
             <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>

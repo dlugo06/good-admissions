@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Rajdhani:500,700', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
     <nav id="navbar">
@@ -35,13 +36,6 @@
     <div class="alert"><%= alert %></div>
 
        <%= yield %>
-
-  <!-- <% if notice %>
-    <p class="alert alert-success col-md-2 "><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger col-md-2"><%= alert %></p>
-  <% end %> -->
 
   </body>
 </html>

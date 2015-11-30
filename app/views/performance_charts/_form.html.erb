@@ -1,0 +1,17 @@
+<%= form_for(@performance_chart) do |f| %>
+  <% if @performance_chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@performance_chart.errors.count, "error") %> prohibited this performance_chart from being saved:</h2>
+
+      <ul>
+      <% @performance_chart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

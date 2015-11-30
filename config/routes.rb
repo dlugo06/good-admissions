@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :cohorts
   get 'students/:id/payments/new' => 'payments#new', as: :new_student_payment
   get 'students/:id/payments' => 'students#payments', as: :student_payments
   get 'location' => 'students#location', as: :student_location
@@ -7,14 +6,28 @@ Rails.application.routes.draw do
   get 'stripes/new' => redirect('/stripes')
   get 'loans/new' => redirect('/loans')
   get 'wires/new' => redirect('/wires')
+  get 'webhooks/stripe_webhook' => redirect('/')
+  get 'performance_charts/new' => redirect('performance_charts')
   get 'payments' => 'payments#index', as: :payments
   post 'twilio/voice' => 'twilio#voice'
   post 'students/:student_id/:payment_type/:id/notify' => 'notifications#notify', as: :payment_notification
-  
+  post 'stripe/deposit' => 'webhooks#stripe_webhook'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
 
+# get '/stripes' => 'stripes#index', as: :stripes
+# post '/stripes' => 'stripes#create'
+# get '/stripes/:id' => 'stripes#show', as: :one_stripe
+# get '/stripes/new' => 'stripes#new', as: :new_stripe
+# get '/stripes/:id/edit' => 'stripes#edit', as: :edit_stripe
+# patch '/stripes/:id' => 'stripes#update'
+# put '/stripes/:id' => 'stripes#update'
+# delete '/stripes/:id' => 'stripes#destroy'
+
+  resources :cohorts
+  resources :performance_charts
   resources :stripes
   resources :wires
   resources :checks

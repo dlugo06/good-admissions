@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}">
+</script>
+
+
+<script type="text/javascript">
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var studentHash = $('#students').data('students');
+      var cohortsHash = $('#cohorts').data('cohorts');
+      var unspecified = [];
+      var createdAt = "";
+
+      function weeksOutTicker(week, cohort) {
+        var diff = 0;
+        var studentsInWeek = 0;
+        var cohortIndex = 0;
+        for (var i = 0; i < studentHash.length; i++) {
+          if (studentHash[i].cohort_id === cohort) {
+            for (var j = 0; j < cohortsHash.length; j++) {
+              if (cohortsHash[j].id === cohort) {
+                cohortIndex = j;
+                cohortStartDate = cohortsHash[j].start_date;
+                cohortStartDate = new Date(cohortStartDate)
+                studentCreateDate = studentHash[i].created_at;
+                studentCreateDate = new Date(studentCreateDate)
+                diff = Math.ceil((cohortStartDate - studentCreateDate)/1000/60/60/24/7);
+                if (diff >= week) {
+                  studentsInWeek++;
+                }
+              }
+            }
+          }
+        }
+        return studentsInWeek/cohortsHash[cohortIndex].capacity;
+      }
+
+      function generateData(cohortId) {
+        var allData = [['Weeks Out', 'Students Registered']];
+        for (var i = 15; i >= 1; i--) {
+          allData.push([i.toString(), weeksOutTicker(i, cohortId)]);
+        }
+        return google.visualization.arrayToDataTable(allData)
+      }
+
+      var options = {
+        title: '',
+        vAxis: { title: 'Capacity',
+          gridlines: { count: 13 },
+          minValue: 0,
+          maxValue: 1.10,
+          format: 'percent' },
+        hAxis: { title: 'Weeks Out' },
+        legend: { position: 'bottom' }
+      };
+
+      for (var i = 0; i < cohortsHash.length; i++) {
+        var id = "cohort_" + cohortsHash[i].id.toString();
+        var chart = new google.visualization.LineChart(document.getElementById(id));
+        var data = generateData(cohortsHash[i].id);
+        options["title"] = cohortsHash[i].location + " Cohort " + cohortsHash[i].cohort_number + " Performance"
+        chart.draw(data, options);
+      }
+    }
+  </script>
+
+<h1>Performance Charts</h1>
+
+<%= content_tag "div", id: "students", data: { students: @students} do %>
+<% end %>
+<%= content_tag "div", id: "cohorts", data: { cohorts: @cohorts} do %>
+<% end %>
+
+<div id="performance_chart" style="width: 100%">
+  <%= div_for(@cohorts, style: "width: 50%; height: 350px; float: left", class: "cohort_chart") do |cohort|%>
+  <% end %>
+</div>
