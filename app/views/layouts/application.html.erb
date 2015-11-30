@@ -16,7 +16,7 @@
       <% if user_signed_in? %>
       <div class="btn-group " role="group" id="navbar-btns">
         <div button type="button" class="btn btn-info">
-          <%= link_to('Performance', cohorts_path, class: "btn-text-color") %>
+          <%= link_to('Performance', performance_charts_path, data: {no_turbolink: true}, class: "btn-text-color") %>
         </div>
         <div button type="button" class="btn btn-info">
           <%= link_to('Cohorts', cohorts_path, class: "btn-text-color") %>
@@ -29,7 +29,6 @@
           <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn-text-color") %>
           <% end %>
         </div>
-        <!-- <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-info", id: "logout-btn") %> -->
     </nav>
 
     <div class="notice"><%= notice %></div>
