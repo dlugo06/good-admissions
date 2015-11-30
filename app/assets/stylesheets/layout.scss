@@ -3,8 +3,9 @@ html {
 }
 body {
   border-top: 20px solid #4d4d4d;
-  // nav { max-width: 1000px; }
-  // main { max-width: 900px; }
+}
+#img-align{
+  padding: 0;
 }
 #navbar {
   position: relative;
@@ -23,8 +24,12 @@ body {
 #navbar h2 {
   margin-left: 10px;
 }
+#button-nav-group {
+  padding: 0;
+  padding-top: 2%;
+}
 #navbar-btns {
-  margin-left: 48%;
+  float: right;
 }
 // To Student, All Payments back buttons
 .loan-listing-back-btns {

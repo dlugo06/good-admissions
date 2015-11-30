@@ -1,5 +1,7 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
+
   # GET /loans
   # GET /loans.json
   def index
@@ -76,5 +78,11 @@ class LoansController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def loan_params
       params.require(:loan).permit(:student_id, :amount, :company, :pay_date, :notes)
+    end
+
+    def check_admin
+      if current_user.try(:admin?) == false
+        redirect_to root_path, notice: "You are not authorized to take that action"
+      end
     end
 end

@@ -9,6 +9,7 @@ class PerformanceChartsController < ApplicationController
       @performance_charts = PerformanceChart.all
       @students = Student.all
       @cohorts = Cohort.all
+      @locations = @cohorts.map {|c| c.location}.uniq
     else
       redirect_to root_path, notice: "You are not authorized to take that action."
     end

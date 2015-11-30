@@ -1,5 +1,6 @@
 class CohortsController < ApplicationController
   before_action :set_cohort, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin, except: [:index, :show]
 
   # GET /cohorts
   # GET /cohorts.json
@@ -70,5 +71,11 @@ class CohortsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cohort_params
       params.require(:cohort).permit(:name, :location, :cohort_number, :capacity, :start_date)
+    end
+
+    def check_admin
+      if current_user.try(:admin?) == false
+        redirect_to root_path, notice: "You are not authorized to take that action"
+      end
     end
 end

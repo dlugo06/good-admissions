@@ -1,7 +1,6 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 
-<!-- This table will only show if there are students that do not have an associated cohort -->
 <% nil_cohort = false %>
 <% @all_students.each do |student| %>
   <% if student.cohort.present? == false %>
@@ -36,7 +35,7 @@
 <div class="row col-md-12">
   <div class="text-center">
     <div class="index-header">
-      <h2 class="header-title">Listing
+      <h2 class="header-title">
       <% if @cohort_students_filter == true %>
         <%= Cohort.find(params[:cohort][:id].to_i).name %>
       <% elsif @location_students_filter == true %>

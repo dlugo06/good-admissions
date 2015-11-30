@@ -1,5 +1,7 @@
 class ChecksController < ApplicationController
   before_action :set_check, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
+
 
   # GET /checks
   # GET /checks.json
@@ -80,5 +82,11 @@ class ChecksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def check_params
       params.require(:check).permit(:student_id, :amount, :pay_date, :deposited_date, :check_number, :name_on_check)
+    end
+
+    def check_admin
+      if current_user.try(:admin?) == false
+        redirect_to root_path, notice: "You are not authorized to take that action"
+      end
     end
 end
