@@ -1,6 +1,6 @@
 class CohortsController < ApplicationController
   before_action :set_cohort, only: [:show, :edit, :update, :destroy]
-  before_action :check_admin, except: :index
+  before_action :check_admin, except: [:index, :show]
 
   # GET /cohorts
   # GET /cohorts.json

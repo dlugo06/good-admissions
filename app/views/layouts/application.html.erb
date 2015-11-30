@@ -22,6 +22,11 @@
           <div class="btn-group" role="group" id="navbar-btns">
             <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary btn-text-color btn-info") %>
           </div>
+          <% if current_user.admin? == false %>
+            <div class="btn-group" role="group" id="navbar-btns">
+              <%= link_to('Cohorts', cohorts_path, class: "btn btn-primary btn-text-color btn-info") %>
+            </div>
+          <% end %>
           <% if current_user.admin? %>
             <div class="btn-group" role="group" id="navbar-btns">
               <%= link_to('Performance', performance_charts_path, data: { no_turbolink: true }, class: "btn btn-primary btn-text-color btn-info") %>
