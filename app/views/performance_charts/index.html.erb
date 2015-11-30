@@ -1,12 +1,7 @@
-q<p id="notice"><%= notice %></p>
-<script type="text/javascript"
-        src="https://www.google.com/jsapi?autoload={
-          'modules':[{
-            'name':'visualization',
-            'version':'1',
-            'packages':['corechart']
-          }]
-        }"></script>
+<p id="notice"><%= notice %></p>
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['corechart']}]}">
+</script>
+
 
 <script type="text/javascript">
     google.setOnLoadCallback(drawChart);
@@ -38,130 +33,19 @@ q<p id="notice"><%= notice %></p>
             }
           }
         }
-        return studentsInWeek/cohortsHash[cohortIndex].capacity
+        return studentsInWeek/cohortsHash[cohortIndex].capacity;
       }
-// weeksOutTicker(15, cohortId)
 
-      // function createData() {
-        // return
-        var data = google.visualization.arrayToDataTable([
-          ['Weeks Out', 'Students Registered'],
-          ['15',  weeksOutTicker(15, 4)],
-          ['14',  weeksOutTicker(14, 4)],
-          ['13',  weeksOutTicker(13, 4)],
-          ['12',  weeksOutTicker(12, 4)],
-          ['11',  weeksOutTicker(11, 4)],
-          ['10',  weeksOutTicker(10, 4)],
-          ['9',  weeksOutTicker(9, 4)],
-          ['8',  weeksOutTicker(8, 4)],
-          ['7',  weeksOutTicker(7, 4)],
-          ['6',  weeksOutTicker(6, 4)],
-          ['5',  weeksOutTicker(5, 4)],
-          ['4',  weeksOutTicker(4, 4)],
-          ['3',  weeksOutTicker(3, 4)],
-          ['2',  weeksOutTicker(2, 4)],
-          ['1',  weeksOutTicker(1, 4)],
-        ]);
-      // }
-
-      // for (var i = 0; i < cohortsHash.length; i++) {
-      //   var cohortId = cohortsHash[i].id;
-      //   var cohortName = cohortsHash[i].name;
-      //   var cohortLocation = cohortsHash[i].location;
-      //   var cohortNumber = cohortsHash[i].cohort_number;
-      //   var cohortStart = cohortsHash[i].start_date;
-      //   cohortStart = new Date(cohortStart);
-      //   var studentcreate = new Date(studentHash[i].created_at);
-      //   var diff = cohortStart - studentcreate;
-      //   diff = diff/1000;
-      //   diff = diff/60;
-      //   diff = diff/60;
-      //   diff = diff/24;
-      //   diff = diff/7;
-      //   console.log(cohortId, cohortName, cohortLocation, cohortNumber, Math.ceil(diff));
-      // }
-
-
-      // // Create the table
-      // var data = google.visualization.arrayToDataTable([
-      //   ['Weeks Out', 'Students Registered'],
-      //   ['15',  0.1],
-      //   ['14',  0.13],
-      //   ['13',  0.19],
-      //   ['12',  0.16],
-      //   ['11',  0.20],
-      //   ['10',  0.40],
-      //   ['9',  0.45],
-      //   ['8',  0.20],
-      //   ['7',  0.39],
-      //   ['6',  0.61],
-      //   ['5',  0.68],
-      //   ['4',  0.50],
-      //   ['3',  0.99],
-      //   ['2',  0.90],
-      //   ['1',  1.10],
-      // ]);
-      //
-      // // Create the table
-      // var data2 = google.visualization.arrayToDataTable([
-      //   ['Weeks Out', 'Students Registered'],
-      //   ['15',  0.1],
-      //   ['14',  0.18],
-      //   ['13',  0.16],
-      //   ['12',  0.13],
-      //   ['11',  0.20],
-      //   ['10',  0.28],
-      //   ['9',  0.37],
-      //   ['8',  0.30],
-      //   ['7',  0.42],
-      //   ['6',  0.55],
-      //   ['5',  0.68],
-      //   ['4',  0.63],
-      //   ['3',  0.78],
-      //   ['2',  0.90],
-      //   ['1',  1.10],
-      // ]);
-      //
-      // var data3 = google.visualization.arrayToDataTable([
-      //   ['Weeks Out', 'Students Registered'],
-      //   ['15',  0.1],
-      //   ['14',  0.18],
-      //   ['13',  0.16],
-      //   ['12',  0.13],
-      //   ['11',  0.20],
-      //   ['10',  0.28],
-      //   ['9',  0.37],
-      //   ['8',  0.30],
-      //   ['7',  0.42],
-      //   ['6',  0.55],
-      //   ['5',  0.68],
-      //   ['4',  0.63],
-      //   ['3',  0.78],
-      //   ['2',  0.90],
-      //   ['1',  1.10],
-      // ]);
-      //
-      // var data4 = google.visualization.arrayToDataTable([
-      //   ['Weeks Out', 'Students Registered'],
-      //   ['15',  0.1],
-      //   ['14',  0.18],
-      //   ['13',  0.16],
-      //   ['12',  0.13],
-      //   ['11',  0.20],
-      //   ['10',  0.28],
-      //   ['9',  0.37],
-      //   ['8',  0.30],
-      //   ['7',  0.42],
-      //   ['6',  0.55],
-      //   ['5',  0.68],
-      //   ['4',  0.63],
-      //   ['3',  0.78],
-      //   ['2',  0.90],
-      //   ['1',  1.10],
-      // ]);
+      function generateData(cohortId) {
+        var allData = [['Weeks Out', 'Students Registered']];
+        for (var i = 15; i >= 1; i--) {
+          allData.push([i.toString(), weeksOutTicker(i, cohortId)]);
+        }
+        return google.visualization.arrayToDataTable(allData)
+      }
 
       var options = {
-        title: 'Miami Cohort 9 Performance',
+        title: '',
         vAxis: { title: 'Capacity',
           gridlines: { count: 13 },
           minValue: 0,
@@ -171,48 +55,13 @@ q<p id="notice"><%= notice %></p>
         legend: { position: 'bottom' }
       };
 
-      // var options2 = {
-      //   title: 'Miami Cohort 6 Performance',
-      //   vAxis: { title: 'Capacity',
-      //     gridlines: { count: 13},
-      //     minValue: 0,
-      //     maxValue: 1.10,
-      //     format: 'percent' },
-      //   hAxis: { title: 'Weeks Out' },
-      //   legend: { position: 'bottom' }
-      // };
-      //
-      // var options3 = {
-      //   title: 'Miami Cohort 7 Performance',
-      //   vAxis: { title: 'Capacity',
-      //     gridlines: { count: 13},
-      //     minValue: 0,
-      //     maxValue: 1.10,
-      //     format: 'percent' },
-      //   hAxis: { title: 'Weeks Out' },
-      //   legend: { position: 'bottom' }
-      // };
-      //
-      // var options4 = {
-      //   title: 'Miami Cohort 8 Performance',
-      //   vAxis: { title: 'Capacity',
-      //     gridlines: { count: 13},
-      //     minValue: 0,
-      //     maxValue: 1.10,
-      //     format: 'percent' },
-      //   hAxis: { title: 'Weeks Out' },
-      //   legend: { position: 'bottom' }
-      // };
-
-      var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-      // var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
-      // var chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
-      // var chart4 = new google.visualization.LineChart(document.getElementById('curve_chart4'));
-
-      chart.draw(data, options);
-      // chart2.draw(data2, options2);
-      // chart3.draw(data3, options3);
-      // chart4.draw(data4, options4);
+      for (var i = 0; i < cohortsHash.length; i++) {
+        var id = "cohort_" + cohortsHash[i].id.toString();
+        var chart = new google.visualization.LineChart(document.getElementById(id));
+        var data = generateData(cohortsHash[i].id);
+        options["title"] = cohortsHash[i].location + " Cohort " + cohortsHash[i].cohort_number + " Performance"
+        chart.draw(data, options);
+      }
     }
   </script>
 
@@ -244,9 +93,8 @@ q<p id="notice"><%= notice %></p>
 <% end %>
 <%= content_tag "div", id: "cohorts", data: { cohorts: @cohorts} do %>
 <% end %>
-<div id="performance_chart" style="width: 1500px">
-  <div id="curve_chart" style="width: 650px; height: 350px; float: left"></div>
-  <div id="curve_chart2" style="width: 650px; height: 350px; float: left"></div>
-  <div id="curve_chart3" style="width: 650px; height: 350px; float: left"></div>
-  <div id="curve_chart4" style="width: 650px; height: 350px; float: left"></div>
+
+<div id="performance_chart" style="width: 100%">
+  <%= div_for(@cohorts, style: "width: 650px; height: 350px; float: left", class: "cohort_chart") do |cohort|%>
+  <% end %>
 </div>
