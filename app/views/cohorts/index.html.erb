@@ -1,7 +1,7 @@
 <!-- <p id="notice"><%= notice %></p> -->
 <div class="row col-md-12">
   <div class="text-center">
-    <h1>Listing Cohorts</h1>
+    <h1>Wyncode Cohorts</h1>
   </div>
 </div>
 <div class="table-responsive col-md-12">
@@ -14,7 +14,7 @@
           <th>Capacity</th>
           <th>Available</th>
           <th>Start date</th>
-          <th colspan="3"></th>
+          <th colspan="4"></th>
         </tr>
       </thead>
 
@@ -27,9 +27,11 @@
             <td><%= cohort.capacity %></td>
             <td><%= cohort.capacity - cohort.students.count %></td>
             <td><%= cohort.start_date %></td>
-            <td><%= link_to 'Show', cohort %></td>
-            <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
-            <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'View Cohort', cohort %></td>
+            <% if current_user.admin? %>
+              <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
+              <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
@@ -37,13 +39,12 @@
 </div>
 <br>
 
-
-<div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-          <%= link_to 'New Cohort', new_cohort_path, class: "btn btn-info btn-text-color" %>
+<% if current_user.admin? %>
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+            <%= link_to 'New Cohort', new_cohort_path, class: "btn btn-info btn-text-color" %>
+        </div>
       </div>
-    </div>
-</div>
-
-<!-- <%= link_to 'New Cohort', new_cohort_path %> -->
+  </div>
+<% end %>

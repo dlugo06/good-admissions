@@ -4,12 +4,12 @@ class StudentsController < ApplicationController
   before_filter :set_cohort, only: :index
   before_filter :set_location, only: :index
   before_filter :default_filter, only: :index
+  before_action :check_admin, except: [:index, :show]
+
 
   def payments
   end
 
-  def location
-  end
   # GET /students
   # GET /students.json
   def index
@@ -133,5 +133,11 @@ class StudentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
       params.require(:student).permit(:first_name, :last_name, :email, :phone_num, :balance, :discount, :notes, :cohort_id, :facebook, :twitter, :linkedin, :github, :portfolio_url, :final_project_url)
+    end
+
+    def check_admin
+      if current_user.try(:admin?) == false
+        redirect_to root_path, notice: "You are not authorized to take that action"
+      end
     end
 end

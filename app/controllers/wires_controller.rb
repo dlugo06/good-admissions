@@ -1,5 +1,7 @@
 class WiresController < ApplicationController
   before_action :set_wire, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
+
 
   # GET /wires
   # GET /wires.json
@@ -80,5 +82,11 @@ class WiresController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def wire_params
       params.require(:wire).permit(:student_id, :amount, :send_date, :pay_date, :sender)
+    end
+
+    def check_admin
+      if current_user.try(:admin?) == false
+        redirect_to root_path, notice: "You are not authorized to take that action"
+      end
     end
 end
