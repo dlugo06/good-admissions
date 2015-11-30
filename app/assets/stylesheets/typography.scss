@@ -33,12 +33,17 @@ h3 {
   font-size: 1.705rem;
 }
 a{
-  
+  text-decoration: none;
+  background-color: inherit;
+  color: #4d4d4d;
 }
 a:hover {
   text-decoration: none;
   background-color: inherit;
   // text-decoration: underline;
+}
+a:visited {
+  text-decoration: none;
 }
 p {
   margin: 20px 0;

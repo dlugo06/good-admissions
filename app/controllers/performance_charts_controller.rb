@@ -64,7 +64,7 @@ class PerformanceChartsController < ApplicationController
   def destroy
     @performance_chart.destroy
     respond_to do |format|
-      format.html { redirect_to performance_charts_url, notice: 'Performance chart was successfully destroyed.' }
+      format.html { redirect_to performance_charts_url, notice: 'Performance chart was successfully deleted.' }
       format.json { head :no_content }
     end
   end
