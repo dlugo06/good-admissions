@@ -63,7 +63,7 @@
           <td><%= payment.class %></td>
           <td><%= number_to_currency(payment.amount) %></td>
           <td><%= link_to "Details", payment %></td>
-          <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Remove', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

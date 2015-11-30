@@ -62,7 +62,7 @@ class LoansController < ApplicationController
     @loan.student.balance = @loan.student.balance + @loan.amount
     @loan.student.save
     respond_to do |format|
-      format.html { redirect_to student_payments_path(@loan.student), notice: 'Loan was successfully destroyed.' }
+      format.html { redirect_to student_payments_path(@loan.student), notice: 'Loan was successfully deleted.' }
       format.json { head :no_content }
     end
   end

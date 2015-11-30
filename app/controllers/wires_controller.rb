@@ -66,7 +66,7 @@ class WiresController < ApplicationController
     @wire.student.balance = @wire.student.balance + @wire.amount
     @wire.student.save
     respond_to do |format|
-      format.html { redirect_to student_payments_path(@wire.student), notice: 'Wire was successfully destroyed.' }
+      format.html { redirect_to student_payments_path(@wire.student), notice: 'Wire was successfully deleted.' }
       format.json { head :no_content }
     end
   end

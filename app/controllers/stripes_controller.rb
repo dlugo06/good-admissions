@@ -66,7 +66,7 @@ class StripesController < ApplicationController
     @stripe.student.balance = @stripe.student.balance + @stripe.amount
     @stripe.student.save
     respond_to do |format|
-      format.html { redirect_to student_payments_path(@stripe.student), notice: 'Stripe was successfully destroyed.' }
+      format.html { redirect_to student_payments_path(@stripe.student), notice: 'Stripe was successfully deleted.' }
       format.json { head :no_content }
     end
   end

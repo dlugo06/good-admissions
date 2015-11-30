@@ -56,7 +56,7 @@ class CohortsController < ApplicationController
   def destroy
     @cohort.destroy
     respond_to do |format|
-      format.html { redirect_to cohorts_url, notice: 'Cohort was successfully destroyed.' }
+      format.html { redirect_to cohorts_url, notice: 'Cohort was successfully removed.' }
       format.json { head :no_content }
     end
   end

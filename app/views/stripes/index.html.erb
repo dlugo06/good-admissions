@@ -39,7 +39,7 @@
           <td><%= stripe.refunded %></td>
           <td><%= link_to 'Show', stripe %> | </td>
           <td><%= link_to 'Edit', edit_stripe_path(stripe) %> | </td>
-          <td><%= link_to 'Destroy', stripe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Remove', stripe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

@@ -66,7 +66,7 @@ class ChecksController < ApplicationController
     @check.student.balance = @check.student.balance + @check.amount
     @check.student.save
     respond_to do |format|
-      format.html { redirect_to student_payments_path(@check.student), notice: 'Check was successfully destroyed.' }
+      format.html { redirect_to student_payments_path(@check.student), notice: 'Check was successfully deleted.' }
       format.json { head :no_content }
     end
   end

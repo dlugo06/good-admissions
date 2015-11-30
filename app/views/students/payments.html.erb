@@ -37,7 +37,7 @@
           <% payment_type = payment.class.to_s.downcase %>
           <td><%= link_to "Notify", payment_notification_path(@student.id, payment_type, payment), method: :post, data: {confirm: "Are you sure you want to text #{@student.full_name} about this #{payment.class.to_s.downcase} payment?"} %></td>
           <td><%= link_to "Details", payment %></td>
-          <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
