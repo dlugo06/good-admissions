@@ -33,11 +33,12 @@ h3 {
   font-size: 1.705rem;
 }
 a{
+  
 }
 a:hover {
   text-decoration: none;
   background-color: inherit;
-  text-decoration: underline;
+  // text-decoration: underline;
 }
 p {
   margin: 20px 0;
@@ -45,7 +46,4 @@ p {
 }
 a.button-color-white {
   color: #fff;
-}
-a:hover.button-color-white {
-  text-decoration: underline;
 }
