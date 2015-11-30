@@ -6,6 +6,7 @@
           <th>Cohort</th>
           <th>Full Name</th>
           <th>Email</th>
+          <th>Phone Number</th>
           <th>Balance</th>
         <% else %>
           <th class="instructor-th">Cohort</th>
@@ -23,15 +24,15 @@
               <td><%= link_to "#{student.cohort.name}", student.cohort %></td>
               <td><%= link_to "#{student.full_name}", student %></td>
               <td><%= student.email %></td>
+              <td><%= number_to_phone(student.phone_num) %></td>
               <td><%= number_to_currency(student.balance) %></td>
-              <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
               <td><%= link_to 'View Payments', student_payments_path(student) %></td>
               <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% else %>
               <td class="instructor-td"><%= link_to "#{student.cohort.name}", student.cohort %></td>
               <td class="instructor-td"><%= link_to "#{student.full_name}", student %></td>
               <td class="instructor-td"><%= student.email %></td>
-              <td class="instructor-td"><%= student.phone_num %></td>
+              <td class="instructor-td"><%= number_to_phone(student.phone_num) %></td>
             <% end %>
           </tr>
         <% end %>
