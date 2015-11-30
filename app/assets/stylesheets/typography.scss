@@ -42,6 +42,9 @@ a:hover {
   background-color: inherit;
   // text-decoration: underline;
 }
+a:visited {
+  text-decoration: none;
+}
 p {
   margin: 20px 0;
   line-height: 1.5;
