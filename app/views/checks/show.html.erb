@@ -1,9 +1,9 @@
 <!-- <p id="notice"><%= notice %></p> -->
 <div class="container">
     <div class="row">
-      <div class="col-md-12">
-          <%= link_to 'Back', checks_path, class: "btn btn-info" %>
-      </div>
+      <!-- <div class="col-md-12"> -->
+          <%= link_to 'Back', checks_path, class: "btn btn-info btn-text-color", id: "check-show-back-btn-left-margin" %>
+      <!-- </div> -->
     </div>
 </div>
 
@@ -40,7 +40,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-          <%= link_to 'Edit', edit_check_path(@check), class: "btn btn-info" %>
+          <%= link_to 'Edit', edit_check_path(@check), class: "btn btn-info btn-text-color" %>
       </div>
     </div>
 </div>

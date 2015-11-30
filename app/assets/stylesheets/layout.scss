@@ -6,7 +6,6 @@ body {
   // nav { max-width: 1000px; }
   // main { max-width: 900px; }
 }
-
 #navbar {
   position: relative;
   width: 80%;
@@ -15,6 +14,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+  margin-bottom: 0px;
 }
 #navbar img {
   padding: 0px;
@@ -22,4 +22,19 @@ body {
 }
 #navbar h2 {
   margin-left: 10px;
+}
+#navbar-btns {
+  margin-left: 48%;
+}
+// To Student, All Payments back buttons
+.loan-listing-back-btns {
+  margin-left: 10%;
+}
+// bootstrap default text color override
+.btn-text-color {
+  color: #fff !important;
+}
+//global offset for buttons aligned to the Wyncode logo
+.left-side-btn-offset {
+  margin-left: 11%;
 }

@@ -8,29 +8,34 @@
 
 </head>
 <body>
-
     <nav id="navbar">
-        <!-- <img src="http://i.imgur.com/WdXNyfs.png"> -->
-        <%= image_tag("http://i.imgur.com/WdXNyfs.png") do %>
-        <% end %>
+      <a class="navbar-logo" href="/">
+		      <img src="http://i.imgur.com/WdXNyfs.png">
+      </a>
       <h2>Wyncode</h2>
+      <% if user_signed_in? %>
+      <div class="btn-group " role="group" id="navbar-btns">
+        <div button type="button" class="btn btn-info">
+          <%= link_to('Performance', cohorts_path, class: "btn-text-color") %>
+        </div>
+        <div button type="button" class="btn btn-info">
+          <%= link_to('Cohorts', cohorts_path, class: "btn-text-color") %>
+        </div>
+        <div button type="button" class="btn btn-info">
+          <%= link_to('All Payments', payments_path, class: "btn-text-color") %>
+        </div>
+      </div>
+        <div button type="button" class="btn btn-info">
+          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn-text-color") %>
+          <% end %>
+        </div>
+        <!-- <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-info", id: "logout-btn") %> -->
     </nav>
 
     <div class="notice"><%= notice %></div>
     <div class="alert"><%= alert %></div>
-     <% if user_signed_in? %>
-       <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-info col-md-1 col-md-offset-10 logout-btn") %>
-       <%= yield %>
-     <% else %>
-       <%= yield %>
-     <% end %>
 
-  <!-- <% if notice %>
-    <p class="alert alert-success col-md-2 "><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger col-md-2"><%= alert %></p>
-  <% end %> -->
+       <%= yield %>
 
   </body>
 </html>
