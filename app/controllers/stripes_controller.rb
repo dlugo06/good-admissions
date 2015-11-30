@@ -1,5 +1,7 @@
 class StripesController < ApplicationController
   before_action :set_stripe, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
+
 
   # GET /stripes
   # GET /stripes.json
@@ -80,5 +82,11 @@ class StripesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def stripe_params
       params.require(:stripe).permit(:student_id, :amount, :refunded, :pay_date)
+    end
+
+    def check_admin
+      if current_user.try(:admin?) == false
+        redirect_to root_path, notice: "You are not authorized to take that action"
+      end
     end
 end
