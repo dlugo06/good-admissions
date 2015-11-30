@@ -65,29 +65,7 @@
     }
   </script>
 
-<h1>Listing Performance Charts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @performance_charts.each do |performance_chart| %>
-      <tr>
-        <td><%= link_to 'Show', performance_chart %></td>
-        <td><%= link_to 'Edit', edit_performance_chart_path(performance_chart) %></td>
-        <td><%= link_to 'Destroy', performance_chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Performance chart', new_performance_chart_path %>
+<h1>Performance Charts</h1>
 
 <%= content_tag "div", id: "students", data: { students: @students} do %>
 <% end %>
@@ -95,6 +73,6 @@
 <% end %>
 
 <div id="performance_chart" style="width: 100%">
-  <%= div_for(@cohorts, style: "width: 650px; height: 350px; float: left", class: "cohort_chart") do |cohort|%>
+  <%= div_for(@cohorts, style: "width: 50%; height: 350px; float: left", class: "cohort_chart") do |cohort|%>
   <% end %>
 </div>

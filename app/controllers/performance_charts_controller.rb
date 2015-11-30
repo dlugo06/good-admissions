@@ -1,12 +1,17 @@
 class PerformanceChartsController < ApplicationController
   before_action :set_performance_chart, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /performance_charts
   # GET /performance_charts.json
   def index
-    @performance_charts = PerformanceChart.all
-    @students = Student.all
-    @cohorts = Cohort.all
+    if current_user.admin?
+      @performance_charts = PerformanceChart.all
+      @students = Student.all
+      @cohorts = Cohort.all
+    else
+      redirect_to root_path, notice: "You are not authorized to take that action."
+    end
   end
 
   # GET /performance_charts/1
