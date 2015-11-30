@@ -2,29 +2,36 @@
   <table class="table table-striped table-hover student-list">
     <thead>
       <tr>
-        <th>Cohort</th>
-        <th>Full Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
         <% if current_user.admin? %>
+          <th>Cohort</th>
+          <th>Full Name</th>
+          <th>Email</th>
           <th>Balance</th>
+        <% else %>
+          <th class="instructor-th">Cohort</th>
+          <th class="instructor-th">Full Name</th>
+          <th class="instructor-th">Email</th>
+          <th class="instructor-th">Phone Number</th>
         <% end %>
-        <th colspan="3"></th>
       </tr>
     </thead>
     <tbody>
       <% @filtered_students.each do |student| %>
         <% if student.cohort.present? %>
           <tr>
-            <td><%= link_to "#{student.cohort.name}", student.cohort %></td>
-            <td><%= link_to "#{student.full_name}", student %></td>
-            <td><%= student.email %></td>
-            <td><%= number_to_phone(student.phone_num) %></td>
             <% if current_user.admin? %>
+              <td><%= link_to "#{student.cohort.name}", student.cohort %></td>
+              <td><%= link_to "#{student.full_name}", student %></td>
+              <td><%= student.email %></td>
               <td><%= number_to_currency(student.balance) %></td>
               <td><%= link_to 'New Payment', new_student_payment_path(student) %></td>
               <td><%= link_to 'View Payments', student_payments_path(student) %></td>
               <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% else %>
+              <td class="instructor-td"><%= link_to "#{student.cohort.name}", student.cohort %></td>
+              <td class="instructor-td"><%= link_to "#{student.full_name}", student %></td>
+              <td class="instructor-td"><%= student.email %></td>
+              <td class="instructor-td"><%= student.phone_num %></td>
             <% end %>
           </tr>
         <% end %>

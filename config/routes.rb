@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'students/:id/payments/new' => 'payments#new', as: :new_student_payment
   get 'students/:id/payments' => 'students#payments', as: :student_payments
-  get 'location' => 'students#location', as: :student_location
   get 'checks/new' => redirect('/checks')
   get 'stripes/new' => redirect('/stripes')
   get 'loans/new' => redirect('/loans')
