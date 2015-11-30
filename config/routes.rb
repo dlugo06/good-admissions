@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :cohorts
   get 'students/:id/payments/new' => 'payments#new', as: :new_student_payment
   get 'students/:id/payments' => 'students#payments', as: :student_payments
   get 'location' => 'students#location', as: :student_location
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   get 'loans/new' => redirect('/loans')
   get 'wires/new' => redirect('/wires')
   get 'webhooks/stripe_webhook' => redirect('/')
+  get 'performance_charts/new' => redirect('performance_charts')
   get 'payments' => 'payments#index', as: :payments
   post 'twilio/voice' => 'twilio#voice'
   post 'students/:student_id/:payment_type/:id/notify' => 'notifications#notify', as: :payment_notification
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 # put '/stripes/:id' => 'stripes#update'
 # delete '/stripes/:id' => 'stripes#destroy'
 
+  resources :cohorts
+  resources :performance_charts
   resources :stripes
   resources :wires
   resources :checks

@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Rajdhani:500,700', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
@@ -23,7 +24,6 @@
      <% else %>
        <%= yield %>
      <% end %>
-
 
   <!-- <% if notice %>
     <p class="alert alert-success col-md-2 "><%= notice %></p>
