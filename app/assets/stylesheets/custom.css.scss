@@ -2,27 +2,20 @@
 @import "bootstrap";
 
 //--------------universal---------------------
-
-// body {
-//   padding-top: 30px;
-//   background: url(/assets/bckGrdImg3.jpg) no-repeat;
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center top;
-//   // background-attachment: fixed;
-// }
 section {
   overflow: auto;
 }
 textarea {
   resize: vertical;
 }
-.logout-btn {
-  margin-right: 30px;
+#logout-btn {
+  margin-left: 75%;
+  color: #fff;
 }
 .notice, .alert {
   color: #4d4d4d;
   margin-left: 10px;
+  margin-top: 0px;
 }
 
 //----------login page-------------------
@@ -64,10 +57,9 @@ textarea {
 .field_with_errors {
   margin: auto;
 }
+
 ---------------Students--------------------
-.back-to-students-btn .btn-info {
-  color: #FFF;
-}
+
 .new-payment-field {
   background-color: #eaeaea;
   width: 40%;
@@ -88,12 +80,6 @@ input[type="radio"] {
 //   border-style: solid;
 //   border-color: black;
 // }
-#student-detail-back-btn {
-  color: #fff;
-}
-#listing-students-form {
-  margin-bottom: 10px;
-}
 
 -------------Payments----------------------
 .back-to-students-btn .btn-info {
