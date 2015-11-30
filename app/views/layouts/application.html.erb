@@ -8,6 +8,7 @@
 
 </head>
 <body>
+
   <div class="container">
     <nav class="row" id="navbar">
       <div class="col-sm-5" id="img-align">
@@ -31,8 +32,8 @@
     </nav>
 
     <div class="row">
-      <div class="notice"><%= notice %></div>
-      <div class="alert"><%= alert %></div>
+      <div class="alert" id="alert-message"><%= alert %></div>
+      <div class="notice" id="notice-message"><%= notice %></div>
 
        <%= yield %>
     </div>
