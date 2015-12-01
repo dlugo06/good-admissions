@@ -53,9 +53,19 @@
       <div class="panel-heading">
           <strong>Balace:</strong>
       </div>
-        <div class="panel-body">
+      <% if @student.balance === 0 %>
+        <div class="panel-body payments_color_green">
           <%= number_to_currency(@student.balance) %>
         </div>
+      <% elsif @student.balance > 3000 %>
+        <div class="panel-body payments_color_red">
+          <%= number_to_currency(@student.balance) %>
+        </div>
+      <% else %>
+      <div class="panel-body payments_color_orange">
+        <%= number_to_currency(@student.balance) %>
+      </div>
+      <% end %>
     <% end %>
     <div class="panel-heading">
       <strong>Facebook:</strong>

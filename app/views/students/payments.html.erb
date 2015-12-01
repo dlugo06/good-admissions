@@ -3,8 +3,6 @@
 <div class="row">
   <%= link_to('Back To Students', root_path, :class => 'btn btn-large btn-info btn-text-color left-side-btn-offset') %>
 </div>
-
-
 <div class="row">
   <div class="col-md-12 text-center">
     <div id="payment-listing">
@@ -13,8 +11,8 @@
         <%= link_to('New Payment', new_student_payment_path(@student), :class => 'btn btn-large btn-info', id: "new-payment-button-paypage") %>
       </div>
     </div>
-
   </div>
+  <h3 class="text-center"><strong>Balance:</strong> <%= number_to_currency(@student.balance) %></h3>
 </div>
 
 <div class="table-responsive col-md-8 col-md-offset-2">
@@ -33,7 +31,13 @@
         <tr>
           <td><%= payment.pay_date.strftime("%m/%d/%Y") %></td>
           <td><%= payment.class %></td>
-          <td><%= number_to_currency(payment.amount) %></td>
+        <% if payment.amount === 0 %>
+          <td class="payments_color_green"><%= number_to_currency(payment.amount) %></td>
+        <% elsif payment.amount > 3000 %>
+          <td class="payments_color_red"><%= number_to_currency(payment.amount) %></td>
+        <% else %>
+          <td class="payments_color_orange"><%= number_to_currency(payment.amount) %></td>
+        <% end %>
           <% payment_type = payment.class.to_s.downcase %>
           <td><%= link_to "Notify", payment_notification_path(@student.id, payment_type, payment), method: :post, data: {confirm: "Are you sure you want to text #{@student.full_name} about this #{payment.class.to_s.downcase} payment?"} %></td>
           <td><%= link_to "Details", payment %></td>

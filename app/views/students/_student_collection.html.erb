@@ -25,7 +25,13 @@
               <td><%= link_to "#{student.full_name}", student %></td>
               <td><%= student.email %></td>
               <td><%= number_to_phone(student.phone_num) %></td>
-              <td><%= number_to_currency(student.balance) %></td>
+              <% if student.balance === 0 %>
+                <td class="payments_color_green"><%= number_to_currency(student.balance) %></td>
+              <% elsif student.balance > 3000 %>
+                <td class="payments_color_red"><%= number_to_currency(student.balance) %></td>
+              <% else %>
+                  <td class="payments_color_orange"><%= number_to_currency(student.balance) %></td>
+              <% end %>    
               <td><%= link_to 'View Payments', student_payments_path(student) %></td>
               <td><%= link_to 'Remove Student', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% else %>
