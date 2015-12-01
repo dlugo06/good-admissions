@@ -35,11 +35,12 @@ class WebhooksController < ApplicationController
 
     if (amount_in_dollars == 1000.0) && (description == "DigLabs Stripe Plugin Charge")
       @student = Student.new(first_name: first_name, last_name: last_name, email: email, notes: notes)
-      @student.save
-      @deposit = Stripe.new(student_id: @student.id, amount: amount_in_dollars, pay_date: Date.today)
-      @deposit.save
-      @deposit.student.balance = (@deposit.student.balance) - @deposit.amount
-      @deposit.student.save
+      if @student.save
+        @deposit = Stripe.new(student_id: @student.id, amount: amount_in_dollars, pay_date: Date.today)
+        @deposit.save
+        @deposit.student.balance = (@deposit.student.balance) - @deposit.amount
+        @deposit.student.save
+      end
     end
   end
 end
