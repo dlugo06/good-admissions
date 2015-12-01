@@ -81,7 +81,7 @@ margin-left: 11%;
 #student-edit-show-btn {
   margin-left: 6.5%;
 }
-#capacity {
+#capacity, #balance-counter {
   text-align: center;
   margin: 0;
   padding: 0;
@@ -89,4 +89,10 @@ margin-left: 11%;
 }
 .instructor-td, .instructor-th  {
   text-align: left;
+}
+.payments_color_blue {
+  color: #5bc0de;
+}
+.payments_color_orange {
+  color: orange;
 }

@@ -1,19 +1,17 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 <div class="row">
-  <%= link_to('Back To Students', root_path, :class => 'btn btn-large btn-info btn-text-color left-side-btn-offset') %>
+  <%= link_to("Student Profile", @student, :class => 'btn btn-large btn-info btn-text-color left-side-btn-offset') %>
 </div>
-
-
 <div class="row">
   <div class="col-md-12 text-center">
     <div id="payment-listing">
-      <h2 id="student-payment-header-title">Listing Payments For <%= @student.full_name %></h2>
+      <h2 id="student-payment-header-title">Payments For <%= @student.full_name %></h2>
       <div class="row new-payment col-md-12 text-center">
         <%= link_to('New Payment', new_student_payment_path(@student), :class => 'btn btn-large btn-info', id: "new-payment-button-paypage") %>
+        <h3 class="text-center" id="balance-counter"><strong>Balance:</strong> <%= number_to_currency(@student.balance) %></h3>
       </div>
     </div>
-
   </div>
 </div>
 
